@@ -1,117 +1,110 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
-import { RollButton } from '@/components/ui/RollButton';
-
-const HERO_CLIPS = [
-  {
-    label: 'Farm harvest',
-    src: 'https://videos.pexels.com/video-files/2760453/2760453-hd_1920_1080_30fps.mp4',
-  },
-  {
-    label: 'Packhouse',
-    src: 'https://videos.pexels.com/video-files/3209298/3209298-hd_1920_1080_25fps.mp4',
-  },
-  {
-    label: 'Ocean freight',
-    src: 'https://videos.pexels.com/video-files/3571264/3571264-hd_1920_1080_30fps.mp4',
-  },
-] as const;
+import React from 'react';
+import Link from 'next/link';
+import { ArrowRight, MessageSquare, Check } from 'lucide-react';
+import { COMPANY_INFO } from '@/data/companyData';
 
 export function HeroSection() {
-  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
-  const [activeClip, setActiveClip] = useState(0);
-
-  useEffect(() => {
-    const id = window.setInterval(() => {
-      setActiveClip((i) => (i + 1) % HERO_CLIPS.length);
-    }, 9000);
-    return () => window.clearInterval(id);
-  }, []);
-
-  useEffect(() => {
-    videoRefs.current.forEach((video) => {
-      if (!video) return;
-      video.muted = true;
-      void video.play().catch(() => {});
-    });
-  }, []);
-
   return (
-    <section className="relative h-[calc(100vh-4.75rem)] min-h-[520px] flex flex-col justify-end overflow-hidden bg-black">
+    <section className="relative min-h-[92vh] flex flex-col justify-between overflow-hidden bg-neutral-900 text-white">
+      {/* High-Resolution Agricultural Farm Background with cinematic overlay */}
       <div className="absolute inset-0 z-0">
-        {HERO_CLIPS.map((clip, i) => (
-          <video
-            key={clip.src}
-            ref={(el) => {
-              videoRefs.current[i] = el;
-            }}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
-              i === activeClip ? 'opacity-100' : 'opacity-0'
-            }`}
-          >
-            <source src={clip.src} type="video/mp4" />
-          </video>
-        ))}
-        <div className="absolute inset-0 bg-black/35" />
-        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/75 to-transparent" />
+        <img
+          src="https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&w=2000&q=85"
+          alt="Indian agricultural fields and farm harvesting"
+          className="w-full h-full object-cover object-center transform scale-105 transition-transform duration-1000 ease-out"
+        />
+        {/* Apple-like subtle dark gradient overlays to ensure razor-sharp typography readability */}
+        <div className="absolute inset-0 bg-neutral-950/45" />
+        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-neutral-950/90 via-neutral-950/40 to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-neutral-950/60 to-transparent" />
       </div>
 
-      <div className="absolute top-5 left-5 sm:top-8 sm:left-8 z-20 flex flex-col gap-2">
-        {HERO_CLIPS.map((clip, i) => (
-          <button
-            key={clip.label}
-            type="button"
-            onClick={() => setActiveClip(i)}
-            className="flex items-center gap-2 text-left"
-            aria-label={clip.label}
-          >
-            <span
-              className={`h-px ${i === activeClip ? 'w-8 bg-white' : 'w-4 bg-white/40'}`}
-            />
-            <span
-              className={`text-[11px] font-sans ${
-                i === activeClip ? 'text-white' : 'text-white/55'
-              }`}
-            >
-              {clip.label}
-            </span>
-          </button>
-        ))}
-      </div>
-
-      <div className="absolute top-5 right-5 sm:top-8 sm:right-8 z-20 flex flex-col items-end gap-1.5 text-[11px] font-sans text-white/90">
-        <span>APEDA &amp; FSSAI</span>
-        <span>ISO 22000:2018</span>
-      </div>
-
-      <div className="relative z-10 w-full px-5 sm:px-10 lg:px-16 pb-10 sm:pb-14">
-        <p className="text-xs font-sans text-white/80 mb-3">T Group · Navi Mumbai</p>
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-medium text-white leading-[1.12] max-w-3xl">
-          Indian farm produce, packed and shipped for export.
-        </h1>
-        <p className="text-sm sm:text-base font-sans text-white/80 max-w-lg mt-4 leading-relaxed">
-          Onions, rice, bananas, pomegranates and spices — from contracted farms to your port, with cold-chain and documents in order.
-        </p>
-        <div className="flex flex-wrap items-center gap-3 mt-7">
-          <RollButton href="/products" text="View products" variant="white" size="md" />
-          <RollButton href="/contact" text="Request a quote" variant="outline" size="md" />
+      {/* Top spacing */}
+      <div className="relative z-10 pt-10 sm:pt-14 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto w-full">
+        {/* Pill Tag */}
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/15 text-xs font-semibold tracking-wider text-neutral-200 uppercase mb-6 sm:mb-8">
+          <span className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse" />
+          <span>India-Based Agricultural Exporter</span>
         </div>
-        <div className="flex flex-wrap gap-x-8 gap-y-2 mt-8 pt-5 border-t border-white/20 text-white">
-          <p className="text-sm font-sans">
-            <span className="font-semibold">50+</span> countries
-          </p>
-          <p className="text-sm font-sans">
-            <span className="font-semibold">500+</span> importers
-          </p>
-          <p className="text-sm font-sans">
-            <span className="font-semibold">5,000+</span> MT / year
-          </p>
+
+        {/* Main Hero Headline */}
+        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-[80px] font-extrabold tracking-tight leading-[1.08] max-w-4xl text-white">
+          Premium Indian <br className="hidden sm:inline" />
+          <span className="text-[#D4AF37]">Agricultural</span> <br className="hidden sm:inline" />
+          Products, <br className="hidden sm:inline" />
+          Delivered <br className="hidden sm:inline" />
+          to the World.
+        </h1>
+
+        {/* Subtitle */}
+        <p className="mt-6 text-base sm:text-lg md:text-xl text-neutral-200 max-w-2xl font-normal leading-relaxed">
+          T Group Imports &amp; Exports connects international buyers with carefully sourced Indian agricultural and food products — from farm to your destination port.
+        </p>
+
+        {/* Action Buttons */}
+        <div className="mt-8 sm:mt-10 flex flex-wrap items-center gap-4">
+          <Link
+            href="/contact#rfq-form"
+            className="inline-flex items-center gap-2 bg-[#0B7A3B] hover:bg-[#096631] text-white font-bold text-sm tracking-wide px-7 py-3.5 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 active:scale-95 group"
+          >
+            <span>REQUEST A QUOTE</span>
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+
+          <Link
+            href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent("Hello T Group Export Team, I would like to talk regarding agricultural commodity exports.")}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2.5 bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/20 hover:border-white/40 text-white font-semibold text-sm px-6 py-3.5 rounded-lg transition-all"
+          >
+            <MessageSquare className="w-4 h-4 text-emerald-400" />
+            <span>Talk to Export Team</span>
+          </Link>
+        </div>
+      </div>
+
+      {/* Bottom Row: Left Compliance Pills & Right Stats Cards */}
+      <div className="relative z-10 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto w-full pb-8 pt-12">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+          {/* Left Compliance Pills */}
+          <div className="flex flex-wrap items-center gap-2.5">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-emerald-500/30 text-xs font-semibold text-emerald-200">
+              <Check className="w-3.5 h-3.5 text-emerald-400" />
+              APEDA Registered
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-emerald-500/30 text-xs font-semibold text-emerald-200">
+              <Check className="w-3.5 h-3.5 text-emerald-400" />
+              FSSAI Compliant
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-emerald-500/30 text-xs font-semibold text-emerald-200">
+              <Check className="w-3.5 h-3.5 text-emerald-400" />
+              IEC Certified
+            </span>
+          </div>
+
+          {/* Right Stats Cards */}
+          <div className="grid grid-cols-3 gap-3 sm:gap-4 w-full lg:w-auto">
+            <div className="bg-white/90 backdrop-blur-md text-neutral-900 px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl border border-white/40 shadow-lg text-center">
+              <div className="text-xl sm:text-2xl font-black text-neutral-950 tracking-tight">5+</div>
+              <div className="text-[10px] sm:text-[11px] font-bold text-neutral-600 uppercase tracking-wider mt-0.5">Product Categories</div>
+            </div>
+            <div className="bg-white/90 backdrop-blur-md text-neutral-900 px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl border border-white/40 shadow-lg text-center">
+              <div className="text-xl sm:text-2xl font-black text-neutral-950 tracking-tight">8+</div>
+              <div className="text-[10px] sm:text-[11px] font-bold text-neutral-600 uppercase tracking-wider mt-0.5">Export Markets</div>
+            </div>
+            <div className="bg-white/90 backdrop-blur-md text-neutral-900 px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl border border-white/40 shadow-lg text-center">
+              <div className="text-lg sm:text-2xl font-black text-neutral-950 tracking-tight">FCL/LCL</div>
+              <div className="text-[10px] sm:text-[11px] font-bold text-neutral-600 uppercase tracking-wider mt-0.5">Shipment Options</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="mt-8 flex flex-col items-center justify-center text-neutral-400 text-[10px] font-semibold tracking-widest uppercase">
+          <span>Scroll</span>
+          <div className="w-px h-4 bg-neutral-500/50 mt-1 animate-pulse" />
         </div>
       </div>
     </section>

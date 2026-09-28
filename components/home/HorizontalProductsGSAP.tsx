@@ -120,17 +120,17 @@ export function HorizontalProductsGSAP() {
                   <div className="space-y-1 text-[11px] text-gray-700">
                     <div className="flex gap-2">
                       <span className="w-14 text-gray-400 flex-shrink-0">Grade</span>
-                      <span className="line-clamp-1">{product.exportGrade.split(',')[0].trim()}</span>
+                      <span className="line-clamp-1">{product.availableGrades[0]}</span>
                     </div>
                     <div className="flex gap-2 items-center">
                       <span className="w-14 text-gray-400 flex-shrink-0">
                         <MapPin className="w-3 h-3" />
                       </span>
-                      <span className="line-clamp-1">{product.origin.split(',')[0].trim()}</span>
+                      <span className="line-clamp-1">{product.origin.split('(')[0].trim()}</span>
                     </div>
                     <div className="flex gap-2">
                       <span className="w-14 text-gray-400 flex-shrink-0">Packing</span>
-                      <span className="line-clamp-1">{product.packingOptions.split(',')[0].trim()}</span>
+                      <span className="line-clamp-1">{product.packagingOptions[0]}</span>
                     </div>
                   </div>
                 </div>

@@ -8,7 +8,7 @@ import { COMPANY_INFO } from '@/data/companyData';
 
 export const metadata: Metadata = {
   title: `${COMPANY_INFO.name} | Indian Agricultural Products Delivered Globally`,
-  description: 'Premier India-based exporter of Red Onions, G9 Bananas, G4 Green Chilli, Basmati Rice, Pomegranates, and Spices. APEDA & FSSAI certified with cold-chain shipping to 50+ countries.',
+  description: 'Premier India-based exporter of Red Onions, G9 Bananas, G4 Green Chilli, Basmati Rice, Pomegranates, and Spices. Headquartered in Guntur, Andhra Pradesh with APEDA & FSSAI certified cold-chain and dry freight dispatch worldwide.',
   keywords: [
     'Indian Onion Exporter',
     'Basmati Rice Exporter India',

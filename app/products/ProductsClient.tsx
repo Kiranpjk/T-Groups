@@ -28,7 +28,7 @@ export function ProductsClient() {
         product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         product.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
         product.origin.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        product.exportGrade.toLowerCase().includes(searchQuery.toLowerCase());
+        product.availableGrades.join(' ').toLowerCase().includes(searchQuery.toLowerCase());
 
       return matchesCategory && matchesSearch;
     });

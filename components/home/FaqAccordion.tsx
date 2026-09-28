@@ -2,70 +2,70 @@
 
 import React, { useState } from 'react';
 import { FAQ_DATA } from '@/data/faqData';
-import { Plus, Minus, MessageSquare } from 'lucide-react';
+import { ChevronDown, HelpCircle, MessageSquare } from 'lucide-react';
 import { COMPANY_INFO } from '@/data/companyData';
+import Link from 'next/link';
 
 export function FaqAccordion() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openId, setOpenId] = useState<string | null>(FAQ_DATA[0].id);
+
+  const toggleFaq = (id: string) => {
+    setOpenId(openId === id ? null : id);
+  };
 
   return (
-    <section className="py-32 bg-white" id="faq">
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-
-        {/* Two-column header — label & intro copy */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20">
-          <div className="lg:col-span-5">
-            <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-gold-600 mb-4">
-              Buyer Knowledge Base
-            </p>
-            <h2 className="text-4xl sm:text-5xl font-black font-display text-primary-950 leading-none">
-              QUESTIONS?
-              <br />
-              <span className="text-primary-700">ANSWERED.</span>
-            </h2>
+    <section className="py-20 bg-neutral-50/70 border-b border-neutral-200/60">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center mb-14">
+          <div className="inline-flex items-center gap-2 mb-3">
+            <span className="w-6 h-[1.5px] bg-[#D4AF37]" />
+            <span className="text-[11px] font-bold tracking-[0.2em] text-[#0B7A3B] uppercase">
+              Buyer Questions
+            </span>
+            <span className="w-6 h-[1.5px] bg-[#D4AF37]" />
           </div>
-          <div className="lg:col-span-7 flex flex-col justify-end">
-            <p className="text-sm text-gray-500 leading-relaxed max-w-lg">
-              Everything international importers need to know — from payment terms and MOQs to third-party inspections and cold-chain protocols.
-            </p>
-          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-neutral-900 tracking-tight">
+            Frequently Asked Questions
+          </h2>
+          <p className="mt-3 text-sm sm:text-base text-neutral-600 max-w-xl mx-auto">
+            Clear, factual answers regarding export procedures, container MOQ, packaging options, and shipping terms.
+          </p>
         </div>
 
-        {/* Accordion list */}
-        <div className="divide-y divide-gray-100">
-          {FAQ_DATA.map((faq, idx) => {
-            const isOpen = openIndex === idx;
+        {/* FAQ List */}
+        <div className="space-y-3.5">
+          {FAQ_DATA.map((item, idx) => {
+            const isOpen = openId === item.id;
             return (
-              <div key={faq.question} className="group">
+              <div
+                key={item.id}
+                className="bg-white rounded-2xl border border-neutral-200 shadow-sm overflow-hidden transition-all duration-200"
+              >
                 <button
-                  onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  className="w-full flex items-start justify-between gap-6 py-7 text-left focus:outline-none"
+                  type="button"
+                  onClick={() => toggleFaq(item.id)}
+                  className="w-full px-6 py-5 text-left flex items-center justify-between gap-4 hover:bg-neutral-50/70 transition-colors focus:outline-none"
+                  aria-expanded={isOpen}
                 >
-                  <div className="flex items-start gap-5 flex-1">
-                    <span className="font-mono text-[11px] font-bold text-gray-300 pt-1 flex-shrink-0">
+                  <div className="flex items-center gap-3">
+                    <span className="text-xs font-mono font-bold text-[#0B7A3B]">
                       {String(idx + 1).padStart(2, '0')}
                     </span>
-                    <span className="text-base sm:text-lg font-bold text-primary-950 group-hover:text-primary-700 transition-colors leading-snug">
-                      {faq.question}
+                    <span className="text-sm sm:text-base font-bold text-neutral-900">
+                      {item.question}
                     </span>
                   </div>
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full border border-gray-200 group-hover:border-primary-300 flex items-center justify-center transition-colors mt-0.5">
-                    {isOpen
-                      ? <Minus className="w-3.5 h-3.5 text-primary-700" />
-                      : <Plus className="w-3.5 h-3.5 text-gray-500" />
-                    }
-                  </div>
+                  <ChevronDown
+                    className={`w-5 h-5 text-neutral-400 flex-shrink-0 transition-transform duration-300 ${
+                      isOpen ? 'rotate-180 text-[#0B7A3B]' : ''
+                    }`}
+                  />
                 </button>
 
                 {isOpen && (
-                  <div className="pb-7 pl-10 animate-fadeIn">
-                    <p className="text-sm text-gray-600 leading-relaxed max-w-3xl">
-                      {faq.answer}
-                    </p>
-                    {/* Category tag */}
-                    <span className="inline-block mt-4 text-[10px] font-bold uppercase tracking-widest text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">
-                      {faq.category}
-                    </span>
+                  <div className="px-6 pb-6 pt-2 text-xs sm:text-sm text-neutral-600 leading-relaxed border-t border-neutral-100 bg-neutral-50/40 animate-fadeIn">
+                    <p>{item.answer}</p>
                   </div>
                 )}
               </div>
@@ -73,21 +73,21 @@ export function FaqAccordion() {
           })}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="mt-16 pt-12 border-t border-gray-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-          <div>
-            <p className="font-bold text-gray-900 text-base">Still have a specific question?</p>
-            <p className="text-sm text-gray-500 mt-0.5">Our export compliance team responds within 2 hours on business days.</p>
+        {/* Still have questions banner */}
+        <div className="mt-12 bg-white rounded-2xl p-6 border border-neutral-200 shadow-sm text-center flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="text-left">
+            <h4 className="text-sm font-bold text-neutral-900">Have a specific commodity requirement or destination question?</h4>
+            <p className="text-xs text-neutral-500 mt-0.5">Our export desk is available for immediate commercial assistance.</p>
           </div>
-          <a
-            href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent("Hello T Group, I have a question about your export procedures.")}`}
+          <Link
+            href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent("Hello T Group, I have a question regarding agricultural commodity exports.")}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-shrink-0 inline-flex items-center gap-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm py-3.5 px-6 rounded-2xl transition-all shadow-md"
+            className="inline-flex items-center gap-2 bg-emerald-50 hover:bg-emerald-100 text-[#0B7A3B] border border-emerald-200 font-bold text-xs uppercase tracking-wider px-5 py-3 rounded-xl transition-colors whitespace-nowrap"
           >
             <MessageSquare className="w-4 h-4" />
-            Chat on WhatsApp
-          </a>
+            <span>Chat with Export Team</span>
+          </Link>
         </div>
       </div>
     </section>

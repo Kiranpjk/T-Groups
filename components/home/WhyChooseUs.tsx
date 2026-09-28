@@ -1,130 +1,90 @@
-'use client';
-
-import React, { useEffect, useRef } from 'react';
-import Image from 'next/image';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Sprout, ShieldCheck, Package, Globe, FileCheck2, Users, Sparkles } from 'lucide-react';
-
-gsap.registerPlugin(ScrollTrigger);
-
-const PILLARS = [
-  {
-    icon: Sprout,
-    title: 'Direct sourcing',
-    desc: 'Verified farmer contracts across Nashik, Jalgaon, Guntur, and Punjab.',
-    accent: '#22C55E',
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Zero-defect QC',
-    desc: 'NABL lab testing, MRL pesticide checks, and Sortex size grading.',
-    accent: '#EAB308',
-  },
-  {
-    icon: Package,
-    title: 'Custom packing',
-    desc: 'Private-label cartons, multi-lingual print, mesh bags, vacuum packing.',
-    accent: '#10B981',
-  },
-  {
-    icon: Globe,
-    title: 'Reefer cold chain',
-    desc: 'Temperature-logged reefers to 50+ international seaport hubs.',
-    accent: '#38BDF8',
-  },
-  {
-    icon: FileCheck2,
-    title: 'Export compliance',
-    desc: 'Phytosanitary, APEDA, FSSAI, COO, SGS and fast-track customs.',
-    accent: '#F59E0B',
-  },
-  {
-    icon: Users,
-    title: 'Buyer desk',
-    desc: 'Vessel tracking, document couriers, and a dedicated trade manager.',
-    accent: '#34D399',
-  },
-];
+import React from 'react';
+import { 
+  Sprout, 
+  ShieldCheck, 
+  Package, 
+  Truck, 
+  Users, 
+  MessageSquareText 
+} from 'lucide-react';
 
 export function WhyChooseUs() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '.pillar-card',
-        { y: 24, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.5,
-          stagger: 0.06,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 75%',
-          },
-        }
-      );
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
+  const pillars = [
+    {
+      id: 'direct-sourcing',
+      title: 'DIRECT SOURCING',
+      icon: Sprout,
+      description: 'We work with established agricultural sourcing networks across India, connecting directly with contracted farms and primary markets.'
+    },
+    {
+      id: 'quality-control',
+      title: 'QUALITY CONTROL',
+      icon: ShieldCheck,
+      description: 'Products are inspected, graded and packed according to buyer requirements, eliminating substandard batches before dispatch.'
+    },
+    {
+      id: 'export-packaging',
+      title: 'EXPORT PACKAGING',
+      icon: Package,
+      description: 'Packaging can be customized according to destination and buyer specifications, including private label retail packing and bulk mesh/PP sacks.'
+    },
+    {
+      id: 'logistics',
+      title: 'LOGISTICS',
+      icon: Truck,
+      description: 'We coordinate inland transportation, customs clearance, port documentation, and international ocean/air freight booking.'
+    },
+    {
+      id: 'buyer-focused',
+      title: 'BUYER-FOCUSED',
+      icon: Users,
+      description: 'Our supply model is built around buyer specifications, destination country import requirements, and strict shipment delivery schedules.'
+    },
+    {
+      id: 'consistent-communication',
+      title: 'CONSISTENT COMMUNICATION',
+      icon: MessageSquareText,
+      description: 'From initial quotation to final destination arrival, buyers receive transparent communication, shipment tracking, and complete documentation.'
+    }
+  ];
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden bg-brand-surface">
-      <div className="relative h-[38vh] min-h-[240px] max-h-[360px] w-full overflow-hidden">
-        <Image
-          src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=2400&q=80"
-          alt="Export logistics banner"
-          fill
-          className="object-cover object-center scale-110 blur-md"
-          priority={false}
-        />
-        <div className="absolute inset-0 bg-primary-950/55" />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-surface via-primary-950/20 to-primary-950/40" />
-
-        <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
-          <div className="inline-flex items-center gap-2 text-gold-300 text-[11px] font-bold uppercase tracking-[0.25em] mb-3 font-sans">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Why partner with us</span>
+    <section className="py-20 bg-white border-b border-neutral-200/70">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 mb-3">
+            <span className="w-6 h-[1.5px] bg-[#D4AF37]" />
+            <span className="text-[11px] font-bold tracking-[0.2em] text-[#0B7A3B] uppercase">
+              Why T Group?
+            </span>
+            <span className="w-6 h-[1.5px] bg-[#D4AF37]" />
           </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-display italic text-white leading-tight tracking-tight max-w-3xl">
-            Why choose <span className="text-gold-300 not-italic">T Group</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-neutral-900 tracking-tight leading-tight">
+            Built for Global Importers &amp; Wholesalers
           </h2>
-          <p className="max-w-xl text-sm text-emerald-50/90 leading-relaxed font-sans mt-3">
-            India&apos;s farmlands to global tables — without compromising quality, freight time, or paperwork.
+          <p className="mt-4 text-sm sm:text-base text-neutral-600 leading-relaxed max-w-2xl mx-auto">
+            We operate as your dedicated Indian procurement and export desk, eliminating intermediary variance through disciplined quality and logistics execution.
           </p>
         </div>
-      </div>
 
-      <div className="relative z-10 w-full border-t border-brand-border bg-white">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
-          {PILLARS.map((pillar, idx) => {
+        {/* 6 Feature Blocks Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {pillars.map((pillar) => {
             const Icon = pillar.icon;
             return (
               <div
-                key={pillar.title}
-                className="pillar-card p-6 sm:p-7 flex flex-col border-b border-r border-brand-border last:border-r-0 xl:[&:nth-child(6n)]:border-r-0 group"
-                style={{ opacity: 0 }}
+                key={pillar.id}
+                className="bg-neutral-50/70 rounded-2xl p-8 border border-neutral-200/80 hover:border-emerald-300 hover:bg-white hover:shadow-lg transition-all duration-300 flex flex-col group"
               >
-                <div className="flex items-center justify-between mb-3">
-                  <div
-                    className="w-9 h-9 flex items-center justify-center"
-                    style={{ backgroundColor: `${pillar.accent}18`, border: `1px solid ${pillar.accent}40` }}
-                  >
-                    <Icon className="w-4 h-4" style={{ color: pillar.accent }} />
-                  </div>
-                  <span className="font-display italic text-lg text-primary-700/30">
-                    0{idx + 1}
-                  </span>
+                <div className="w-12 h-12 rounded-xl bg-white border border-neutral-200 flex items-center justify-center text-[#0B7A3B] mb-6 shadow-sm group-hover:bg-[#0B7A3B] group-hover:text-white group-hover:border-[#0B7A3B] transition-all duration-300">
+                  <Icon className="w-6 h-6" />
                 </div>
-                <h3 className="font-display text-base text-primary-950 leading-snug group-hover:text-primary-700 transition-colors">
+                <h3 className="text-sm font-black tracking-wider text-neutral-900 mb-3 uppercase group-hover:text-[#0B7A3B] transition-colors">
                   {pillar.title}
                 </h3>
-                <p className="text-[12px] text-gray-600 leading-relaxed mt-1.5 font-sans">
-                  {pillar.desc}
+                <p className="text-xs sm:text-[13px] text-neutral-600 leading-relaxed">
+                  {pillar.description}
                 </p>
               </div>
             );

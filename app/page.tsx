@@ -1,65 +1,75 @@
 import React from 'react';
 import { HeroSection } from '@/components/home/HeroSection';
-import { MarqueeTicker } from '@/components/ui/MarqueeTicker';
-import { HorizontalProductsGSAP } from '@/components/home/HorizontalProductsGSAP';
+import { TrustSection } from '@/components/home/TrustSection';
+import { ProductsOverview } from '@/components/home/ProductsOverview';
+import { FeaturedProducts } from '@/components/home/FeaturedProducts';
 import { WhyChooseUs } from '@/components/home/WhyChooseUs';
 import { HowWeExportTimeline } from '@/components/home/HowWeExportTimeline';
 import { ExportMarketsPreview } from '@/components/home/ExportMarketsPreview';
-import { CertificationsBar } from '@/components/home/CertificationsBar';
+import { QualitySection } from '@/components/home/QualitySection';
+import { PackagingSection } from '@/components/home/PackagingSection';
+import { LogisticsSection } from '@/components/home/LogisticsSection';
 import { ExportGallery } from '@/components/home/ExportGallery';
-import { LogisticsTransitionBanner } from '@/components/home/LogisticsTransitionBanner';
+import { WhyIndia } from '@/components/home/WhyIndia';
+import { CompanyProfileSection } from '@/components/home/CompanyProfileSection';
 import { QuickRFQSection } from '@/components/home/QuickRFQSection';
+import { InsightsSection } from '@/components/home/InsightsSection';
 import { FaqAccordion } from '@/components/home/FaqAccordion';
+import { FinalCTA } from '@/components/home/FinalCTA';
 
 export default function HomePage() {
   return (
-    <div className="space-y-0">
-      {/* 1. Cinematic Video Hero Banner */}
+    <main className="space-y-0">
+      {/* 1. Hero Section (Screenshot 1) */}
       <HeroSection />
 
-      {/* 2. Top Marquee Ribbon */}
-      <MarqueeTicker theme="dark" speed="normal" />
+      {/* 2. Trust / Value Proposition Section (Screenshot 2) */}
+      <TrustSection />
 
-      {/* 3. Flagship GSAP Pinned Horizontal Catalog */}
-      <HorizontalProductsGSAP />
+      {/* 3. Product Categories Range (Screenshot 3) */}
+      <ProductsOverview />
 
-      {/* 4. Why Choose T Group (Blurred Banner + Glassmorphism Grid) */}
+      {/* 4. Featured Selected Products */}
+      <FeaturedProducts />
+
+      {/* 5. Why T Group? (6 Blocks) */}
       <WhyChooseUs />
 
-      {/* 5. Gold Marquee Ribbon */}
-      <MarqueeTicker
-        theme="gold"
-        speed="fast"
-        items={[
-          'FOB / CIF / CFR GLOBAL SHIPPING',
-          'JNPT MUMBAI & MUNDRA PORT DISPATCH',
-          'SGS / GEO-CHEM INSPECTION',
-          'CUSTOM PRIVATE-LABEL PACKAGING',
-          'DIRECT FARMER PROCUREMENT NETWORK',
-          'TEMPERATURE-CONTROLLED REEFER CONTAINERS',
-        ]}
-      />
-
-      {/* 6. How to book + how we export (merged timeline) */}
+      {/* 6. Export Workflow (8 Steps) (Screenshot 4) */}
       <HowWeExportTimeline />
 
-      {/* 8. Export Markets & Realistic SVG World Map */}
+      {/* 8. Export Markets & Capabilities (Screenshot 5) */}
       <ExportMarketsPreview />
 
-      {/* 9. Statutory Certifications & Registrations */}
-      <CertificationsBar />
+      {/* 9. Quality & Compliance (IEC, GST, APEDA, FSSAI) */}
+      <QualitySection />
 
-      {/* 10. Stacked Logistics & Packhouse Gallery */}
+      {/* 10. Export-Ready Packaging */}
+      <PackagingSection />
+
+      {/* 11. Logistics & International Shipping */}
+      <LogisticsSection />
+
+      {/* 12. Export Journey / Traceability Gallery */}
       <ExportGallery />
 
-      {/* 11. Animated Airplane & Cargo Ship Scroll Transition Banner */}
-      <LogisticsTransitionBanner />
+      {/* 13. Why Source from India? */}
+      <WhyIndia />
 
-      {/* 12. Quick RFQ Section */}
+      {/* 14. Company Profile ("Get to Know T Group" + Download Profile) */}
+      <CompanyProfileSection />
+
+      {/* 15. Request a Quote (Full RFQ Form) */}
       <QuickRFQSection />
 
-      {/* 13. International Buyer FAQ Accordion */}
+      {/* 17. Insights & Trade Guides (5 Articles) */}
+      <InsightsSection />
+
+      {/* 18. Frequently Asked Questions (10 FAQs) */}
       <FaqAccordion />
-    </div>
+
+      {/* 19. Final Dark-Green CTA */}
+      <FinalCTA />
+    </main>
   );
 }

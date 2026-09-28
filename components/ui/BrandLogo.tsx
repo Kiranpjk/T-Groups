@@ -8,58 +8,44 @@ interface BrandLogoProps {
 
 export function BrandLogo({ className = "", isDarkBg = false }: BrandLogoProps) {
   return (
-    <Link href="/" className={`inline-flex items-center gap-3 group transition-transform duration-300 hover:scale-[1.02] ${className}`}>
-      {/* SVG Modern Geometric T-Emblem with Gold & Emerald styling */}
-      <div className="relative w-10 h-10 flex-shrink-0 flex items-center justify-center">
-        <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-md">
-          {/* Outer hexagonal shield / badge */}
-          <path
-            d="M50 4 L88 24 L88 76 L50 96 L12 76 L12 24 Z"
-            fill={isDarkBg ? "#0A3E1B" : "#0F5132"}
-            stroke="#C5A059"
-            strokeWidth="3.5"
-            strokeLinejoin="round"
-          />
-          {/* Inner Golden T Structure */}
-          <path
-            d="M26 28 L74 28 L74 38 L56 38 L56 78 L44 78 L44 38 L26 38 Z"
-            fill="url(#goldGradient)"
-          />
-          {/* Left golden leaf accent */}
-          <path
-            d="M32 50 C26 44 28 36 36 34 C36 42 34 48 32 50 Z"
-            fill="#D4AF37"
-            opacity="0.85"
-          />
-          {/* Right golden leaf accent */}
-          <path
-            d="M68 50 C74 44 72 36 64 34 C64 42 66 48 68 50 Z"
-            fill="#D4AF37"
-            opacity="0.85"
-          />
-          {/* Gradients */}
+    <Link href="/" className={`inline-flex items-center gap-2.5 group transition-transform duration-200 hover:opacity-95 ${className}`}>
+      {/* Sleek Golden Stepped Emblem */}
+      <div className="relative w-8 h-8 flex-shrink-0 flex items-center justify-center">
+        <svg viewBox="0 0 40 32" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Top Gold Bar */}
+          <path d="M6 4H34C35.1046 4 36 4.89543 36 6V8C36 9.10457 35.1046 10 34 10H6C4.89543 10 4 9.10457 4 8V6C4 4.89543 4.89543 4 6 4Z" fill="url(#goldGrad1)" />
+          {/* Middle Gold Bar */}
+          <path d="M10 12H30C31.1046 12 32 12.8954 32 14V16C32 17.1046 31.1046 18 30 18H10C8.89543 18 8 17.1046 8 16V14C8 12.8954 8.89543 12 10 12Z" fill="url(#goldGrad2)" />
+          {/* Bottom Gold Bar */}
+          <path d="M14 20H26C27.1046 20 28 20.8954 28 22V24C28 25.1046 27.1046 26 26 26H14C12.8954 26 12 25.1046 12 24V22C12 20.8954 12.8954 20 14 20Z" fill="url(#goldGrad3)" />
+          
           <defs>
-            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#F6E7BC" />
-              <stop offset="40%" stopColor="#D4AF37" />
-              <stop offset="100%" stopColor="#9A7B38" />
+            <linearGradient id="goldGrad1" x1="4" y1="7" x2="36" y2="7" gradientUnits="userSpaceOnUse">
+              <stop stopColor="#E5C07B" />
+              <stop offset="0.5" stopColor="#D4AF37" />
+              <stop offset="1" stopColor="#B38A2A" />
+            </linearGradient>
+            <linearGradient id="goldGrad2" x1="8" y1="15" x2="32" y2="15" gradientUnits="userSpaceOnUse">
+              <stop stopColor="#E5C07B" />
+              <stop offset="0.5" stopColor="#D4AF37" />
+              <stop offset="1" stopColor="#B38A2A" />
+            </linearGradient>
+            <linearGradient id="goldGrad3" x1="12" y1="23" x2="28" y2="23" gradientUnits="userSpaceOnUse">
+              <stop stopColor="#E5C07B" />
+              <stop offset="0.5" stopColor="#D4AF37" />
+              <stop offset="1" stopColor="#B38A2A" />
             </linearGradient>
           </defs>
         </svg>
       </div>
 
-      {/* Brand Typography */}
-      <div className="flex flex-col">
-        <div className="flex items-center gap-1.5 leading-none">
-          <span className={`text-xl md:text-2xl font-black tracking-tight font-display ${isDarkBg ? 'text-white' : 'text-primary-900'}`}>
-            T GROUP
-          </span>
-        </div>
-        <span className="text-[10px] md:text-[11px] font-bold tracking-[0.2em] text-gold-600 uppercase mt-0.5">
-          IMPORTS & EXPORTS
+      {/* Brand Name Typography */}
+      <div className="flex flex-col justify-center text-left">
+        <span className={`text-base sm:text-lg font-black tracking-tight leading-tight ${isDarkBg ? 'text-white' : 'text-neutral-900'}`}>
+          T GROUP
         </span>
-        <span className={`text-[8px] font-medium tracking-wide ${isDarkBg ? 'text-gray-400' : 'text-gray-500'}`}>
-          Built on Trust. Delivered with Care.
+        <span className="text-[9px] sm:text-[10px] font-semibold tracking-wider text-neutral-500 uppercase leading-none">
+          IMPORTS &amp; EXPORTS
         </span>
       </div>
     </Link>
