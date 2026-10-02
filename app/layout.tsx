@@ -27,6 +27,9 @@ export const metadata: Metadata = {
     'T Group Imports & Exports'
   ],
   authors: [{ name: 'T Group Imports & Exports' }],
+  verification: {
+    google: 'opsZKUCbXQaY_qQVWLfcwowKRmYKgay48OhqRCZJsjs',
+  },
   icons: {
     icon: '/images/tgie-logo.jpg',
     shortcut: '/images/tgie-logo.jpg',
