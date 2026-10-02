@@ -5,6 +5,7 @@ import { ProductsOverview } from '@/components/home/ProductsOverview';
 import { HowWeExportTimeline } from '@/components/home/HowWeExportTimeline';
 import { ExportMarketsPreview } from '@/components/home/ExportMarketsPreview';
 import { ExportCapabilities } from '@/components/home/ExportCapabilities';
+import { StandardsComplianceSection } from '@/components/home/StandardsComplianceSection';
 import { QualitySection } from '@/components/home/QualitySection';
 import { PackagingSection } from '@/components/home/PackagingSection';
 import { LogisticsSection } from '@/components/home/LogisticsSection';
@@ -35,7 +36,10 @@ export default function HomePage() {
       {/* Export Capabilities */}
       <ExportCapabilities />
 
-      {/* 9. Quality & Compliance (IEC, GST, APEDA, FSSAI) */}
+      {/* Quality & Compliance Standards */}
+      <StandardsComplianceSection />
+
+      {/* Registrations & Compliance (IEC, GST, APEDA, FSSAI) */}
       <QualitySection />
 
       {/* 10. Export-Ready Packaging */}
@@ -50,14 +54,14 @@ export default function HomePage() {
       {/* 14. Company Profile ("Get to Know T Group" + Download Profile) */}
       <CompanyProfileSection />
 
+      {/* Frequently Asked Questions */}
+      <FaqAccordion />
+
       {/* Looking for a Reliable Indian Sourcing Partner? */}
       <FinalCTA />
 
       {/* Request a Quote — sits directly under the sourcing CTA */}
       <QuickRFQSection />
-
-      {/* Frequently Asked Questions */}
-      <FaqAccordion />
     </main>
   );
 }

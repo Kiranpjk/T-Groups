@@ -1,13 +1,5 @@
 import React from 'react';
-import { 
-  Globe2, 
-  MapPin, 
-  Building2, 
-  Users2, 
-  Layers, 
-  TrendingUp 
-} from 'lucide-react';
-import Link from 'next/link';
+import { Globe2, MapPin, Building2, Users2, Layers, TrendingUp } from 'lucide-react';
 
 export function WhyIndia() {
   const advantages = [
@@ -44,46 +36,46 @@ export function WhyIndia() {
   ];
 
   return (
-    <section className="py-20 bg-neutral-50/70 border-b border-neutral-200/60">
+    <section className="py-16 sm:py-20 bg-[#F8F8F6] border-b border-neutral-200/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 mb-3">
-            <span className="w-6 h-[1.5px] bg-[#D4AF37]" />
-            <span className="text-[11px] font-bold tracking-[0.2em] text-[#0B7A3B] uppercase">
-              Strategic Sourcing
-            </span>
-            <span className="w-6 h-[1.5px] bg-[#D4AF37]" />
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          <div className="relative overflow-hidden rounded-[32px] h-[420px] lg:h-[540px]">
+            <img
+              src="/images/Fresh%20vegetables.png"
+              alt="Indian agricultural farmland"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute bottom-4 left-4 right-4 grid grid-cols-3 gap-2 rounded-[24px] bg-white/90 backdrop-blur-md p-5 text-center">
+              <div><strong className="block text-lg text-[#0B7A3B]">2nd</strong><span className="text-[8px] uppercase text-neutral-500">Largest agri producer</span></div>
+              <div><strong className="block text-lg text-[#0B7A3B]">15%</strong><span className="text-[8px] uppercase text-neutral-500">Global spice supply</span></div>
+              <div><strong className="block text-lg text-[#0B7A3B]">$50B+</strong><span className="text-[8px] uppercase text-neutral-500">Annual agri exports</span></div>
+            </div>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-neutral-900 tracking-tight">
-            Why Source from India?
-          </h2>
-          <p className="mt-4 text-sm sm:text-base text-neutral-600 leading-relaxed max-w-2xl mx-auto">
-            India is the world&apos;s powerhouse in agricultural production. T Group acts as your on-ground partner, connecting you to the right sourcing regions with guaranteed quality.
-          </p>
-        </div>
 
-        {/* 6 Advantage Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div>
+            <div className="inline-flex items-center gap-2 mb-5">
+              <span className="w-8 h-px bg-[#D4AF37]" />
+            <span className="text-[11px] font-bold tracking-[0.2em] text-[#0B7A3B] uppercase">
+                Sourcing Advantage
+            </span>
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-black text-neutral-900 tracking-tight">Why Source from India?</h2>
+            <p className="mt-4 text-sm leading-relaxed text-[#737B8C]">India is one of the world&apos;s largest producers and exporters of agricultural products. T Group helps international buyers connect with the right Indian sourcing regions for their product requirements.</p>
+            <div className="mt-7 space-y-3">
           {advantages.map((item) => {
             const Icon = item.icon;
             return (
               <div
                 key={item.title}
-                className="bg-white rounded-2xl p-7 border border-neutral-200/90 shadow-sm hover:shadow-md hover:border-emerald-300 transition-all flex flex-col group"
+                className="bg-white rounded-[20px] px-4 py-3 border border-[#E0E3E7] hover:border-[#0B7A3B] transition-all flex items-start gap-3 group"
               >
-                <div className="w-12 h-12 rounded-xl bg-emerald-50 text-[#0B7A3B] flex items-center justify-center mb-5 group-hover:bg-[#0B7A3B] group-hover:text-white transition-colors">
-                  <Icon className="w-6 h-6" />
-                </div>
-                <h3 className="text-base font-bold text-neutral-900 mb-2 group-hover:text-[#0B7A3B] transition-colors">
-                  {item.title}
-                </h3>
-                <p className="text-xs text-neutral-600 leading-relaxed">
-                  {item.desc}
-                </p>
+                <span className="w-2 h-2 mt-1.5 rounded-full bg-[#D4AF37] shrink-0" />
+                <div><h3 className="text-[11px] font-bold text-neutral-900 group-hover:text-[#0B7A3B] transition-colors">{item.title}</h3><p className="mt-1 text-[10px] text-[#737B8C] leading-relaxed">{item.desc}</p></div>
               </div>
             );
           })}
+            </div>
+          </div>
         </div>
       </div>
     </section>

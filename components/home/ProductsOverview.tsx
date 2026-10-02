@@ -14,7 +14,7 @@ export function ProductsOverview({ onOpenQuoteModal }: ProductsOverviewProps) {
       tag: 'SEASONAL',
       tagClass: 'bg-emerald-50 text-[#0B7A3B] border-emerald-200',
       items: 'Mango · G9 Banana · Pomegranate',
-      image: 'https://images.unsplash.com/photo-1550258987-190a2d41a8ba?auto=format&fit=crop&w=800&q=80',
+      image: '/images/Fresh%20Fruits%20catgry.png',
       categoryQuery: 'Fresh Fruits'
     },
     {
@@ -23,7 +23,7 @@ export function ProductsOverview({ onOpenQuoteModal }: ProductsOverviewProps) {
       tag: 'YEAR ROUND',
       tagClass: 'bg-emerald-50 text-[#0B7A3B] border-emerald-200',
       items: 'Fresh Onion · Green Chilli · Tomato · Okra',
-      image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80',
+      image: '/images/Fresh%20vegetables.png',
       categoryQuery: 'Fresh Vegetables'
     },
     {
@@ -32,7 +32,7 @@ export function ProductsOverview({ onOpenQuoteModal }: ProductsOverviewProps) {
       tag: 'BULK AVAILABLE',
       tagClass: 'bg-emerald-50 text-[#0B7A3B] border-emerald-200',
       items: '1121 Basmati · Sona Masoori · IR64 · Swarna',
-      image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=800&q=80',
+      image: '/images/Rice%20and%20Grain.png',
       categoryQuery: 'Rice & Grains'
     },
     {
@@ -41,7 +41,7 @@ export function ProductsOverview({ onOpenQuoteModal }: ProductsOverviewProps) {
       tag: 'EXPORT GRADE',
       tagClass: 'bg-emerald-50 text-[#0B7A3B] border-emerald-200',
       items: 'Dry Red Chilli · Turmeric · Cumin · Coriander',
-      image: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=800&q=80',
+      image: '/images/Spices.png',
       categoryQuery: 'Spices'
     },
     {
@@ -51,7 +51,7 @@ export function ProductsOverview({ onOpenQuoteModal }: ProductsOverviewProps) {
       tagClass: 'bg-amber-50 text-amber-800 border-amber-200',
       items: 'Semi-Husk Coconut · Drumstick · Seasonal Produce',
       description: 'This category is continuously expanding as we establish new sourcing relationships across India. Contact us for custom product requirements.',
-      image: 'https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&w=800&q=80',
+      image: '/images/Other%20Agro.png',
       categoryQuery: 'Other Agro Products',
       isWide: true
     }

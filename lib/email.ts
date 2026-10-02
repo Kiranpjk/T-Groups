@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { COMPANY_INFO } from "@/data/companyData";
 
 export interface QuoteRequestPayload {
   fullName: string;
@@ -21,7 +22,7 @@ export async function sendQuoteNotification(data: QuoteRequestPayload) {
   const port = parseInt(process.env.SMTP_PORT || "587", 10);
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
-  const toEmail = process.env.NOTIFICATION_EMAIL || "info@tgroupexim.com";
+  const toEmail = process.env.NOTIFICATION_EMAIL || COMPANY_INFO.primaryEmail;
   const fromEmail = process.env.SMTP_FROM || `"T Group Inquiries" <${user || "inquiries@tgroupexim.com"}>`;
 
   const htmlContent = `

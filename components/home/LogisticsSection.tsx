@@ -6,120 +6,40 @@ import {
   EXPORT_DOCUMENTS_LIST 
 } from '@/data/packagingLogisticsData';
 import { Anchor, Ship, FileText, CheckCircle2 } from 'lucide-react';
-import Link from 'next/link';
 
 export function LogisticsSection() {
   return (
-    <section className="py-20 bg-neutral-50/70 border-b border-neutral-200/60">
+    <section className="py-16 sm:py-20 bg-[#F8F8F6] border-b border-neutral-200/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="mb-10">
           <div className="inline-flex items-center gap-2 mb-3">
-            <span className="w-6 h-[1.5px] bg-[#D4AF37]" />
+            <span className="w-8 h-px bg-[#D4AF37]" />
             <span className="text-[11px] font-bold tracking-[0.2em] text-[#0B7A3B] uppercase">
-              Global Shipping
+              Logistics
             </span>
-            <span className="w-6 h-[1.5px] bg-[#D4AF37]" />
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-neutral-900 tracking-tight">
+          <h2 className="text-4xl sm:text-5xl font-black text-neutral-900 tracking-tight">
             Logistics &amp; International Shipping
           </h2>
-          <p className="mt-4 text-sm sm:text-base text-neutral-600 leading-relaxed max-w-2xl mx-auto">
-            From premier Indian deep-water seaports and air cargo terminals to destination ports worldwide under international Incoterms.
-          </p>
         </div>
 
-        {/* 4-Column / Multi-Tab Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Seaports & Air Terminals */}
-          <div className="bg-white rounded-2xl p-7 border border-neutral-200/90 shadow-sm flex flex-col justify-between">
-            <div>
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-10 rounded-xl bg-emerald-50 text-[#0B7A3B] flex items-center justify-center">
-                  <Anchor className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-neutral-900">Major Indian Export Ports</h3>
-                  <p className="text-xs text-neutral-500">Fastest transit corridors for perishable &amp; dry cargo</p>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                {INDIAN_PORTS.slice(0, 4).map((port) => (
-                  <div key={port.name} className="p-3.5 rounded-xl bg-neutral-50 border border-neutral-100">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold text-neutral-900">{port.name}</span>
-                      <span className="text-[10px] font-semibold text-emerald-800 bg-emerald-100/70 px-2 py-0.5 rounded">
-                        {port.state}
-                      </span>
-                    </div>
-                    <p className="text-[11px] text-neutral-600 mt-1">{port.connectivity}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="mt-6 pt-4 border-t border-neutral-100 flex items-center justify-between text-xs">
-              <span className="text-neutral-500">Air Cargo Hubs:</span>
-              <span className="font-semibold text-neutral-800">Hyderabad (HYD) · Mumbai (BOM) · Chennai (MAA)</span>
-            </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="bg-white rounded-[28px] p-6 border border-[#DEE2E7] min-h-[245px]">
+            <div className="flex items-center gap-3 mb-6"><Anchor className="w-5 h-5 text-[#0B7A3B]" /><h3 className="text-sm font-bold">Ports</h3></div>
+            <div className="space-y-3">{INDIAN_PORTS.slice(0, 4).map((port) => <p key={port.name} className="flex gap-2 text-xs text-[#737B8C]"><span className="w-2 h-2 mt-1 rounded-full bg-[#D4AF37] shrink-0" />{port.name.replace(' / Nhava Sheva (Mumbai)', '').replace(' & Visakhapatnam Ports', '')}</p>)}</div>
           </div>
-
-          {/* Incoterms & Shipping Modes */}
-          <div className="bg-white rounded-2xl p-7 border border-neutral-200/90 shadow-sm flex flex-col justify-between">
-            <div>
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-10 rounded-xl bg-emerald-50 text-[#0B7A3B] flex items-center justify-center">
-                  <Ship className="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-neutral-900">Incoterms &amp; Shipping Modes</h3>
-                  <p className="text-xs text-neutral-500">Flexible international trade settlement terms</p>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                {INCOTERMS_DATA.map((inco) => (
-                  <div key={inco.term} className="p-3.5 rounded-xl bg-neutral-50 border border-neutral-100">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold text-neutral-900">{inco.term}</span>
-                      <span className="text-[10px] text-neutral-500 font-medium">{inco.location}</span>
-                    </div>
-                    <p className="text-[11px] text-neutral-600 mt-1">{inco.responsibility}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="mt-6 pt-4 border-t border-neutral-100 flex items-center justify-between text-xs">
-              <span className="text-neutral-500">Shipping Modes:</span>
-              <span className="font-semibold text-emerald-800">FCL (Reefer/Dry) · LCL Cargo · Air Freight</span>
-            </div>
+          <div className="bg-white rounded-[28px] p-6 border border-[#DEE2E7] min-h-[245px]">
+            <div className="flex items-center gap-3 mb-6"><Ship className="w-5 h-5 text-[#0B7A3B]" /><h3 className="text-sm font-bold">Shipping Modes</h3></div>
+            <div className="space-y-3">{SHIPPING_MODES.map((mode) => <p key={mode.mode} className="flex gap-2 text-xs text-[#737B8C]"><span className="w-2 h-2 mt-1 rounded-full bg-[#D4AF37] shrink-0" />{mode.mode}</p>)}</div>
           </div>
-        </div>
-
-        {/* Documentation Section */}
-        <div className="mt-8 bg-white rounded-2xl p-7 border border-neutral-200/90 shadow-sm">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 rounded-xl bg-emerald-50 text-[#0B7A3B] flex items-center justify-center">
-              <FileText className="w-5 h-5" />
-            </div>
-            <div>
-              <h3 className="text-lg font-bold text-neutral-900">Comprehensive Export Documentation</h3>
-              <p className="text-xs text-neutral-500">Complete regulatory dossiers tailored to destination customs</p>
-            </div>
+          <div className="bg-white rounded-[28px] p-6 border border-[#DEE2E7] min-h-[245px]">
+            <div className="flex items-center gap-3 mb-6"><FileText className="w-5 h-5 text-[#0B7A3B]" /><h3 className="text-sm font-bold">Incoterms</h3></div>
+            <div className="flex flex-wrap gap-2">{INCOTERMS_DATA.map((inco) => <span key={inco.term} className="rounded-full border border-[#DEE2E7] px-3 py-2 text-xs font-bold text-[#0B7A3B]">{inco.term.split(' ')[0]}</span>)}</div>
           </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-            {EXPORT_DOCUMENTS_LIST.map((doc) => (
-              <div key={doc.name} className="p-3 rounded-xl bg-neutral-50 border border-neutral-100 flex items-start gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-[#0B7A3B] flex-shrink-0 mt-0.5" />
-                <div>
-                  <h4 className="text-xs font-bold text-neutral-900">{doc.name}</h4>
-                  <p className="text-[10px] text-neutral-500 mt-0.5">{doc.description}</p>
-                </div>
-              </div>
-            ))}
+          <div className="bg-white rounded-[28px] p-6 border border-[#DEE2E7] min-h-[245px]">
+            <div className="flex items-center gap-3 mb-6"><CheckCircle2 className="w-5 h-5 text-[#0B7A3B]" /><h3 className="text-sm font-bold">Documentation</h3></div>
+            <div className="space-y-3">{EXPORT_DOCUMENTS_LIST.slice(0, 6).map((doc) => <p key={doc.name} className="flex gap-2 text-xs text-[#737B8C]"><span className="w-2 h-2 mt-1 rounded-full bg-[#D4AF37] shrink-0" />{doc.name.replace(' & Customs Clearance', '')}</p>)}</div>
           </div>
         </div>
       </div>

@@ -9,109 +9,53 @@ export function CompanyProfileSection() {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <section className="py-20 bg-white border-b border-neutral-200/70">
+    <section className="py-16 sm:py-20 bg-[#F8F8F6] border-b border-neutral-200/70">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-gradient-to-br from-neutral-900 via-neutral-900 to-[#0A3E1B] rounded-3xl p-8 sm:p-12 lg:p-16 text-white relative overflow-hidden shadow-2xl">
-          {/* Subtle gold decorative accents */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-[#D4AF37]/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#0B7A3B]/20 rounded-full blur-3xl pointer-events-none" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div>
+            <div className="inline-flex items-center gap-2 mb-5">
+              <span className="w-8 h-px bg-[#D4AF37]" />
+              <span className="text-[11px] font-bold tracking-[0.2em] text-[#0B7A3B] uppercase">About T Group</span>
+            </div>
+            <h2 className="text-4xl sm:text-5xl font-black tracking-tight leading-[1.08] text-neutral-900 mb-5">
+              Built on Trust.<br />Delivered with Care.
+            </h2>
+            <p className="text-sm leading-relaxed text-[#737B8C] max-w-xl">{COMPANY_INFO.description}</p>
 
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            {/* Left Content */}
-            <div className="lg:col-span-7">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs font-semibold tracking-wider text-[#D4AF37] uppercase mb-6">
-                <span>Corporate Overview</span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-7">
+              <div className="rounded-[20px] border border-[#DEE2E7] bg-white p-5">
+                <span className="text-[#0B7A3B]">◉</span>
+                <h3 className="mt-5 text-[11px] font-bold uppercase">Our Mission</h3>
+                <p className="mt-2 text-[11px] leading-relaxed text-[#737B8C]">{COMPANY_INFO.mission}</p>
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-white mb-6">
-                Get to Know T Group
-              </h2>
-              <p className="text-sm sm:text-base text-neutral-300 leading-relaxed mb-8">
-                {COMPANY_INFO.description}
-              </p>
-
-              {/* Mission & Vision Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-white/15">
-                <div>
-                  <h3 className="text-xs font-bold tracking-widest text-[#D4AF37] uppercase mb-2">
-                    Our Mission
-                  </h3>
-                  <p className="text-xs text-neutral-300 leading-relaxed">
-                    {COMPANY_INFO.mission}
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-xs font-bold tracking-widest text-[#D4AF37] uppercase mb-2">
-                    Our Vision
-                  </h3>
-                  <p className="text-xs text-neutral-300 leading-relaxed">
-                    {COMPANY_INFO.vision}
-                  </p>
-                </div>
+              <div className="rounded-[20px] border border-[#DEE2E7] bg-white p-5">
+                <span className="text-[#D4AF37]">☆</span>
+                <h3 className="mt-5 text-[11px] font-bold uppercase">Our Vision</h3>
+                <p className="mt-2 text-[11px] leading-relaxed text-[#737B8C]">{COMPANY_INFO.vision}</p>
               </div>
+            </div>
 
-              {/* CTA Button */}
-              <div className="mt-10 flex flex-wrap items-center gap-4">
+            <div className="mt-7 flex flex-wrap items-center gap-3">
                 <button
                   type="button"
                   onClick={() => setShowModal(true)}
-                  className="inline-flex items-center gap-2.5 bg-[#0B7A3B] hover:bg-[#096631] text-white font-bold text-xs tracking-wider uppercase px-7 py-4 rounded-xl shadow-lg transition-all active:scale-95 group"
+                  className="inline-flex items-center gap-2.5 bg-[#0B7A3B] hover:bg-[#096631] text-white font-bold text-xs tracking-wider uppercase px-6 py-3.5 rounded-md transition-all active:scale-95 group"
                 >
                   <Download className="w-4 h-4 transition-transform group-hover:-translate-y-0.5" />
                   <span>Download Company Profile</span>
                 </button>
 
                 <Link
-                  href="/about"
-                  className="inline-flex items-center gap-2 border border-white/30 hover:border-white text-white font-bold text-xs tracking-wider uppercase px-6 py-4 rounded-xl transition-colors"
+                  href="/contact#rfq-form"
+                  className="inline-flex items-center gap-2 border border-[#DEE2E7] hover:border-[#0B7A3B] text-neutral-800 font-bold text-xs tracking-wider uppercase px-6 py-3.5 rounded-md transition-colors"
                 >
-                  <span>Learn More About Us</span>
+                  <span>Request a Quote</span>
                 </Link>
               </div>
-            </div>
+          </div>
 
-            {/* Right Card: Quick Corporate Card */}
-            <div className="lg:col-span-5 bg-white/10 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-white/15 text-white">
-              <div className="flex items-center gap-3 mb-6 pb-4 border-b border-white/15">
-                <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-[#D4AF37]">
-                  <Building className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-white leading-tight">T Group Imports &amp; Exports</h3>
-                  <p className="text-xs text-neutral-400">Headquarters: Guntur, Andhra Pradesh, India</p>
-                </div>
-              </div>
-
-              <div className="space-y-4 text-xs text-neutral-200">
-                <div className="flex items-start gap-3">
-                  <MapPin className="w-4 h-4 text-[#D4AF37] mt-0.5 flex-shrink-0" />
-                  <div>
-                    <span className="font-semibold block text-white">Registered Sourcing Desk</span>
-                    <span>Guntur, Andhra Pradesh, India</span>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <Phone className="w-4 h-4 text-[#D4AF37] mt-0.5 flex-shrink-0" />
-                  <div>
-                    <span className="font-semibold block text-white">Managing Director: Tarun Boya</span>
-                    <span>{COMPANY_INFO.primaryPhone} / {COMPANY_INFO.secondaryPhone}</span>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <Mail className="w-4 h-4 text-[#D4AF37] mt-0.5 flex-shrink-0" />
-                  <div>
-                    <span className="font-semibold block text-white">Official Trade Enquiries</span>
-                    <span className="break-all">{COMPANY_INFO.primaryEmail}</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-6 pt-4 border-t border-white/15 flex items-center justify-between text-[11px] text-neutral-400">
-                <span>Compliance: APEDA · FSSAI · IEC</span>
-                <span className="text-[#D4AF37] font-semibold">Verified Exporter</span>
-              </div>
-            </div>
+          <div className="relative overflow-hidden rounded-[32px] h-[420px] lg:h-[540px]">
+            <img src="/images/Fresh%20vegetables.png" alt="T Group agricultural produce facility" className="w-full h-full object-cover" />
           </div>
         </div>
       </div>

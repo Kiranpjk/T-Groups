@@ -40,7 +40,7 @@ export const CATEGORY_SUMMARIES = [
     badgeClass: 'bg-emerald-50 text-emerald-800 border-emerald-200',
     examples: 'Mango · G9 Banana · Pomegranate · Table Grapes',
     description: 'Farm-fresh, carefully harvested fruits conditioned in temperature-regulated packhouses for export.',
-    image: 'https://images.unsplash.com/photo-1550258987-190a2d41a8ba?auto=format&fit=crop&w=800&q=80',
+    image: '/images/Fresh%20Fruits%20catgry.png',
     slug: 'fresh-fruits'
   },
   {
@@ -49,7 +49,7 @@ export const CATEGORY_SUMMARIES = [
     badgeClass: 'bg-green-50 text-green-800 border-green-200',
     examples: 'Fresh Onion · Green Chilli · Tomato · Drumstick · Okra',
     description: 'Direct farm-procured Indian vegetables graded by size, firmness, and shelf-stability for global transit.',
-    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80',
+    image: '/images/Fresh%20vegetables.png',
     slug: 'fresh-vegetables'
   },
   {
@@ -58,7 +58,7 @@ export const CATEGORY_SUMMARIES = [
     badgeClass: 'bg-amber-50 text-amber-800 border-amber-200',
     examples: '1121 Basmati · Sona Masoori · IR64 · Swarna Rice',
     description: 'Sortex-cleaned, premium-aged long grain basmati and high-yield non-basmati rice ready for container loads.',
-    image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=800&q=80',
+    image: '/images/Rice%20and%20Grain.png',
     slug: 'rice-grains'
   },
   {
@@ -67,7 +67,7 @@ export const CATEGORY_SUMMARIES = [
     badgeClass: 'bg-red-50 text-red-800 border-red-200',
     examples: 'Dry Red Chilli · Turmeric · Cumin · Coriander',
     description: 'High-pungency, sun-dried Guntur chillies and pure aromatic Indian whole and ground spices.',
-    image: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=800&q=80',
+    image: '/images/Spices.png',
     slug: 'spices'
   },
   {
@@ -101,7 +101,7 @@ export const PRODUCTS_DATA: Product[] = [
     freightMethod: 'Ocean Freight (40ft High Cube Reefer Containers at 0-2°C / 65-70% RH) or Air Cargo',
     shelfLife: '45 - 60 Days under controlled temperature',
     loadability: '28 - 29 Metric Tons per 40ft Reefer Container',
-    image: 'https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?auto=format&fit=crop&w=800&q=80',
+    image: '/images/Fresh%20Onions.png',
     featured: true,
     specifications: [
       { key: 'Product Variety', value: 'Indian Fresh Red Onion (Nasik / Garwa)' },
@@ -145,7 +145,7 @@ export const PRODUCTS_DATA: Product[] = [
     freightMethod: 'Ocean Freight (40ft Reefer set at 13.5°C with 10% fresh air ventilation) or Air Cargo',
     shelfLife: '30 - 45 Days in green condition under controlled atmosphere',
     loadability: '1540 Boxes (~20.7 MT) per 40ft Reefer Container',
-    image: 'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=800&q=80',
+    image: '/images/G9%20Banana.png',
     featured: true,
     specifications: [
       { key: 'Variety', value: 'Grand Nain (G9) Cavendish' },
@@ -188,7 +188,7 @@ export const PRODUCTS_DATA: Product[] = [
     freightMethod: 'Ocean Freight (Dry Ventilated Containers) or Air Cargo',
     shelfLife: '12 - 18 Months in cool, dry storage',
     loadability: '6.5 - 7 MT in 20ft FCL; 14 - 15 MT in 40ft HC',
-    image: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=800&q=80',
+    image: '/images/Dry%20Red%20Chilli.png',
     featured: true,
     specifications: [
       { key: 'Variety', value: 'Teja S17 / Sanam S4 / Byadgi' },
@@ -230,7 +230,7 @@ export const PRODUCTS_DATA: Product[] = [
     freightMethod: 'Ocean Freight (20ft Dry FCL) or Break Bulk',
     shelfLife: '24 Months in dry warehouse condition',
     loadability: '25 - 26 Metric Tons per 20ft Container',
-    image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=800&q=80',
+    image: '/images/1121%20Basmathi%20Rice.png',
     featured: true,
     specifications: [
       { key: 'Average Grain Length', value: '8.35 mm to 8.40 mm (Pre-cooked)' },
@@ -273,7 +273,7 @@ export const PRODUCTS_DATA: Product[] = [
     freightMethod: 'Ocean Freight (20ft Dry FCL)',
     shelfLife: '24 Months',
     loadability: '26 Metric Tons per 20ft Container',
-    image: 'https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?auto=format&fit=crop&w=800&q=80',
+    image: '/images/Semi%20Husk%20Coconut.png',
     featured: true,
     specifications: [
       { key: 'Grain Length', value: '5.0 mm - 5.5 mm (Medium Grain)' },

@@ -4,6 +4,7 @@ import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { FloatingActions } from '@/components/layout/FloatingActions';
 import { SmoothScrollProvider } from '@/components/ui/SmoothScrollProvider';
+import { PageLoader } from '@/components/ui/PageLoader';
 import { COMPANY_INFO } from '@/data/companyData';
 
 export const metadata: Metadata = {
@@ -19,6 +20,11 @@ export const metadata: Metadata = {
     'T Group Imports & Exports'
   ],
   authors: [{ name: 'T Group Imports & Exports' }],
+  icons: {
+    icon: '/images/tgie-logo.jpg',
+    shortcut: '/images/tgie-logo.jpg',
+    apple: '/images/tgie-logo.jpg',
+  },
   openGraph: {
     title: `${COMPANY_INFO.name} - Built on Trust. Delivered with Care.`,
     description: 'Exporting premium quality Indian agricultural commodities worldwide with full traceability and cold-chain reliability.',
@@ -37,6 +43,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="min-h-screen flex flex-col antialiased font-sans bg-brand-surface text-gray-900 selection:bg-gold-500 selection:text-primary-950">
         <SmoothScrollProvider>
+          <PageLoader />
           <Navbar />
           <main className="flex-1">
             {children}

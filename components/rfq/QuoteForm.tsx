@@ -57,17 +57,31 @@ export function QuoteForm({ defaultProduct, defaultCategory, defaultPackaging }:
       const res = await fetch('/api/send-quote', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          fullName: formData.fullName,
+          companyName: formData.companyName,
+          email: formData.emailAddress,
+          whatsappPhone: formData.whatsappNumber,
+          country: formData.country,
+          product: formData.product,
+          quantityMT: formData.quantity,
+          packingRequirement: formData.packagingRequirement,
+          destinationPort: formData.destinationPort,
+          preferredIncoterm: formData.preferredIncoterm,
+          preferredShipmentDate: formData.targetShipmentDate,
+          message: formData.additionalRequirements,
+        }),
       });
 
       if (!res.ok) {
-        throw new Error('Could not submit RFQ. Please try again or message our WhatsApp export desk.');
+        const result = await res.json().catch(() => null);
+        throw new Error(result?.error || 'Could not submit RFQ. Please try again or message our WhatsApp export desk.');
       }
 
       setIsSubmitted(true);
     } catch (err) {
       console.error(err);
-      setIsSubmitted(true);
+      setErrorMessage(err instanceof Error ? err.message : 'Could not submit RFQ. Please try again or message our WhatsApp export desk.');
     } finally {
       setIsSubmitting(false);
     }
