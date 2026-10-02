@@ -91,7 +91,7 @@ export function ProductsOverview({ onOpenQuoteModal }: ProductsOverviewProps) {
           {categories.slice(0, 3).map((cat) => (
             <div
               key={cat.id}
-              className="bg-white rounded-2xl border border-neutral-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col"
+              className="bg-white rounded-2xl border border-neutral-200 overflow-hidden shadow-sm hover:shadow-[0_22px_50px_-12px_rgba(11,122,59,0.35)] hover:-translate-y-1 hover:border-emerald-200 transition-all duration-300 flex flex-col"
             >
               <div className="relative h-56 w-full overflow-hidden bg-neutral-100">
                 <img
@@ -132,7 +132,7 @@ export function ProductsOverview({ onOpenQuoteModal }: ProductsOverviewProps) {
         {/* Bottom Row (Spices & Other Agro Products) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
           {/* Spices Card */}
-          <div className="lg:col-span-5 bg-white rounded-2xl border border-neutral-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col">
+          <div className="lg:col-span-5 bg-white rounded-2xl border border-neutral-200 overflow-hidden shadow-sm hover:shadow-[0_22px_50px_-12px_rgba(11,122,59,0.35)] hover:-translate-y-1 hover:border-emerald-200 transition-all duration-300 flex flex-col">
             <div className="relative h-56 w-full overflow-hidden bg-neutral-100">
               <img
                 src={categories[3].image}
@@ -168,7 +168,7 @@ export function ProductsOverview({ onOpenQuoteModal }: ProductsOverviewProps) {
           </div>
 
           {/* Other Agro Products Card (Wide split card as in screenshot 3) */}
-          <div className="lg:col-span-7 bg-white rounded-2xl border border-neutral-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow grid grid-cols-1 sm:grid-cols-12">
+          <div className="lg:col-span-7 bg-white rounded-2xl border border-neutral-200 overflow-hidden shadow-sm hover:shadow-[0_22px_50px_-12px_rgba(11,122,59,0.35)] hover:-translate-y-1 hover:border-emerald-200 transition-all duration-300 grid grid-cols-1 sm:grid-cols-12">
             <div className="sm:col-span-5 relative h-56 sm:h-full overflow-hidden bg-neutral-100">
               <img
                 src={categories[4].image}

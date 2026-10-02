@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useMemo, useState } from 'react';
-import Image from 'next/image';
 import {
   ComposableMap,
   Geographies,
@@ -23,21 +22,24 @@ import { RollButton } from '@/components/ui/RollButton';
 
 const GEO_URL = '/maps/countries-110m.json';
 
+const UNIQUE_COUNTRIES = Array.from(new Map(EXPORT_COUNTRIES.map((c) => [c.code, c])).values());
+
 interface InteractiveWorldMapProps {
   onSelectCountry?: (country: ExportCountry) => void;
+  compact?: boolean;
 }
 
 function isoOf(geoId: string | number | undefined) {
   return String(geoId ?? '').padStart(3, '0');
 }
 
-export function InteractiveWorldMap({ onSelectCountry }: InteractiveWorldMapProps) {
-  const [activeCountry, setActiveCountry] = useState<ExportCountry | null>(EXPORT_COUNTRIES[0]);
+export function InteractiveWorldMap({ onSelectCountry, compact = false }: InteractiveWorldMapProps) {
+  const [activeCountry, setActiveCountry] = useState<ExportCountry | null>(UNIQUE_COUNTRIES[0]);
   const [hoverIso, setHoverIso] = useState<string | null>(null);
 
   const destByIso = useMemo(() => {
     const map = new Map<string, ExportCountry>();
-    EXPORT_COUNTRIES.forEach((c) => {
+    UNIQUE_COUNTRIES.forEach((c) => {
       const geo = COUNTRY_GEO[c.id];
       if (geo) map.set(geo.iso.padStart(3, '0'), c);
     });
@@ -50,10 +52,11 @@ export function InteractiveWorldMap({ onSelectCountry }: InteractiveWorldMapProp
   };
 
   return (
-    <div className="relative bg-[#04180A] overflow-hidden text-white">
+    <div className={`relative overflow-hidden text-white ${compact ? 'bg-[#04180A] rounded-3xl border border-neutral-200/80' : 'bg-[#04180A]'}`}>
       <div className="absolute -top-24 -left-24 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-gold-500/10 rounded-full blur-3xl pointer-events-none" />
 
+      {!compact && (
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 px-6 sm:px-10 lg:px-16 py-6 border-b border-emerald-800/50">
         <div>
           <div className="inline-flex items-center gap-2 text-gold-400 text-xs font-bold uppercase tracking-widest mb-1.5 font-sans">
@@ -79,6 +82,7 @@ export function InteractiveWorldMap({ onSelectCountry }: InteractiveWorldMapProp
           </div>
         </div>
       </div>
+      )}
 
       <div className="relative w-full aspect-[2.05/1] min-h-[340px] max-h-[640px] bg-[#06140C] overflow-hidden">
         <ComposableMap
@@ -93,8 +97,16 @@ export function InteractiveWorldMap({ onSelectCountry }: InteractiveWorldMapProp
             <Graticule stroke="#0F3D23" strokeWidth={0.4} strokeOpacity={0.45} />
 
             <Geographies geography={GEO_URL}>
-              {({ geographies }) =>
-                geographies.map((geo) => {
+              {({ geographies }) => {
+                const seenIso = new Set<string>();
+                return geographies
+                  .filter((geo) => {
+                    const iso = isoOf(geo.id);
+                    if (!iso || seenIso.has(iso)) return false;
+                    seenIso.add(iso);
+                    return true;
+                  })
+                  .map((geo) => {
                   const iso = isoOf(geo.id);
                   const isIndia = iso === INDIA_ISO;
                   const dest = destByIso.get(iso);
@@ -135,11 +147,11 @@ export function InteractiveWorldMap({ onSelectCountry }: InteractiveWorldMapProp
                       }}
                     />
                   );
-                })
-              }
+                });
+              }}
             </Geographies>
 
-            {EXPORT_COUNTRIES.map((country) => {
+            {UNIQUE_COUNTRIES.map((country) => {
               const geo = COUNTRY_GEO[country.id];
               if (!geo) return null;
               const isActive = activeCountry?.id === country.id;
@@ -219,13 +231,12 @@ export function InteractiveWorldMap({ onSelectCountry }: InteractiveWorldMapProp
         <div className="mt-0 bg-[#071F11] border-t border-gold-500/30 p-5 md:px-10 md:py-6">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
             <div className="md:col-span-4 flex items-center gap-4">
-              <div className="relative w-14 h-10 overflow-hidden flex-shrink-0">
-                <Image
-                  src={activeCountry.flag}
-                  alt={`${activeCountry.name} Flag`}
-                  fill
-                  className="object-cover"
-                />
+              <div
+                className="w-14 h-10 flex items-center justify-center rounded-md bg-white/10 text-3xl flex-shrink-0"
+                role="img"
+                aria-label={`${activeCountry.name} flag`}
+              >
+                {activeCountry.flag}
               </div>
               <div>
                 <span className="text-[10px] font-sans font-bold text-gold-400 uppercase tracking-widest">

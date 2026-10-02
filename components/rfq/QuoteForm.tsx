@@ -10,32 +10,41 @@ interface QuoteFormProps {
   defaultPackaging?: string;
 }
 
+const EMPTY_FORM = {
+  fullName: '',
+  companyName: '',
+  country: '',
+  whatsappNumber: '',
+  emailAddress: '',
+  product: '',
+  quantity: '',
+  packagingRequirement: '',
+  destinationPort: '',
+  preferredIncoterm: '',
+  targetShipmentDate: '',
+  additionalRequirements: '',
+};
+
 export function QuoteForm({ defaultProduct, defaultCategory, defaultPackaging }: QuoteFormProps) {
   const [formData, setFormData] = useState({
-    fullName: '',
-    companyName: '',
-    country: '',
-    whatsappNumber: '',
-    emailAddress: '',
+    ...EMPTY_FORM,
     product: defaultProduct || '',
-    quantity: '',
     packagingRequirement: defaultPackaging || '',
-    destinationPort: '',
-    preferredIncoterm: 'CIF',
-    targetShipmentDate: '',
-    additionalRequirements: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
-  const incotermOptions = ['FOB', 'CFR', 'CIF', 'FCA', 'OTHER'];
+  const incotermOptions = ['FOB', 'CFR', 'CIF', 'FCA', 'EXW', 'OTHER'];
+  const fieldClass =
+    'w-full px-5 py-3.5 rounded-full bg-[#F3F5F3] border-0 text-sm text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#0B7A3B]/25 transition-all';
+  const labelClass = 'block text-[11px] font-bold text-neutral-700 uppercase tracking-wider mb-2';
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
@@ -45,11 +54,10 @@ export function QuoteForm({ defaultProduct, defaultCategory, defaultPackaging }:
     setErrorMessage('');
 
     try {
-      // Send to API endpoint
       const res = await fetch('/api/send-quote', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
       });
 
       if (!res.ok) {
@@ -57,8 +65,7 @@ export function QuoteForm({ defaultProduct, defaultCategory, defaultPackaging }:
       }
 
       setIsSubmitted(true);
-    } catch (err: any) {
-      // In case of local testing / fallback, show graceful completion
+    } catch (err) {
       console.error(err);
       setIsSubmitted(true);
     } finally {
@@ -72,9 +79,7 @@ export function QuoteForm({ defaultProduct, defaultCategory, defaultPackaging }:
         <div className="w-16 h-16 bg-[#0B7A3B] text-white rounded-full flex items-center justify-center mx-auto mb-5 shadow-lg">
           <CheckCircle2 className="w-9 h-9" />
         </div>
-        <h3 className="text-2xl font-extrabold text-neutral-900 mb-2">
-          RFQ Successfully Received
-        </h3>
+        <h3 className="text-2xl font-extrabold text-neutral-900 mb-2">RFQ Successfully Received</h3>
         <p className="text-sm sm:text-base text-neutral-700 max-w-lg mx-auto leading-relaxed">
           Thank you for your enquiry. Our export team will review your requirements and contact you shortly with a comprehensive formal quotation and container schedule.
         </p>
@@ -91,20 +96,7 @@ export function QuoteForm({ defaultProduct, defaultCategory, defaultPackaging }:
             type="button"
             onClick={() => {
               setIsSubmitted(false);
-              setFormData({
-                fullName: '',
-                companyName: '',
-                country: '',
-                whatsappNumber: '',
-                emailAddress: '',
-                product: '',
-                quantity: '',
-                packagingRequirement: '',
-                destinationPort: '',
-                preferredIncoterm: 'CIF',
-                targetShipmentDate: '',
-                additionalRequirements: ''
-              });
+              setFormData({ ...EMPTY_FORM, product: defaultProduct || '', packagingRequirement: defaultPackaging || '' });
             }}
             className="px-5 py-2.5 bg-white border border-neutral-300 text-neutral-800 rounded-lg hover:bg-neutral-50 transition-colors"
           >
@@ -116,7 +108,7 @@ export function QuoteForm({ defaultProduct, defaultCategory, defaultPackaging }:
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-5">
       {errorMessage && (
         <div className="p-4 bg-red-50 border border-red-200 rounded-xl text-xs text-red-700 flex items-center gap-2">
           <AlertCircle className="w-4 h-4 flex-shrink-0" />
@@ -124,213 +116,114 @@ export function QuoteForm({ defaultProduct, defaultCategory, defaultPackaging }:
         </div>
       )}
 
-      {/* Row 1: Full Name & Company Name */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-            Full Name <span className="text-red-500">*</span>
+          <label className={labelClass}>
+            Full Name <span className="text-[#0B7A3B]">*</span>
           </label>
-          <input
-            type="text"
-            name="fullName"
-            required
-            placeholder="e.g. John Doe / Sourcing Director"
-            value={formData.fullName}
-            onChange={handleChange}
-            className="w-full px-4 py-3 rounded-xl border border-neutral-300 bg-white text-sm text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#0B7A3B] focus:border-transparent transition-all"
-          />
+          <input type="text" name="fullName" required placeholder="Your full name" value={formData.fullName} onChange={handleChange} className={fieldClass} />
         </div>
-
         <div>
-          <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-            Company Name <span className="text-red-500">*</span>
+          <label className={labelClass}>
+            Company Name <span className="text-[#0B7A3B]">*</span>
           </label>
-          <input
-            type="text"
-            name="companyName"
-            required
-            placeholder="e.g. Al-Madina Foodstuffs LLC"
-            value={formData.companyName}
-            onChange={handleChange}
-            className="w-full px-4 py-3 rounded-xl border border-neutral-300 bg-white text-sm text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#0B7A3B] focus:border-transparent transition-all"
-          />
+          <input type="text" name="companyName" required placeholder="Your company" value={formData.companyName} onChange={handleChange} className={fieldClass} />
         </div>
       </div>
 
-      {/* Row 2: Country, WhatsApp, Email */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-            Country <span className="text-red-500">*</span>
+          <label className={labelClass}>
+            Country <span className="text-[#0B7A3B]">*</span>
           </label>
-          <input
-            type="text"
-            name="country"
-            required
-            placeholder="e.g. UAE / Saudi Arabia / Canada"
-            value={formData.country}
-            onChange={handleChange}
-            className="w-full px-4 py-3 rounded-xl border border-neutral-300 bg-white text-sm text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#0B7A3B] focus:border-transparent transition-all"
-          />
+          <input type="text" name="country" required placeholder="Your country" value={formData.country} onChange={handleChange} className={fieldClass} />
         </div>
-
         <div>
-          <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-            WhatsApp Number <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="tel"
-            name="whatsappNumber"
-            required
-            placeholder="e.g. +971 50 123 4567"
-            value={formData.whatsappNumber}
-            onChange={handleChange}
-            className="w-full px-4 py-3 rounded-xl border border-neutral-300 bg-white text-sm text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#0B7A3B] focus:border-transparent transition-all"
-          />
-        </div>
-
-        <div>
-          <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-            Email Address <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="email"
-            name="emailAddress"
-            required
-            placeholder="e.g. procurement@company.com"
-            value={formData.emailAddress}
-            onChange={handleChange}
-            className="w-full px-4 py-3 rounded-xl border border-neutral-300 bg-white text-sm text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#0B7A3B] focus:border-transparent transition-all"
-          />
+          <label className={labelClass}>WhatsApp Number</label>
+          <input type="tel" name="whatsappNumber" placeholder="+123 567 8900" value={formData.whatsappNumber} onChange={handleChange} className={fieldClass} />
         </div>
       </div>
 
-      {/* Row 3: Product, Quantity, Packaging Requirement */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-            Product <span className="text-red-500">*</span>
+          <label className={labelClass}>
+            Email Address <span className="text-[#0B7A3B]">*</span>
           </label>
-          <select
-            name="product"
-            required
-            value={formData.product}
-            onChange={handleChange}
-            className="w-full px-4 py-3 rounded-xl border border-neutral-300 bg-white text-sm text-neutral-900 focus:outline-none focus:ring-2 focus:ring-[#0B7A3B] focus:border-transparent transition-all"
-          >
-            <option value="">Select Agricultural Commodity</option>
-            {PRODUCTS_DATA.map(p => (
-              <option key={p.id} value={p.name}>{p.name} ({p.category})</option>
+          <input type="email" name="emailAddress" required placeholder="your@email.com" value={formData.emailAddress} onChange={handleChange} className={fieldClass} />
+        </div>
+        <div>
+          <label className={labelClass}>
+            Product <span className="text-[#0B7A3B]">*</span>
+          </label>
+          <select name="product" required value={formData.product} onChange={handleChange} className={`${fieldClass} appearance-none`}>
+            <option value="">Select product</option>
+            {PRODUCTS_DATA.map((p) => (
+              <option key={p.id} value={p.name}>
+                {p.name}
+              </option>
             ))}
             <option value="Other Agricultural Product">Other Agricultural Product</option>
           </select>
         </div>
+      </div>
 
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-            Quantity Required <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            name="quantity"
-            required
-            placeholder="e.g. 1 x 40ft Reefer (28 MT)"
-            value={formData.quantity}
-            onChange={handleChange}
-            className="w-full px-4 py-3 rounded-xl border border-neutral-300 bg-white text-sm text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#0B7A3B] focus:border-transparent transition-all"
-          />
+          <label className={labelClass}>Quantity (MT / Containers)</label>
+          <input type="text" name="quantity" placeholder="e.g. 1 x 40ft FCL, 20 MT" value={formData.quantity} onChange={handleChange} className={fieldClass} />
         </div>
-
         <div>
-          <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-            Packaging Requirement
-          </label>
-          <input
-            type="text"
-            name="packagingRequirement"
-            placeholder="e.g. 10kg Mesh Bag / 25kg PP"
-            value={formData.packagingRequirement}
-            onChange={handleChange}
-            className="w-full px-4 py-3 rounded-xl border border-neutral-300 bg-white text-sm text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#0B7A3B] focus:border-transparent transition-all"
-          />
+          <label className={labelClass}>Packaging Requirement</label>
+          <input type="text" name="packagingRequirement" placeholder="e.g. 10kg carton, custom label" value={formData.packagingRequirement} onChange={handleChange} className={fieldClass} />
         </div>
       </div>
 
-      {/* Row 4: Destination Port, Incoterm, Target Shipment Date */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-            Destination Port <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            name="destinationPort"
-            required
-            placeholder="e.g. Jebel Ali / Port Klang / Colombo"
-            value={formData.destinationPort}
-            onChange={handleChange}
-            className="w-full px-4 py-3 rounded-xl border border-neutral-300 bg-white text-sm text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#0B7A3B] focus:border-transparent transition-all"
-          />
+          <label className={labelClass}>Destination Port</label>
+          <input type="text" name="destinationPort" placeholder="e.g. Jebel Ali, UAE" value={formData.destinationPort} onChange={handleChange} className={fieldClass} />
         </div>
-
         <div>
-          <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-            Preferred Incoterm
-          </label>
-          <select
-            name="preferredIncoterm"
-            value={formData.preferredIncoterm}
-            onChange={handleChange}
-            className="w-full px-4 py-3 rounded-xl border border-neutral-300 bg-white text-sm text-neutral-900 focus:outline-none focus:ring-2 focus:ring-[#0B7A3B] focus:border-transparent transition-all"
-          >
-            {incotermOptions.map(opt => (
-              <option key={opt} value={opt}>{opt}</option>
+          <label className={labelClass}>Preferred Incoterm</label>
+          <select name="preferredIncoterm" value={formData.preferredIncoterm} onChange={handleChange} className={`${fieldClass} appearance-none`}>
+            <option value="">Select Incoterm</option>
+            {incotermOptions.map((opt) => (
+              <option key={opt} value={opt}>
+                {opt}
+              </option>
             ))}
           </select>
         </div>
-
-        <div>
-          <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-            Target Shipment Date
-          </label>
-          <input
-            type="text"
-            name="targetShipmentDate"
-            placeholder="e.g. Immediate / Next Month"
-            value={formData.targetShipmentDate}
-            onChange={handleChange}
-            className="w-full px-4 py-3 rounded-xl border border-neutral-300 bg-white text-sm text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#0B7A3B] focus:border-transparent transition-all"
-          />
-        </div>
       </div>
 
-      {/* Row 5: Additional Requirements */}
       <div>
-        <label className="block text-xs font-bold text-neutral-800 uppercase tracking-wider mb-2">
-          Additional Requirements / Specifications
-        </label>
+        <label className={labelClass}>Target Shipment Date</label>
+        <input type="text" name="targetShipmentDate" placeholder="e.g. September 2026, Q4 2026" value={formData.targetShipmentDate} onChange={handleChange} className={fieldClass} />
+      </div>
+
+      <div>
+        <label className={labelClass}>Additional Requirements</label>
         <textarea
           name="additionalRequirements"
-          rows={3}
-          placeholder="Specify grades, caliber size (mm), MRL limits, private label artwork, or target pricing requirements..."
+          rows={4}
+          placeholder="Quality specs, certifications required, other requirements..."
           value={formData.additionalRequirements}
           onChange={handleChange}
-          className="w-full px-4 py-3 rounded-xl border border-neutral-300 bg-white text-sm text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#0B7A3B] focus:border-transparent transition-all resize-none"
+          className="w-full px-5 py-4 rounded-3xl bg-[#F3F5F3] border-0 text-sm text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#0B7A3B]/25 transition-all resize-none"
         />
       </div>
 
-      {/* Submit Button */}
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full py-4 bg-[#0B7A3B] hover:bg-[#096631] text-white font-extrabold text-sm tracking-widest uppercase rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 active:scale-[0.99] flex items-center justify-center gap-2 disabled:opacity-70"
+        className="w-full py-4 bg-[#0B7A3B] hover:bg-[#096631] text-white font-extrabold text-sm tracking-widest uppercase rounded-full shadow-[0_12px_30px_rgba(11,122,59,0.28)] hover:shadow-[0_16px_36px_rgba(11,122,59,0.35)] transition-all duration-200 active:scale-[0.99] flex items-center justify-center gap-2 disabled:opacity-70"
       >
+        <span>{isSubmitting ? 'Submitting RFQ...' : 'Submit RFQ'}</span>
         <Send className="w-4 h-4" />
-        <span>{isSubmitting ? 'Submitting RFQ...' : 'SUBMIT RFQ'}</span>
       </button>
 
-      <p className="text-[11px] text-center text-neutral-500">
-        Direct B2B enquiry to T Group Exports Desk. Your commercial information is strictly confidential.
+      <p className="text-[11px] text-center text-neutral-500 leading-relaxed px-2">
+        By submitting this form you agree to be contacted by our export team regarding your enquiry. We do not share your information with third parties.
       </p>
     </form>
   );

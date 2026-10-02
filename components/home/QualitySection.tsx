@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { CERTIFICATIONS_DATA, Certification } from '@/data/certificationsData';
 import { ShieldCheck, FileCheck, CheckCircle, X, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
@@ -9,48 +10,48 @@ export function QualitySection() {
   const [activeCert, setActiveCert] = useState<Certification | null>(null);
 
   return (
-    <section className="py-20 bg-neutral-50/70 border-b border-neutral-200/60">
+    <section className="py-16 sm:py-20 bg-[#F8F8F6] border-b border-neutral-200/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 mb-3">
-            <span className="w-6 h-[1.5px] bg-[#D4AF37]" />
-            <span className="text-[11px] font-bold tracking-[0.2em] text-[#0B7A3B] uppercase">
-              Quality &amp; Compliance
-            </span>
-            <span className="w-6 h-[1.5px] bg-[#D4AF37]" />
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-neutral-900 tracking-tight">
-            Certified Statutory Standards
+        <div className="mb-10 max-w-2xl">
+          <h2 className="text-xl sm:text-2xl font-bold text-neutral-900 tracking-tight">
+            Registrations &amp; Compliance
           </h2>
-          <p className="mt-4 text-sm sm:text-base text-neutral-600 leading-relaxed max-w-2xl mx-auto">
-            Quality control, export documentation and destination compliance are integrated into every shipment. We operate under strict statutory standards set by Indian regulatory export boards.
+          <p className="mt-5 text-xs sm:text-sm text-[#737B8C] leading-relaxed">
+            The following registrations and compliance details are part of our export operations. Certificate documents are available upon request to verified buyers.
           </p>
         </div>
 
         {/* 4 Statutory Registration Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {CERTIFICATIONS_DATA.map((cert) => (
-            <div
+          {CERTIFICATIONS_DATA.map((cert, index) => (
+            <motion.div
               key={cert.id}
-              className="bg-white rounded-2xl p-7 border border-neutral-200/90 shadow-sm hover:shadow-lg hover:border-emerald-300 transition-all flex flex-col justify-between group"
+              initial={{ opacity: 0, y: 36 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.55, delay: index * 0.14, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-white rounded-xl p-6 border border-[#DEE2E7] shadow-none hover:-translate-y-1 hover:shadow-[0_14px_30px_-18px_rgba(11,122,59,0.5)] hover:border-[#0B7A3B] hover:bg-emerald-50/20 transition-all duration-300 flex flex-col justify-between group"
             >
               <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-black tracking-wider px-3 py-1 rounded-full bg-emerald-50 text-[#0B7A3B] border border-emerald-200 uppercase">
+                <div className="flex items-center justify-center mb-5">
+                  <span className="w-14 h-14 rounded-full flex items-center justify-center text-xs font-black tracking-tight bg-white text-[#0B7A3B] border border-[#DEE2E7] uppercase">
                     {cert.code}
                   </span>
-                  <ShieldCheck className="w-5 h-5 text-[#0B7A3B]" />
                 </div>
-                <h3 className="text-base font-bold text-neutral-900 mb-2 group-hover:text-[#0B7A3B] transition-colors">
+                <h3 className="text-sm font-bold text-neutral-900 mb-2 text-center group-hover:text-[#0B7A3B] transition-colors">
                   {cert.name}
                 </h3>
-                <p className="text-xs text-neutral-500 mb-3 font-medium">
+                <p className="text-[10px] text-neutral-500 mb-3 font-medium text-center uppercase leading-relaxed">
                   {cert.authority}
                 </p>
-                <p className="text-xs text-neutral-600 leading-relaxed">
+                <p className="text-xs text-neutral-500 leading-relaxed text-center">
                   {cert.description}
                 </p>
+                <div className="mt-4 flex items-center justify-center gap-1.5 text-[10px] font-bold uppercase text-[#0B7A3B]">
+                  <span className="w-2 h-2 rounded-full bg-[#0B7A3B]" />
+                  <span>{cert.id === 'fssai' ? 'Compliant' : 'Registration Held'}</span>
+                </div>
               </div>
 
               <div className="mt-6 pt-4 border-t border-neutral-100">
@@ -63,7 +64,7 @@ export function QualitySection() {
                   <ExternalLink className="w-3.5 h-3.5" />
                 </button>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

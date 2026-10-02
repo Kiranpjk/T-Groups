@@ -8,7 +8,7 @@ interface BrandLogoProps {
 
 export function BrandLogo({ className = "", isDarkBg = false }: BrandLogoProps) {
   return (
-    <Link href="/" className={`inline-flex items-center gap-2.5 group transition-transform duration-200 hover:opacity-95 ${className}`}>
+    <Link href="/" className={`inline-flex items-center gap-2.5 group will-change-transform ${className}`}>
       {/* Sleek Golden Stepped Emblem */}
       <div className="relative w-8 h-8 flex-shrink-0 flex items-center justify-center">
         <svg viewBox="0 0 40 32" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -44,7 +44,7 @@ export function BrandLogo({ className = "", isDarkBg = false }: BrandLogoProps) 
         <span className={`text-base sm:text-lg font-black tracking-tight leading-tight ${isDarkBg ? 'text-white' : 'text-neutral-900'}`}>
           T GROUP
         </span>
-        <span className="text-[9px] sm:text-[10px] font-semibold tracking-wider text-neutral-500 uppercase leading-none">
+        <span className={`text-[9px] sm:text-[10px] font-semibold tracking-wider uppercase leading-none ${isDarkBg ? 'text-white/60' : 'text-neutral-500'}`}>
           IMPORTS &amp; EXPORTS
         </span>
       </div>

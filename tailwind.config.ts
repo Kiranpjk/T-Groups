@@ -56,6 +56,15 @@ const config: Config = {
         'luxury-lg': '0 20px 40px -15px rgba(10, 62, 27, 0.25)',
         'gold-glow': '0 0 25px rgba(197, 160, 89, 0.35)',
       },
+      keyframes: {
+        'float-y': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
+      },
+      animation: {
+        'float-y': 'float-y 2.2s ease-in-out infinite',
+      },
     },
   },
   plugins: [],

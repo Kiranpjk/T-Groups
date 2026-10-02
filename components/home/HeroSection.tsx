@@ -7,13 +7,13 @@ import { COMPANY_INFO } from '@/data/companyData';
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-[92vh] flex flex-col justify-between overflow-hidden bg-neutral-900 text-white">
+    <section className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-neutral-900 text-white -mt-16 sm:-mt-20">
       {/* High-Resolution Agricultural Farm Background with cinematic overlay */}
       <div className="absolute inset-0 z-0">
         <img
           src="https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&w=2000&q=85"
           alt="Indian agricultural fields and farm harvesting"
-          className="w-full h-full object-cover object-center transform scale-105 transition-transform duration-1000 ease-out"
+          className="w-full h-full object-cover object-center"
         />
         {/* Apple-like subtle dark gradient overlays to ensure razor-sharp typography readability */}
         <div className="absolute inset-0 bg-neutral-950/45" />
@@ -21,8 +21,8 @@ export function HeroSection() {
         <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-neutral-950/60 to-transparent" />
       </div>
 
-      {/* Top spacing */}
-      <div className="relative z-10 pt-10 sm:pt-14 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto w-full">
+      {/* Top spacing — extra padding to clear the navbar */}
+      <div className="relative z-10 pt-24 sm:pt-32 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto w-full">
         {/* Pill Tag */}
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/15 text-xs font-semibold tracking-wider text-neutral-200 uppercase mb-6 sm:mb-8">
           <span className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse" />
@@ -65,39 +65,38 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Bottom Row: Left Compliance Pills & Right Stats Cards */}
+      {/* Bottom Row: Stats + Compliance — ALL in ONE line */}
       <div className="relative z-10 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto w-full pb-8 pt-12">
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
-          {/* Left Compliance Pills */}
-          <div className="flex flex-wrap items-center gap-2.5">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-emerald-500/30 text-xs font-semibold text-emerald-200">
-              <Check className="w-3.5 h-3.5 text-emerald-400" />
-              APEDA Registered
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-emerald-500/30 text-xs font-semibold text-emerald-200">
-              <Check className="w-3.5 h-3.5 text-emerald-400" />
-              FSSAI Compliant
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-md border border-emerald-500/30 text-xs font-semibold text-emerald-200">
-              <Check className="w-3.5 h-3.5 text-emerald-400" />
-              IEC Certified
-            </span>
-          </div>
+        <div className="flex flex-wrap items-center gap-3">
+          {/* Compliance Pills */}
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-2xl saturate-150 border border-white/25 text-xs font-semibold text-white/90 shadow-[0_2px_8px_rgba(0,0,0,0.15)]">
+            <Check className="w-3.5 h-3.5 text-emerald-400" />
+            APEDA
+          </span>
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-2xl saturate-150 border border-white/25 text-xs font-semibold text-white/90 shadow-[0_2px_8px_rgba(0,0,0,0.15)]">
+            <Check className="w-3.5 h-3.5 text-emerald-400" />
+            FSSAI
+          </span>
+          <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-2xl saturate-150 border border-white/25 text-xs font-semibold text-white/90 shadow-[0_2px_8px_rgba(0,0,0,0.15)]">
+            <Check className="w-3.5 h-3.5 text-emerald-400" />
+            IEC
+          </span>
 
-          {/* Right Stats Cards */}
-          <div className="grid grid-cols-3 gap-3 sm:gap-4 w-full lg:w-auto">
-            <div className="bg-white/90 backdrop-blur-md text-neutral-900 px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl border border-white/40 shadow-lg text-center">
-              <div className="text-xl sm:text-2xl font-black text-neutral-950 tracking-tight">5+</div>
-              <div className="text-[10px] sm:text-[11px] font-bold text-neutral-600 uppercase tracking-wider mt-0.5">Product Categories</div>
-            </div>
-            <div className="bg-white/90 backdrop-blur-md text-neutral-900 px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl border border-white/40 shadow-lg text-center">
-              <div className="text-xl sm:text-2xl font-black text-neutral-950 tracking-tight">8+</div>
-              <div className="text-[10px] sm:text-[11px] font-bold text-neutral-600 uppercase tracking-wider mt-0.5">Export Markets</div>
-            </div>
-            <div className="bg-white/90 backdrop-blur-md text-neutral-900 px-4 py-3 sm:px-5 sm:py-3.5 rounded-xl border border-white/40 shadow-lg text-center">
-              <div className="text-lg sm:text-2xl font-black text-neutral-950 tracking-tight">FCL/LCL</div>
-              <div className="text-[10px] sm:text-[11px] font-bold text-neutral-600 uppercase tracking-wider mt-0.5">Shipment Options</div>
-            </div>
+          {/* Divider */}
+          <div className="hidden sm:block w-px h-8 bg-white/20 mx-1" />
+
+          {/* Stat Cards — Glassmorphism with green numbers */}
+          <div className="animate-float-y flex items-center gap-2 bg-white/15 backdrop-blur-2xl saturate-150 border border-white/20 rounded-2xl px-4 py-2.5 shadow-[0_4px_24px_rgba(255,255,255,0.08)]">
+            <span className="text-xl sm:text-2xl font-black text-[#4ADE80] tracking-tight">5+</span>
+            <span className="text-[10px] sm:text-[11px] font-bold text-white/70 uppercase tracking-wider leading-tight">Product<br />Categories</span>
+          </div>
+          <div className="animate-float-y flex items-center gap-2 bg-white/15 backdrop-blur-2xl saturate-150 border border-white/20 rounded-2xl px-4 py-2.5 shadow-[0_4px_24px_rgba(255,255,255,0.08)]" style={{ animationDelay: '0.4s' }}>
+            <span className="text-xl sm:text-2xl font-black text-[#4ADE80] tracking-tight">8+</span>
+            <span className="text-[10px] sm:text-[11px] font-bold text-white/70 uppercase tracking-wider leading-tight">Export<br />Markets</span>
+          </div>
+          <div className="animate-float-y flex items-center gap-2 bg-white/15 backdrop-blur-2xl saturate-150 border border-white/20 rounded-2xl px-4 py-2.5 shadow-[0_4px_24px_rgba(255,255,255,0.08)]" style={{ animationDelay: '0.8s' }}>
+            <span className="text-lg sm:text-xl font-black text-[#4ADE80] tracking-tight">FCL/LCL</span>
+            <span className="text-[10px] sm:text-[11px] font-bold text-white/70 uppercase tracking-wider leading-tight">Shipment<br />Options</span>
           </div>
         </div>
 

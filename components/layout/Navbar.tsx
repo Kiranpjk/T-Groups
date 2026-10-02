@@ -21,7 +21,7 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 60);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -43,11 +43,17 @@ export function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 transition-all duration-200 shadow-sm">
+    <header
+      className={`sticky top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
+        isScrolled
+          ? 'bg-white/30 backdrop-blur-3xl saturate-[1.8] border-b border-white/20 shadow-[0_1px_3px_rgba(0,0,0,0.06)]'
+          : 'bg-transparent border-b border-transparent'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Brand Logo */}
-          <BrandLogo />
+          <BrandLogo isDarkBg={!isScrolled} />
 
           {/* Desktop Navigation Links */}
           <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
@@ -55,10 +61,14 @@ export function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`text-[13px] font-medium transition-colors ${
-                  isActive(link.href)
-                    ? 'text-neutral-900 font-semibold'
-                    : 'text-neutral-600 hover:text-neutral-900'
+                className={`text-[13px] font-medium transition-colors duration-300 ${
+                  isScrolled
+                    ? isActive(link.href)
+                      ? 'text-neutral-900 font-semibold'
+                      : 'text-neutral-600 hover:text-neutral-900'
+                    : isActive(link.href)
+                      ? 'text-white font-semibold'
+                      : 'text-white/80 hover:text-white'
                 }`}
               >
                 {link.name}
@@ -67,12 +77,16 @@ export function Navbar() {
           </nav>
 
           {/* Right Action Buttons */}
-          <div className="hidden lg:flex items-center space-x-6">
+          <div className="hidden lg:flex items-center space-x-4">
             <Link
               href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent("Hello T Group Export Team, I would like to talk regarding agricultural commodity exports.")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[13px] font-medium text-neutral-700 hover:text-emerald-700 transition-colors flex items-center gap-1.5"
+              className={`text-[13px] font-semibold transition-all duration-300 flex items-center gap-1.5 px-4 py-2 rounded-full backdrop-blur-2xl border ${
+                isScrolled
+                  ? 'text-neutral-700 hover:text-emerald-700 bg-white/50 border-white/40 hover:bg-white/70 hover:shadow-sm'
+                  : 'text-white hover:text-white bg-white/15 border-white/25 hover:bg-white/25'
+              }`}
             >
               <span>Talk to Export Team</span>
             </Link>
@@ -95,7 +109,11 @@ export function Navbar() {
             </Link>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-neutral-700 hover:text-neutral-900 hover:bg-neutral-100 rounded-md focus:outline-none"
+              className={`p-2 rounded-md focus:outline-none transition-colors ${
+                isScrolled
+                  ? 'text-neutral-700 hover:text-neutral-900 hover:bg-neutral-100'
+                  : 'text-white hover:text-white hover:bg-white/10'
+              }`}
               aria-label="Toggle Navigation"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -106,7 +124,7 @@ export function Navbar() {
 
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-b border-gray-200 px-4 pt-3 pb-6 space-y-3 shadow-lg">
+        <div className="lg:hidden bg-white/70 backdrop-blur-2xl saturate-150 border-b border-white/30 px-4 pt-3 pb-6 space-y-3 shadow-lg">
           <div className="space-y-1">
             {navLinks.map((link) => (
               <Link
