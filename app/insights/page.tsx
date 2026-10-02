@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { INSIGHTS_DATA } from '@/data/insightsData';
 import { ArrowRight, Clock, BookOpen, ShieldCheck } from 'lucide-react';
@@ -41,9 +42,11 @@ export default function InsightsPage() {
             >
               <div>
                 <div className="relative h-52 w-full overflow-hidden bg-neutral-100">
-                  <img
+                  <Image
                     src={article.image}
                     alt={article.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-4 left-4">

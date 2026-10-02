@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { PRODUCTS_DATA } from '@/data/productsData';
 import { ArrowRight, Box, Anchor, ShieldCheck } from 'lucide-react';
@@ -44,9 +45,11 @@ export function FeaturedProducts() {
             >
               {/* Image */}
               <div className="relative h-48 w-full overflow-hidden bg-neutral-100">
-                <img
+                <Image
                   src={product.image}
                   alt={product.name}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute top-3 left-3">

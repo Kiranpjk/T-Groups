@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 
 export function ExportGallery() {
@@ -41,9 +42,11 @@ export function ExportGallery() {
               className="bg-neutral-50 rounded-2xl p-3 border border-neutral-200 shadow-sm flex flex-col group hover:border-emerald-300 transition-all"
             >
               <div className="relative h-28 w-full rounded-xl overflow-hidden mb-3 bg-neutral-200">
-                <img
+                <Image
                   src={item.image}
                   alt={item.name}
+                  fill
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 12.5vw"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <span className="absolute top-2 left-2 text-[9px] font-black text-white bg-black/60 backdrop-blur-sm px-1.5 py-0.5 rounded">

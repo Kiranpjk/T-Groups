@@ -30,9 +30,11 @@ export default function ExportMarketsPage() {
       {/* Header Banner */}
       <section className="relative pt-24 pb-20 bg-neutral-900 text-white overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=2000&q=80"
             alt="International Ocean Freight and Trade"
+            fill
+            sizes="100vw"
             className="w-full h-full object-cover opacity-20"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/90 to-neutral-950/40" />

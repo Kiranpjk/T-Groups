@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Product } from '@/data/productsData';
 import { Package, MapPin, Send, ArrowRight } from 'lucide-react';
@@ -21,9 +22,11 @@ export function ProductGridView({ products, onSelectProductForQuote }: ProductGr
         >
           {/* Product Image */}
           <div className="relative h-48 w-full overflow-hidden bg-neutral-100">
-            <img
+            <Image
               src={product.image}
               alt={product.name}
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />

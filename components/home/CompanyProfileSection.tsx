@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { COMPANY_INFO } from '@/data/companyData';
 import { Download, FileText, CheckCircle2, X, Building, MapPin, Phone, Mail } from 'lucide-react';
 import Link from 'next/link';
@@ -55,7 +56,13 @@ export function CompanyProfileSection() {
           </div>
 
           <div className="relative overflow-hidden rounded-[32px] h-[420px] lg:h-[540px]">
-            <img src="/images/Fresh%20vegetables.png" alt="T Group agricultural produce facility" className="w-full h-full object-cover" />
+            <Image
+              src="/images/Fresh%20vegetables.png"
+              alt="T Group agricultural produce facility"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
       </div>

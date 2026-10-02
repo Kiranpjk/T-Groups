@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { PRODUCTS_DATA, getProductBySlug } from '@/data/productsData';
@@ -86,9 +87,11 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
             
             {/* Left Product Image */}
             <div className="lg:col-span-5 bg-neutral-100 rounded-3xl overflow-hidden border border-neutral-200 shadow-sm relative aspect-square max-h-[480px]">
-              <img
+              <Image
                 src={product.image}
                 alt={product.name}
+                fill
+                sizes="(max-width: 1024px) 100vw, 42vw"
                 className="w-full h-full object-cover"
               />
               <div className="absolute top-4 left-4">

@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Product } from '@/data/productsData';
 import { Package, MapPin, Ship, Plane, Send, Eye } from 'lucide-react';
@@ -38,9 +39,11 @@ export function ProductTableView({ products, onSelectProductForQuote }: ProductT
                 <td className="py-4 px-6">
                   <div className="flex items-center gap-3.5">
                     <div className="relative w-14 h-14 rounded-xl overflow-hidden bg-neutral-100 flex-shrink-0 border border-neutral-200 shadow-sm">
-                      <img
+                      <Image
                         src={product.image}
                         alt={product.name}
+                        fill
+                        sizes="56px"
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                       />
                     </div>

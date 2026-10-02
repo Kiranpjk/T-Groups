@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { Globe2, MapPin, Building2, Users2, Layers, TrendingUp } from 'lucide-react';
 
 export function WhyIndia() {
@@ -40,9 +41,11 @@ export function WhyIndia() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           <div className="relative overflow-hidden rounded-[32px] h-[420px] lg:h-[540px]">
-            <img
+            <Image
               src="/images/Fresh%20vegetables.png"
               alt="Indian agricultural farmland"
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="absolute inset-0 w-full h-full object-cover"
             />
             <div className="absolute bottom-4 left-4 right-4 grid grid-cols-3 gap-2 rounded-[24px] bg-white/90 backdrop-blur-md p-5 text-center">

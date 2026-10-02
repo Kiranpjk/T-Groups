@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { INSIGHTS_DATA, getInsightBySlug } from '@/data/insightsData';
@@ -91,9 +92,11 @@ export default function InsightDetailPage({ params }: InsightDetailPageProps) {
         <div className="bg-white rounded-3xl p-6 sm:p-10 border border-neutral-200 shadow-sm">
           {/* Hero Banner Image */}
           <div className="h-64 sm:h-96 rounded-2xl overflow-hidden mb-8 bg-neutral-100">
-            <img
+            <Image
               src={article.image}
               alt={article.title}
+              fill
+              sizes="(max-width: 640px) 100vw, 896px"
               className="w-full h-full object-cover"
             />
           </div>

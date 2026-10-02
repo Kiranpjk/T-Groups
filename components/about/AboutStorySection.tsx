@@ -26,9 +26,11 @@ export function AboutStorySection() {
       {/* Hero Banner */}
       <section className="relative pt-24 pb-20 bg-neutral-900 text-white overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&w=2000&q=80"
             alt="T Group Agricultural Sourcing Network"
+            fill
+            sizes="100vw"
             className="w-full h-full object-cover opacity-25"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-neutral-950 via-neutral-950/90 to-neutral-950/40" />
@@ -93,9 +95,11 @@ export function AboutStorySection() {
           </div>
 
           <div className="lg:col-span-5 relative h-72 sm:h-80 rounded-2xl overflow-hidden border border-neutral-200 shadow-md">
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1000&q=80"
               alt="Indian Agricultural Procurement Fields"
+              fill
+              sizes="(max-width: 1024px) 100vw, 42vw"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/70 via-transparent to-transparent" />

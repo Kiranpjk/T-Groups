@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
@@ -94,9 +95,11 @@ export function ProductsOverview({ onOpenQuoteModal }: ProductsOverviewProps) {
               className="bg-white rounded-2xl border border-neutral-200 overflow-hidden shadow-sm hover:shadow-[0_22px_50px_-12px_rgba(11,122,59,0.35)] hover:-translate-y-1 hover:border-emerald-200 transition-all duration-300 flex flex-col"
             >
               <div className="relative h-56 w-full overflow-hidden bg-neutral-100">
-                <img
+                <Image
                   src={cat.image}
                   alt={cat.name}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
@@ -134,9 +137,11 @@ export function ProductsOverview({ onOpenQuoteModal }: ProductsOverviewProps) {
           {/* Spices Card */}
           <div className="lg:col-span-5 bg-white rounded-2xl border border-neutral-200 overflow-hidden shadow-sm hover:shadow-[0_22px_50px_-12px_rgba(11,122,59,0.35)] hover:-translate-y-1 hover:border-emerald-200 transition-all duration-300 flex flex-col">
             <div className="relative h-56 w-full overflow-hidden bg-neutral-100">
-              <img
+              <Image
                 src={categories[3].image}
                 alt={categories[3].name}
+                fill
+                sizes="(max-width: 1024px) 100vw, 42vw"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
               />
             </div>
@@ -170,9 +175,11 @@ export function ProductsOverview({ onOpenQuoteModal }: ProductsOverviewProps) {
           {/* Other Agro Products Card (Wide split card as in screenshot 3) */}
           <div className="lg:col-span-7 bg-white rounded-2xl border border-neutral-200 overflow-hidden shadow-sm hover:shadow-[0_22px_50px_-12px_rgba(11,122,59,0.35)] hover:-translate-y-1 hover:border-emerald-200 transition-all duration-300 grid grid-cols-1 sm:grid-cols-12">
             <div className="sm:col-span-5 relative h-56 sm:h-full overflow-hidden bg-neutral-100">
-              <img
+              <Image
                 src={categories[4].image}
                 alt={categories[4].name}
+                fill
+                sizes="(max-width: 640px) 100vw, 42vw"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
               />
             </div>
