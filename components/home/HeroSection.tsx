@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, MessageSquare, Check } from 'lucide-react';
 import { COMPANY_INFO } from '@/data/companyData';
 
@@ -10,9 +11,12 @@ export function HeroSection() {
     <section className="relative min-h-screen flex flex-col justify-between overflow-hidden bg-neutral-900 text-white -mt-16 sm:-mt-20">
       {/* High-Resolution Agricultural Farm Background with cinematic overlay */}
       <div className="absolute inset-0 z-0">
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1595974482597-4b8da8879bc5?auto=format&fit=crop&w=2000&q=85"
           alt="Indian agricultural fields and farm harvesting"
+          fill
+          priority
+          sizes="100vw"
           className="w-full h-full object-cover object-center"
         />
         {/* Apple-like subtle dark gradient overlays to ensure razor-sharp typography readability */}
