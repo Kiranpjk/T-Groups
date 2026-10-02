@@ -5,6 +5,7 @@ import { INSIGHTS_DATA, getInsightBySlug } from '@/data/insightsData';
 import { ArrowLeft, Clock, Calendar, Tag, MessageSquare, ArrowRight } from 'lucide-react';
 import { COMPANY_INFO } from '@/data/companyData';
 import type { Metadata } from 'next';
+import { createPageMetadata } from '@/lib/seo';
 
 interface InsightDetailPageProps {
   params: {
@@ -20,12 +21,20 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: InsightDetailPageProps): Promise<Metadata> {
   const article = getInsightBySlug(params.slug);
-  if (!article) return { title: 'Article Not Found - T Group Imports & Exports' };
+  if (!article) {
+    return createPageMetadata({
+      title: 'Article Not Found',
+      description: 'The requested export insight could not be found.',
+      path: `/insights/${params.slug}`,
+    });
+  }
 
-  return {
+  return createPageMetadata({
     title: `${article.title} | T Group Export Insights`,
-    description: article.summary
-  };
+    description: article.summary,
+    path: `/insights/${article.slug}`,
+    image: article.image,
+  });
 }
 
 export default function InsightDetailPage({ params }: InsightDetailPageProps) {

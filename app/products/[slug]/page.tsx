@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import { COMPANY_INFO } from '@/data/companyData';
 import type { Metadata } from 'next';
+import { createPageMetadata } from '@/lib/seo';
 
 interface ProductPageProps {
   params: {
@@ -35,12 +36,20 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
   const product = getProductBySlug(params.slug);
-  if (!product) return { title: 'Product Not Found - T Group Imports & Exports' };
+  if (!product) {
+    return createPageMetadata({
+      title: 'Product Not Found',
+      description: 'The requested agricultural export product could not be found.',
+      path: `/products/${params.slug}`,
+    });
+  }
 
-  return {
+  return createPageMetadata({
     title: `${product.name} Exporter India | Bulk B2B Supplier - T Group`,
-    description: `Export-quality ${product.name} from India. Graded calibrations, container loadability, Phytosanitary certification, and FCL/air shipments worldwide.`
-  };
+    description: `Export-quality ${product.name} from India. Graded calibrations, container loadability, Phytosanitary certification, and FCL/air shipments worldwide.`,
+    path: `/products/${product.slug}`,
+    image: product.image,
+  });
 }
 
 export default function ProductDetailPage({ params }: ProductPageProps) {
