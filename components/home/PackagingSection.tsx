@@ -1,5 +1,8 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { PACKAGING_ITEMS } from '@/data/packagingLogisticsData';
 import { ArrowRight } from 'lucide-react';
 
@@ -8,7 +11,13 @@ export function PackagingSection() {
     <section className="py-16 sm:py-20 bg-[#F8F8F6] border-b border-neutral-200/70">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-7 mb-10">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-7 mb-10"
+        >
           <div>
             <div className="inline-flex items-center gap-2 mb-5">
               <span className="w-8 h-px bg-[#D4AF37]" />
@@ -30,13 +39,17 @@ export function PackagingSection() {
             <span>Discuss Packaging Requirements</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
-        </div>
+        </motion.div>
 
         {/* Packaging Items Grid (6 items) */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5 pt-2">
-          {PACKAGING_ITEMS.map((item) => (
-            <div
+          {PACKAGING_ITEMS.map((item, index) => (
+            <motion.div
               key={item.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.45, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
               className="bg-white rounded-[22px] p-5 border border-[#DEE2E7] shadow-sm hover:-translate-y-1 hover:border-[#0B7A3B] hover:shadow-[0_16px_30px_-18px_rgba(11,122,59,0.5)] transition-all text-center flex flex-col justify-between group"
             >
               <div>
@@ -59,7 +72,7 @@ export function PackagingSection() {
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 

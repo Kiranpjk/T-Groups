@@ -1,4 +1,7 @@
+'use client';
+
 import React from 'react';
+import { motion } from 'framer-motion';
 import { 
   Package, 
   Briefcase, 
@@ -52,22 +55,32 @@ export function ExportCapabilities() {
     <section className="py-20 bg-neutral-50/70 border-b border-neutral-200/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center max-w-2xl mx-auto mb-12"
+        >
           <h2 className="text-2xl sm:text-3xl font-extrabold text-neutral-900 tracking-tight">
             Export Capabilities
           </h2>
           <p className="mt-2 text-xs sm:text-sm text-neutral-600">
             End-to-end export coordination from India to your destination.
           </p>
-        </div>
+        </motion.div>
 
         {/* 6 Capability Cards Grid (Screenshot 5 layout) */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
-          {capabilities.map((cap) => {
+          {capabilities.map((cap, index) => {
             const Icon = cap.icon;
             return (
-              <div
+              <motion.div
                 key={cap.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.45, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
                 className="bg-white rounded-2xl p-6 border border-neutral-200/90 shadow-sm hover:shadow-md hover:border-emerald-300 transition-all text-center flex flex-col items-center group"
               >
                 <div className="w-12 h-12 rounded-xl bg-neutral-50 flex items-center justify-center text-[#0B7A3B] mb-4 group-hover:scale-110 group-hover:bg-[#0B7A3B] group-hover:text-white transition-all duration-300">
@@ -79,7 +92,7 @@ export function ExportCapabilities() {
                 <p className="text-[11px] text-neutral-500 leading-relaxed">
                   {cap.description}
                 </p>
-              </div>
+              </motion.div>
             );
           })}
         </div>

@@ -1,5 +1,8 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { COMPANY_INFO } from '@/data/companyData';
 
@@ -7,7 +10,13 @@ export function FinalCTA() {
   return (
     <section className="bg-white pt-6 sm:pt-10">
       <div className="px-4 sm:px-6 lg:px-10">
-        <div className="relative overflow-hidden bg-[#0B7A3B] text-white py-16 sm:py-24 px-4">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.97, y: 24 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          className="relative overflow-hidden bg-[#0B7A3B] text-white py-16 sm:py-24 px-4 rounded-3xl"
+        >
           <div className="relative z-10 max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/15 border border-white/15 text-[11px] font-semibold tracking-wider text-white/90 uppercase mb-8">
               <span className="w-1.5 h-1.5 rounded-full bg-[#E4B84A]" />
@@ -46,7 +55,7 @@ export function FinalCTA() {
               </a>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

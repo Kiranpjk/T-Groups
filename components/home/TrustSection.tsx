@@ -1,4 +1,7 @@
+'use client';
+
 import React from 'react';
+import { motion } from 'framer-motion';
 import { ShieldCheck, CheckSquare, PackageCheck, Globe2 } from 'lucide-react';
 
 export function TrustSection() {
@@ -42,7 +45,13 @@ export function TrustSection() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
           <div className="inline-flex items-center gap-2 mb-3">
             <span className="w-6 h-[1.5px] bg-[#D4AF37]" />
             <span className="text-[11px] font-bold tracking-[0.2em] text-[#0B7A3B] uppercase">
@@ -56,15 +65,19 @@ export function TrustSection() {
           <p className="mt-4 text-sm sm:text-base text-neutral-600 leading-relaxed max-w-2xl mx-auto">
             T Group connects international buyers with Indian agricultural and food products through responsible sourcing, quality control, export packaging, documentation and logistics coordination.
           </p>
-        </div>
+        </motion.div>
 
         {/* 4 Feature Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {trustFeatures.map((feat) => {
+          {trustFeatures.map((feat, index) => {
             const Icon = feat.icon;
             return (
-              <div
+              <motion.div
                 key={feat.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.5, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
                 className="bg-white rounded-2xl p-7 border border-neutral-100 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_-4px_rgba(11,122,59,0.12)] hover:border-emerald-200 transition-all duration-300 flex flex-col group"
               >
                 <div className="w-12 h-12 rounded-xl bg-emerald-50/80 border border-emerald-100 flex items-center justify-center text-[#0B7A3B] mb-6 group-hover:scale-110 group-hover:bg-[#0B7A3B] group-hover:text-white transition-all duration-300">
@@ -76,7 +89,7 @@ export function TrustSection() {
                 <p className="text-xs sm:text-[13px] text-neutral-600 leading-relaxed">
                   {feat.description}
                 </p>
-              </div>
+              </motion.div>
             );
           })}
         </div>

@@ -13,14 +13,20 @@ export function QualitySection() {
     <section className="py-16 sm:py-20 bg-[#F8F8F6] border-b border-neutral-200/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="mb-10 max-w-2xl">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-10 max-w-2xl"
+        >
           <h2 className="text-xl sm:text-2xl font-bold text-neutral-900 tracking-tight">
             Registrations &amp; Compliance
           </h2>
           <p className="mt-5 text-xs sm:text-sm text-[#737B8C] leading-relaxed">
             The following registrations and compliance details are part of our export operations. Certificates are verified active and available to view or download.
           </p>
-        </div>
+        </motion.div>
 
         {/* Statutory Registration Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">

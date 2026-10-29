@@ -12,7 +12,13 @@ export function ExportMarketsPreview() {
     <section className="py-20 bg-white border-b border-neutral-200/70">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center max-w-3xl mx-auto mb-14"
+        >
           <div className="inline-flex items-center gap-2 mb-3">
             <span className="w-6 h-[1.5px] bg-[#D4AF37]" />
             <span className="text-[11px] font-bold tracking-[0.2em] text-[#0B7A3B] uppercase">
@@ -26,10 +32,16 @@ export function ExportMarketsPreview() {
           <p className="mt-2 text-xs sm:text-sm font-bold tracking-widest text-neutral-500 uppercase">
             Current &amp; Target Export Markets
           </p>
-        </div>
+        </motion.div>
 
         {/* Real country-outline map */}
-        <div className="relative overflow-hidden rounded-3xl border border-neutral-200/80 shadow-inner">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98, y: 20 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          className="relative overflow-hidden rounded-3xl border border-neutral-200/80 shadow-inner"
+        >
           <InteractiveWorldMap compact />
           <div className="absolute top-4 right-4 sm:top-6 sm:right-6 z-20 flex flex-wrap items-center gap-3 bg-[#04180A]/85 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-emerald-800/60 text-[11px] font-semibold text-emerald-100 shadow-sm">
             <div className="flex items-center gap-1.5">
@@ -41,7 +53,7 @@ export function ExportMarketsPreview() {
               <span>Export Markets</span>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Export market cards */}
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 sm:gap-4 mt-8">

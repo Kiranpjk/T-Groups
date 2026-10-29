@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { FAQ_DATA } from '@/data/faqData';
 import { ChevronDown, HelpCircle, MessageSquare } from 'lucide-react';
 import { COMPANY_INFO } from '@/data/companyData';
@@ -18,7 +19,13 @@ export function FaqAccordion() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="grid lg:grid-cols-[0.75fr_1.25fr] gap-12 lg:gap-16 items-start">
-        <div className="text-left">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="text-left"
+        >
           <div className="inline-flex items-center gap-2 mb-3">
             <span className="w-8 h-px bg-[#D4AF37]" />
             <span className="text-[11px] font-bold tracking-[0.2em] text-[#0B7A3B] uppercase">
@@ -40,15 +47,19 @@ export function FaqAccordion() {
             <MessageSquare className="w-4 h-4" />
             <span>Ask Our Export Team</span>
           </Link>
-        </div>
+        </motion.div>
 
         {/* FAQ List */}
         <div className="space-y-2.5">
           {FAQ_DATA.map((item, idx) => {
             const isOpen = openId === item.id;
             return (
-              <div
+              <motion.div
                 key={item.id}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.45, delay: Math.min(idx * 0.05, 0.3), ease: [0.22, 1, 0.36, 1] }}
                 className="bg-white rounded-[20px] border border-[#DEE2E7] overflow-hidden transition-all duration-200"
               >
                 <button
@@ -74,7 +85,7 @@ export function FaqAccordion() {
                     <p>{item.answer}</p>
                   </div>
                 )}
-              </div>
+              </motion.div>
             );
           })}
         </div>

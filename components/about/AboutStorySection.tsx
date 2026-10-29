@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { COMPANY_INFO, LEADERSHIP_TEAM, EMPLOYEE_DESIGNATIONS } from '@/data/companyData';
 import { QualitySection } from '../home/QualitySection';
 import { WhyChooseUs } from '../home/WhyChooseUs';
@@ -40,7 +41,12 @@ export function AboutStorySection() {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-3xl space-y-5">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+            className="max-w-3xl space-y-5"
+          >
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/50 border border-white/20 text-[#D4AF37] text-xs font-bold uppercase tracking-widest">
               <span>About T Group Imports &amp; Exports</span>
             </div>
@@ -72,13 +78,19 @@ export function AboutStorySection() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* 1. Who We Are */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-3xl p-8 sm:p-12 border border-neutral-200 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="bg-white rounded-3xl p-8 sm:p-12 border border-neutral-200 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-10 items-center"
+        >
           <div className="lg:col-span-7 space-y-4">
             <div className="inline-flex items-center gap-2 mb-1">
               <span className="w-4 h-[1.5px] bg-[#D4AF37]" />
@@ -112,14 +124,20 @@ export function AboutStorySection() {
               </span>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* 2 & 3. Mission & Vision */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Mission */}
-          <div className="bg-white rounded-3xl p-8 border border-neutral-200 shadow-sm space-y-4">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            className="bg-white rounded-3xl p-8 border border-neutral-200 shadow-sm space-y-4"
+          >
             <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-[#0B7A3B] flex items-center justify-center">
               <Target className="w-6 h-6" />
             </div>
@@ -129,10 +147,16 @@ export function AboutStorySection() {
             <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
               {COMPANY_INFO.mission}
             </p>
-          </div>
+          </motion.div>
 
           {/* Vision */}
-          <div className="bg-white rounded-3xl p-8 border border-neutral-200 shadow-sm space-y-4">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.55, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+            className="bg-white rounded-3xl p-8 border border-neutral-200 shadow-sm space-y-4"
+          >
             <div className="w-12 h-12 rounded-2xl bg-amber-50 text-amber-700 flex items-center justify-center">
               <Eye className="w-6 h-6" />
             </div>
@@ -142,13 +166,19 @@ export function AboutStorySection() {
             <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
               {COMPANY_INFO.vision}
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* 4 & 5. Our Approach & Our Commitment */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-3xl p-8 sm:p-12 border border-neutral-200 shadow-sm">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="bg-white rounded-3xl p-8 sm:p-12 border border-neutral-200 shadow-sm"
+        >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             <div>
               <div className="inline-flex items-center gap-2 mb-2">
@@ -176,13 +206,18 @@ export function AboutStorySection() {
               </p>
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Leadership & Strategic Advisory */}
       <section id="leadership" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24">
         <div className="bg-white rounded-3xl p-8 sm:p-12 border border-neutral-200 shadow-sm space-y-10">
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          >
             <div className="inline-flex items-center gap-2 mb-2">
               <span className="w-4 h-[1.5px] bg-[#D4AF37]" />
               <span className="text-[11px] font-bold tracking-[0.2em] text-[#0B7A3B] uppercase">
@@ -195,12 +230,18 @@ export function AboutStorySection() {
             <p className="mt-2 text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-2xl">
               Our core leadership and advisory board combine decades of agricultural field sourcing, international trade compliance, European market strategy, and digital operations.
             </p>
-          </div>
+          </motion.div>
 
           {/* Leadership Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Tarun B. */}
-            <div className="rounded-2xl border border-neutral-200 bg-[#FBFBFA] p-6 flex flex-col justify-between hover:border-[#0B7A3B] hover:shadow-md transition-all group">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.5, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+              className="rounded-2xl border border-neutral-200 bg-[#FBFBFA] p-6 flex flex-col justify-between hover:border-[#0B7A3B] hover:shadow-md transition-all group"
+            >
               <div className="space-y-4">
                 <div className="w-14 h-14 rounded-2xl bg-[#0B7A3B]/10 text-[#0B7A3B] flex items-center justify-center font-bold text-xl font-display">
                   TB
@@ -230,10 +271,16 @@ export function AboutStorySection() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Kiran B. */}
-            <div className="rounded-2xl border border-neutral-200 bg-[#FBFBFA] p-6 flex flex-col justify-between hover:border-[#0B7A3B] hover:shadow-md transition-all group">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.5, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              className="rounded-2xl border border-neutral-200 bg-[#FBFBFA] p-6 flex flex-col justify-between hover:border-[#0B7A3B] hover:shadow-md transition-all group"
+            >
               <div className="space-y-4">
                 <div className="w-14 h-14 rounded-2xl bg-blue-900/10 text-blue-900 flex items-center justify-center font-bold text-xl font-display">
                   KB
@@ -263,10 +310,16 @@ export function AboutStorySection() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
             {/* Srikanth A. */}
-            <div className="rounded-2xl border border-neutral-200 bg-[#FBFBFA] p-6 flex flex-col justify-between hover:border-[#0B7A3B] hover:shadow-md transition-all group">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.5, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+              className="rounded-2xl border border-neutral-200 bg-[#FBFBFA] p-6 flex flex-col justify-between hover:border-[#0B7A3B] hover:shadow-md transition-all group"
+            >
               <div className="space-y-4">
                 <div className="w-14 h-14 rounded-2xl bg-amber-900/10 text-amber-900 flex items-center justify-center font-bold text-xl font-display">
                   SA
@@ -296,26 +349,39 @@ export function AboutStorySection() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* Team Roles & Employee Designations */}
           <div className="pt-8 border-t border-neutral-200">
-            <div className="inline-flex items-center gap-2 mb-2">
-              <span className="w-4 h-[1.5px] bg-[#D4AF37]" />
-              <span className="text-[11px] font-bold tracking-[0.2em] text-[#0B7A3B] uppercase">
-                Functional Teams &amp; Designations
-              </span>
-            </div>
-            <h3 className="text-xl font-bold text-neutral-900 mb-2">
-              Operational Roles &amp; Professional Career Paths
-            </h3>
-            <p className="text-xs text-neutral-600 mb-6 leading-relaxed max-w-2xl">
-              Our operational ecosystem is supported by disciplined roles across procurement, international trade execution, and supply chain technology.
-            </p>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <div className="inline-flex items-center gap-2 mb-2">
+                <span className="w-4 h-[1.5px] bg-[#D4AF37]" />
+                <span className="text-[11px] font-bold tracking-[0.2em] text-[#0B7A3B] uppercase">
+                  Functional Teams &amp; Designations
+                </span>
+              </div>
+              <h3 className="text-xl font-bold text-neutral-900 mb-2">
+                Operational Roles &amp; Professional Career Paths
+              </h3>
+              <p className="text-xs text-neutral-600 mb-6 leading-relaxed max-w-2xl">
+                Our operational ecosystem is supported by disciplined roles across procurement, international trade execution, and supply chain technology.
+              </p>
+            </motion.div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div className="p-4 rounded-xl border border-neutral-200 bg-white">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.45, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+                className="p-4 rounded-xl border border-neutral-200 bg-white"
+              >
                 <div className="flex items-center gap-2 text-xs font-bold text-neutral-900 mb-1">
                   <span className="w-2 h-2 rounded-full bg-[#0B7A3B]" />
                   Management Trainee — International Business
@@ -326,9 +392,15 @@ export function AboutStorySection() {
                 <span className="inline-block mt-2 text-[10px] font-semibold text-neutral-400">
                   Qualification: MBA / Master&apos;s in International Trade
                 </span>
-              </div>
+              </motion.div>
 
-              <div className="p-4 rounded-xl border border-neutral-200 bg-white">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.45, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                className="p-4 rounded-xl border border-neutral-200 bg-white"
+              >
                 <div className="flex items-center gap-2 text-xs font-bold text-neutral-900 mb-1">
                   <span className="w-2 h-2 rounded-full bg-[#0B7A3B]" />
                   Management Trainee — Export Operations
@@ -339,9 +411,15 @@ export function AboutStorySection() {
                 <span className="inline-block mt-2 text-[10px] font-semibold text-neutral-400">
                   Qualification: Degree in Logistics &amp; Supply Chain Management
                 </span>
-              </div>
+              </motion.div>
 
-              <div className="p-4 rounded-xl border border-neutral-200 bg-white">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.45, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+                className="p-4 rounded-xl border border-neutral-200 bg-white"
+              >
                 <div className="flex items-center gap-2 text-xs font-bold text-neutral-900 mb-1">
                   <span className="w-2 h-2 rounded-full bg-[#0B7A3B]" />
                   Business Development
@@ -352,9 +430,15 @@ export function AboutStorySection() {
                 <span className="inline-block mt-2 text-[10px] font-semibold text-neutral-400">
                   Qualification: BBA / International Marketing
                 </span>
-              </div>
+              </motion.div>
 
-              <div className="p-4 rounded-xl border border-neutral-200 bg-white">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.45, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                className="p-4 rounded-xl border border-neutral-200 bg-white"
+              >
                 <div className="flex items-center gap-2 text-xs font-bold text-neutral-900 mb-1">
                   <span className="w-2 h-2 rounded-full bg-[#0B7A3B]" />
                   Management Trainee — Procurement / Supply Chain
@@ -365,9 +449,15 @@ export function AboutStorySection() {
                 <span className="inline-block mt-2 text-[10px] font-semibold text-neutral-400">
                   Qualification: B.Sc Agriculture / Agribusiness Management
                 </span>
-              </div>
+              </motion.div>
 
-              <div className="p-4 rounded-xl border border-neutral-200 bg-white">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.45, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                className="p-4 rounded-xl border border-neutral-200 bg-white"
+              >
                 <div className="flex items-center gap-2 text-xs font-bold text-neutral-900 mb-1">
                   <span className="w-2 h-2 rounded-full bg-[#0B7A3B]" />
                   Management Trainee — Digital Operations
@@ -378,7 +468,7 @@ export function AboutStorySection() {
                 <span className="inline-block mt-2 text-[10px] font-semibold text-neutral-400">
                   Qualification: B.Tech / Computer Science / IT
                 </span>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
@@ -392,7 +482,13 @@ export function AboutStorySection() {
 
       {/* Bottom CTA */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-gradient-to-r from-neutral-900 via-neutral-900 to-[#0B7A3B] text-white rounded-3xl p-8 sm:p-12 border border-white/15 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.98, y: 20 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="bg-gradient-to-r from-neutral-900 via-neutral-900 to-[#0B7A3B] text-white rounded-3xl p-8 sm:p-12 border border-white/15 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6"
+        >
           <div className="space-y-2 text-center md:text-left">
             <h3 className="text-2xl sm:text-3xl font-black text-white">
               Connect with Our Sourcing Desk
@@ -420,7 +516,7 @@ export function AboutStorySection() {
               <span>WhatsApp MD Desk</span>
             </a>
           </div>
-        </div>
+        </motion.div>
       </section>
     </div>
   );

@@ -1,4 +1,7 @@
+'use client';
+
 import React from 'react';
+import { motion } from 'framer-motion';
 import { QuoteForm } from '@/components/rfq/QuoteForm';
 import { COMPANY_INFO } from '@/data/companyData';
 import { Mail } from 'lucide-react';
@@ -17,7 +20,13 @@ export function QuickRFQSection() {
     >
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-          <div className="lg:col-span-5">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-5"
+          >
             <div className="inline-flex items-center gap-2 mb-4">
               <span className="w-6 h-[1.5px] bg-[#D4AF37]" />
               <span className="text-[11px] font-bold tracking-[0.2em] text-[#0B7A3B] uppercase">
@@ -80,11 +89,17 @@ export function QuickRFQSection() {
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="lg:col-span-7 bg-white rounded-[2rem] p-6 sm:p-8 lg:p-10 shadow-[0_20px_60px_-24px_rgba(15,81,50,0.18)] border border-white">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.65, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-7 bg-white rounded-[2rem] p-6 sm:p-8 lg:p-10 shadow-[0_20px_60px_-24px_rgba(15,81,50,0.18)] border border-white"
+          >
             <QuoteForm />
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

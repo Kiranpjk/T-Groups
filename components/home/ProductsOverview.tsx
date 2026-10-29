@@ -1,6 +1,9 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
 interface ProductsOverviewProps {
@@ -62,7 +65,13 @@ export function ProductsOverview({ onOpenQuoteModal }: ProductsOverviewProps) {
     <section className="py-20 bg-white border-b border-neutral-200/70">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12"
+        >
           <div>
             <div className="inline-flex items-center gap-2 mb-3">
               <span className="w-6 h-[1.5px] bg-[#D4AF37]" />
@@ -85,13 +94,17 @@ export function ProductsOverview({ onOpenQuoteModal }: ProductsOverviewProps) {
             <span>View All Products</span>
             <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
           </Link>
-        </div>
+        </motion.div>
 
         {/* Categories Grid (Screenshot 3 layout) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {categories.slice(0, 3).map((cat) => (
-            <div
+          {categories.slice(0, 3).map((cat, index) => (
+            <motion.div
               key={cat.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.5, delay: index * 0.12, ease: [0.16, 1, 0.3, 1] }}
               className="bg-white rounded-2xl border border-neutral-200 overflow-hidden shadow-sm hover:shadow-[0_22px_50px_-12px_rgba(11,122,59,0.35)] hover:-translate-y-1 hover:border-emerald-200 transition-all duration-300 flex flex-col"
             >
               <div className="relative h-56 w-full overflow-hidden bg-neutral-100">
@@ -128,14 +141,20 @@ export function ProductsOverview({ onOpenQuoteModal }: ProductsOverviewProps) {
                   </Link>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Bottom Row (Spices & Other Agro Products) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-6">
           {/* Spices Card */}
-          <div className="lg:col-span-5 bg-white rounded-2xl border border-neutral-200 overflow-hidden shadow-sm hover:shadow-[0_22px_50px_-12px_rgba(11,122,59,0.35)] hover:-translate-y-1 hover:border-emerald-200 transition-all duration-300 flex flex-col">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 bg-white rounded-2xl border border-neutral-200 overflow-hidden shadow-sm hover:shadow-[0_22px_50px_-12px_rgba(11,122,59,0.35)] hover:-translate-y-1 hover:border-emerald-200 transition-all duration-300 flex flex-col"
+          >
             <div className="relative h-56 w-full overflow-hidden bg-neutral-100">
               <Image
                 src={categories[3].image}
@@ -170,10 +189,16 @@ export function ProductsOverview({ onOpenQuoteModal }: ProductsOverviewProps) {
                 </Link>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Other Agro Products Card (Wide split card as in screenshot 3) */}
-          <div className="lg:col-span-7 bg-white rounded-2xl border border-neutral-200 overflow-hidden shadow-sm hover:shadow-[0_22px_50px_-12px_rgba(11,122,59,0.35)] hover:-translate-y-1 hover:border-emerald-200 transition-all duration-300 grid grid-cols-1 sm:grid-cols-12">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7 bg-white rounded-2xl border border-neutral-200 overflow-hidden shadow-sm hover:shadow-[0_22px_50px_-12px_rgba(11,122,59,0.35)] hover:-translate-y-1 hover:border-emerald-200 transition-all duration-300 grid grid-cols-1 sm:grid-cols-12"
+          >
             <div className="sm:col-span-5 relative h-56 sm:h-full overflow-hidden bg-neutral-100">
               <Image
                 src={categories[4].image}
@@ -211,7 +236,7 @@ export function ProductsOverview({ onOpenQuoteModal }: ProductsOverviewProps) {
                 </Link>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

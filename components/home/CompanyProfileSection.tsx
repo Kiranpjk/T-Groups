@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { COMPANY_INFO, LEADERSHIP_TEAM } from '@/data/companyData';
 import { Download, FileText, CheckCircle2, X, Building, MapPin, Phone, Mail } from 'lucide-react';
 import Link from 'next/link';
@@ -13,7 +14,12 @@ export function CompanyProfileSection() {
     <section className="py-16 sm:py-20 bg-[#F8F8F6] border-b border-neutral-200/70">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          >
             <div className="inline-flex items-center gap-2 mb-5">
               <span className="w-8 h-px bg-[#D4AF37]" />
               <span className="text-[11px] font-bold tracking-[0.2em] text-[#0B7A3B] uppercase">About T Group</span>
@@ -37,25 +43,31 @@ export function CompanyProfileSection() {
             </div>
 
             <div className="mt-7 flex flex-wrap items-center gap-3">
-                <button
-                  type="button"
-                  onClick={() => setShowModal(true)}
-                  className="inline-flex items-center gap-2.5 bg-[#0B7A3B] hover:bg-[#096631] text-white font-bold text-xs tracking-wider uppercase px-6 py-3.5 rounded-md transition-all active:scale-95 group"
-                >
-                  <Download className="w-4 h-4 transition-transform group-hover:-translate-y-0.5" />
-                  <span>Download Company Profile</span>
-                </button>
+              <button
+                type="button"
+                onClick={() => setShowModal(true)}
+                className="inline-flex items-center gap-2.5 bg-[#0B7A3B] hover:bg-[#096631] text-white font-bold text-xs tracking-wider uppercase px-6 py-3.5 rounded-md transition-all active:scale-95 group"
+              >
+                <Download className="w-4 h-4 transition-transform group-hover:-translate-y-0.5" />
+                <span>Download Company Profile</span>
+              </button>
 
-                <Link
-                  href="/contact#rfq-form"
-                  className="inline-flex items-center gap-2 border border-[#DEE2E7] hover:border-[#0B7A3B] text-neutral-800 font-bold text-xs tracking-wider uppercase px-6 py-3.5 rounded-md transition-colors"
-                >
-                  <span>Request a Quote</span>
-                </Link>
-              </div>
-          </div>
+              <Link
+                href="/contact#rfq-form"
+                className="inline-flex items-center gap-2 border border-[#DEE2E7] hover:border-[#0B7A3B] text-neutral-800 font-bold text-xs tracking-wider uppercase px-6 py-3.5 rounded-md transition-colors"
+              >
+                <span>Request a Quote</span>
+              </Link>
+            </div>
+          </motion.div>
 
-          <div className="relative overflow-hidden rounded-[32px] h-[420px] lg:h-[540px]">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="relative overflow-hidden rounded-[32px] h-[420px] lg:h-[540px]"
+          >
             <Image
               src="/images/Fresh%20vegetables.png"
               alt="T Group agricultural produce facility"
@@ -63,7 +75,7 @@ export function CompanyProfileSection() {
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="w-full h-full object-cover"
             />
-          </div>
+          </motion.div>
         </div>
       </div>
 
