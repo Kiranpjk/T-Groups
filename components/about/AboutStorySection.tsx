@@ -357,7 +357,7 @@ export function AboutStorySection() {
               <div className="p-4 rounded-xl border border-neutral-200 bg-white">
                 <div className="flex items-center gap-2 text-xs font-bold text-neutral-900 mb-1">
                   <span className="w-2 h-2 rounded-full bg-[#0B7A3B]" />
-                  Procurement / Supply Chain
+                  Management Trainee — Procurement / Supply Chain
                 </div>
                 <p className="text-[11px] text-neutral-500 leading-relaxed">
                   Manages APMC mandi relationships, farmer collection centers, batch quality sorting, and packhouse staging.
@@ -370,7 +370,7 @@ export function AboutStorySection() {
               <div className="p-4 rounded-xl border border-neutral-200 bg-white">
                 <div className="flex items-center gap-2 text-xs font-bold text-neutral-900 mb-1">
                   <span className="w-2 h-2 rounded-full bg-[#0B7A3B]" />
-                  Digital Operations
+                  Management Trainee — Digital Operations
                 </div>
                 <p className="text-[11px] text-neutral-500 leading-relaxed">
                   Drives digital inventory tracking, sensor-based container logs, documentation portals, and web portal architecture.

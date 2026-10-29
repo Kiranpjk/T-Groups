@@ -154,7 +154,7 @@ export interface EmployeeDesignation {
 export const EMPLOYEE_DESIGNATIONS: EmployeeDesignation[] = [
   { title: "Management Trainee — International Business", department: "International Trade" },
   { title: "Management Trainee — Export Operations", department: "Export Operations" },
-  { title: "Business Development", department: "Sales & Growth" },
-  { title: "Procurement / Supply Chain", department: "Supply Chain" },
-  { title: "Digital Operations", department: "Technology" }
+  { title: "Management Trainee — Procurement / Supply Chain", department: "Supply Chain & Mandi Sourcing" },
+  { title: "Management Trainee — Digital Operations", department: "Technology & Logistics Systems" },
+  { title: "Business Development", department: "Global Sales & Strategic Expansion" }
 ];
