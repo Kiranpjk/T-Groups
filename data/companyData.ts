@@ -81,7 +81,7 @@ export const COMPANY_INFO: CompanyInfo = {
     city: "Guntur",
     state: "Andhra Pradesh",
     country: "India",
-    fullAddress: "Guntur, Andhra Pradesh, India",
+    fullAddress: "Flat No. 1, Manikanta Mess, Pedavadlapudi Kolanukonda Road, Kolanukonda, Vaddeswaram, Guntur, Andhra Pradesh - 522302, India",
     sourcingHub: "Primary Agro & Spice Sourcing Corridor (Andhra Pradesh, Telangana, Maharashtra, Karnataka, Tamil Nadu, North India)"
   },
   stats: [
@@ -117,3 +117,44 @@ export const COMPANY_INFO: CompanyInfo = {
     }
   ]
 };
+
+export interface LeadershipMember {
+  name: string;
+  title: string;
+  role: string;
+  description: string;
+}
+
+export const LEADERSHIP_TEAM: LeadershipMember[] = [
+  {
+    name: "Tarun B.",
+    title: "Founder & Managing Director",
+    role: "India Operations & Global Business Strategy",
+    description: "Leads end-to-end export operations, farmer procurement networks, and global buyer relationships from the company's headquarters in Guntur, Andhra Pradesh."
+  },
+  {
+    name: "Kiran B.",
+    title: "Co-Founder & Director",
+    role: "German Business Development and Digital Technology Specialist",
+    description: "Drives European market expansion, digital infrastructure, and strategic technology initiatives to scale the company's global trade operations."
+  },
+  {
+    name: "Srikanth A.",
+    title: "Strategic Advisor — International Markets",
+    role: "UK & European Market Strategy and Strategic Partnerships",
+    description: "Advises on international market entry strategy, strategic partnerships, and trade compliance for UK and European destination markets."
+  }
+];
+
+export interface EmployeeDesignation {
+  title: string;
+  department: string;
+}
+
+export const EMPLOYEE_DESIGNATIONS: EmployeeDesignation[] = [
+  { title: "Management Trainee — International Business", department: "International Trade" },
+  { title: "Management Trainee — Export Operations", department: "Export Operations" },
+  { title: "Business Development", department: "Sales & Growth" },
+  { title: "Procurement / Supply Chain", department: "Supply Chain" },
+  { title: "Digital Operations", department: "Technology" }
+];

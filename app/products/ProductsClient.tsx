@@ -18,7 +18,7 @@ export function ProductsClient() {
 
   const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory);
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [viewMode, setViewMode] = useState<'table' | 'grid'>('table');
+  const [viewMode, setViewMode] = useState<'table' | 'grid'>('grid');
   const [selectedProductForQuote, setSelectedProductForQuote] = useState<Product | null>(null);
 
   const filteredProducts = useMemo(() => {

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { COMPANY_INFO } from '@/data/companyData';
+import { COMPANY_INFO, LEADERSHIP_TEAM } from '@/data/companyData';
 import { Download, FileText, CheckCircle2, X, Building, MapPin, Phone, Mail } from 'lucide-react';
 import Link from 'next/link';
 
@@ -96,16 +96,16 @@ export function CompanyProfileSection() {
                 <p>{COMPANY_INFO.description}</p>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-neutral-50 p-3.5 rounded-xl border border-neutral-200">
-                  <span className="text-neutral-500 font-medium block">Leadership</span>
-                  <span className="font-bold text-neutral-900">Tarun Boya (Tarun B.)</span>
-                  <span className="text-neutral-500 block text-[11px]">Founder &amp; Managing Director</span>
-                </div>
-                <div className="bg-neutral-50 p-3.5 rounded-xl border border-neutral-200">
-                  <span className="text-neutral-500 font-medium block">Headquarters</span>
-                  <span className="font-bold text-neutral-900">Guntur, Andhra Pradesh</span>
-                  <span className="text-neutral-500 block text-[11px]">India</span>
+              <div className="bg-neutral-50 p-4 rounded-xl border border-neutral-200">
+                <h4 className="font-bold text-neutral-900 text-sm mb-2.5">Key Leadership &amp; Advisory</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  {LEADERSHIP_TEAM.map((leader) => (
+                    <div key={leader.name} className="bg-white p-3 rounded-lg border border-neutral-200">
+                      <span className="font-bold text-neutral-900 text-xs block">{leader.name}</span>
+                      <span className="text-[#0B7A3B] font-semibold text-[10px] block mt-0.5">{leader.title}</span>
+                      <span className="text-neutral-500 text-[9px] block mt-1 leading-tight">{leader.role}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
 

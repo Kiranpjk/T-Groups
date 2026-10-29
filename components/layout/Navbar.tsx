@@ -11,7 +11,8 @@ import {
   ChevronDown, 
   MessageSquare, 
   ArrowRight,
-  Phone
+  Phone,
+  Users
 } from 'lucide-react';
 
 export function Navbar() {
@@ -46,7 +47,7 @@ export function Navbar() {
     <header
       className={`sticky top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
         isScrolled
-          ? 'bg-white/30 backdrop-blur-3xl saturate-[1.8] border-b border-white/20 shadow-[0_1px_3px_rgba(0,0,0,0.06)]'
+          ? 'bg-white/90 backdrop-blur-xl saturate-[1.2] border-b border-neutral-200/60 shadow-[0_1px_3px_rgba(0,0,0,0.06)]'
           : 'bg-transparent border-b border-transparent'
       }`}
     >
@@ -79,16 +80,14 @@ export function Navbar() {
           {/* Right Action Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
             <Link
-              href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent("Hello T Group Export Team, I would like to talk regarding agricultural commodity exports.")}`}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/about#leadership"
               className={`text-[13px] font-semibold transition-all duration-300 flex items-center gap-1.5 px-4 py-2 rounded-full backdrop-blur-2xl border ${
                 isScrolled
                   ? 'text-neutral-700 hover:text-emerald-700 bg-white/50 border-white/40 hover:bg-white/70 hover:shadow-sm'
                   : 'text-white hover:text-white bg-white/15 border-white/25 hover:bg-white/25'
               }`}
             >
-              <span>Talk to Export Team</span>
+              <span>Leadership</span>
             </Link>
 
             <Link
@@ -150,15 +149,14 @@ export function Navbar() {
             >
               REQUEST A QUOTE
             </Link>
-            <a
-              href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent("Hello T Group Export Team, I would like to talk regarding agricultural commodity exports.")}`}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/about#leadership"
+              onClick={() => setMobileMenuOpen(false)}
               className="w-full flex items-center justify-center gap-2 border border-neutral-300 text-neutral-800 font-medium py-2.5 rounded-md text-xs"
             >
-              <MessageSquare className="w-3.5 h-3.5 text-emerald-600" />
-              Talk to Export Team ({COMPANY_INFO.primaryPhone})
-            </a>
+              <Users className="w-3.5 h-3.5 text-emerald-600" />
+              Leadership
+            </Link>
           </div>
         </div>
       )}

@@ -173,18 +173,19 @@ export function InteractiveWorldMap({ onSelectCountry, compact = false }: Intera
               <g>
                 <circle r={7} fill="#C5A059" stroke="#fff" strokeWidth={1.4} />
                 <circle r={12} fill="none" stroke="#C5A059" strokeWidth={0.8} opacity={0.55} />
+                <rect x={-32} y={10} width={64} height={14} rx={4} fill="#04180A" opacity={0.85} />
                 <text
                   textAnchor="middle"
-                  y={-14}
+                  y={20}
                   className="font-sans"
-                  style={{ fontSize: 8, fill: '#F5E6B8', fontWeight: 700, letterSpacing: '0.08em' }}
+                  style={{ fontSize: 7.5, fill: '#F5E6B8', fontWeight: 700, letterSpacing: '0.06em' }}
                 >
                   INDIA · JNPT
                 </text>
               </g>
             </Marker>
 
-            {EXPORT_COUNTRIES.map((country) => {
+            {UNIQUE_COUNTRIES.map((country) => {
               const geo = COUNTRY_GEO[country.id];
               if (!geo) return null;
               const isActive = activeCountry?.id === country.id;
@@ -206,18 +207,31 @@ export function InteractiveWorldMap({ onSelectCountry, compact = false }: Intera
                       strokeWidth={1}
                     />
                     {isActive && (
-                      <text
-                        textAnchor="middle"
-                        y={-10}
-                        style={{
-                          fontSize: 7.5,
-                          fill: '#F8FAF8',
-                          fontWeight: 600,
-                          fontFamily: 'Inter, sans-serif',
-                        }}
-                      >
-                        {country.name}
-                      </text>
+                      <g>
+                        <rect
+                          x={-(country.name.length * 2.8 + 6)}
+                          y={-22}
+                          width={country.name.length * 5.6 + 12}
+                          height={14}
+                          rx={3}
+                          fill="#04180A"
+                          stroke="#F5D76E"
+                          strokeWidth={0.5}
+                          opacity={0.9}
+                        />
+                        <text
+                          textAnchor="middle"
+                          y={-12}
+                          style={{
+                            fontSize: 7.5,
+                            fill: '#F8FAF8',
+                            fontWeight: 600,
+                            fontFamily: 'Inter, sans-serif',
+                          }}
+                        >
+                          {country.name}
+                        </text>
+                      </g>
                     )}
                   </g>
                 </Marker>

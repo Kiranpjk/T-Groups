@@ -76,7 +76,7 @@ export const CATEGORY_SUMMARIES = [
     badgeClass: 'bg-blue-50 text-blue-800 border-blue-200',
     examples: 'Semi-Husk Coconut · Makhana · Seasonal Commodities',
     description: 'This category is continuously expanding as we establish new sourcing relationships across India. Contact us for custom product requirements.',
-    image: 'https://images.unsplash.com/photo-1544378730-8b5104b18790?auto=format&fit=crop&w=800&q=80',
+    image: '/images/Other%20Agro.png',
     slug: 'other-agro-products'
   }
 ];
@@ -273,7 +273,7 @@ export const PRODUCTS_DATA: Product[] = [
     freightMethod: 'Ocean Freight (20ft Dry FCL)',
     shelfLife: '24 Months',
     loadability: '26 Metric Tons per 20ft Container',
-    image: '/images/Semi%20Husk%20Coconut.png',
+    image: '/images/Sona%20Masoori%20Rice.png',
     featured: true,
     specifications: [
       { key: 'Grain Length', value: '5.0 mm - 5.5 mm (Medium Grain)' },
@@ -313,7 +313,7 @@ export const PRODUCTS_DATA: Product[] = [
     freightMethod: 'Air Cargo or 40ft Reefer Container at 8-10°C',
     shelfLife: '15 - 20 Days under 8-10°C cold chain',
     loadability: '8.5 - 9.5 MT in 40ft Reefer / Customized Air Pallets',
-    image: 'https://images.unsplash.com/photo-1588252303782-cb80119abd6d?auto=format&fit=crop&w=800&q=80',
+    image: '/images/G4%20Green%20Chilli.png',
     featured: true,
     specifications: [
       { key: 'Variety', value: 'G4 / Bullet Green Chilli' },
@@ -353,7 +353,7 @@ export const PRODUCTS_DATA: Product[] = [
     freightMethod: 'Ocean Reefer (5°C with 90-95% RH) or Air Cargo',
     shelfLife: '60 - 75 Days under 5°C controlled atmosphere',
     loadability: '18 - 20 MT per 40ft Reefer Container',
-    image: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=800&q=80',
+    image: '/images/Pomagranate.png',
     featured: true,
     specifications: [
       { key: 'Variety', value: 'Bhagwa (Kesar Red)' },
@@ -393,7 +393,7 @@ export const PRODUCTS_DATA: Product[] = [
     freightMethod: 'Ocean Freight (40ft High Cube Dry/Vent Container at 12-14°C)',
     shelfLife: '60 - 75 Days in ventilated conditions',
     loadability: '27 - 28 Metric Tons per 40ft HC Container (Approx. 45,000 to 50,000 Coconuts)',
-    image: 'https://images.unsplash.com/photo-1544378730-8b5104b18790?auto=format&fit=crop&w=800&q=80',
+    image: '/images/Semi%20Husk%20Coconut.png',
     featured: true,
     specifications: [
       { key: 'Product', value: 'Semi-Husked Mature Coconut' },
@@ -492,7 +492,7 @@ export const PRODUCTS_DATA: Product[] = [
     freightMethod: 'Ocean Freight (20ft / 40ft Dry Containers)',
     shelfLife: '24 Months in cool, dry storage',
     loadability: '18 - 19 MT in 20ft FCL; 26 - 27 MT in 40ft HC',
-    image: 'https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=800&q=80',
+    image: '/images/Turmeric%20Fingers.png',
     featured: false,
     specifications: [
       { key: 'Curcumin Content', value: '3.0% to 5.0%+ (As per buyer specification)' },

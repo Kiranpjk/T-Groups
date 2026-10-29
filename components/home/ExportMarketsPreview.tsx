@@ -31,7 +31,7 @@ export function ExportMarketsPreview() {
         {/* Real country-outline map */}
         <div className="relative overflow-hidden rounded-3xl border border-neutral-200/80 shadow-inner">
           <InteractiveWorldMap compact />
-          <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-8 flex flex-wrap items-center gap-4 bg-white/90 backdrop-blur-md px-3.5 py-2 rounded-xl border border-neutral-200 text-[11px] font-semibold text-neutral-700 shadow-sm">
+          <div className="absolute top-4 right-4 sm:top-6 sm:right-6 z-20 flex flex-wrap items-center gap-3 bg-[#04180A]/85 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-emerald-800/60 text-[11px] font-semibold text-emerald-100 shadow-sm">
             <div className="flex items-center gap-1.5">
               <span className="w-2.5 h-2.5 rounded-full bg-[#C5A059]" />
               <span>India (Origin)</span>

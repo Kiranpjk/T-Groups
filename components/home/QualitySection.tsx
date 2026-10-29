@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { CERTIFICATIONS_DATA, Certification } from '@/data/certificationsData';
-import { ShieldCheck, FileCheck, CheckCircle, X, ExternalLink } from 'lucide-react';
+import { ShieldCheck, FileCheck, CheckCircle, X, ExternalLink, Download } from 'lucide-react';
 import Link from 'next/link';
 
 export function QualitySection() {
@@ -18,12 +18,12 @@ export function QualitySection() {
             Registrations &amp; Compliance
           </h2>
           <p className="mt-5 text-xs sm:text-sm text-[#737B8C] leading-relaxed">
-            The following registrations and compliance details are part of our export operations. Certificate documents are available upon request to verified buyers.
+            The following registrations and compliance details are part of our export operations. Certificates are verified active and available to view or download.
           </p>
         </div>
 
-        {/* 4 Statutory Registration Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Statutory Registration Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {CERTIFICATIONS_DATA.map((cert, index) => (
             <motion.div
               key={cert.id}
@@ -118,18 +118,50 @@ export function QualitySection() {
               {activeCert.description} Official statutory certificates and compliance dossiers are shared with verified buyers upon commercial contract finalization.
             </p>
 
-            <div className="flex gap-3">
+            <div className="flex flex-col sm:flex-row gap-2.5">
+              {activeCert.certificateFile ? (
+                <>
+                  <a
+                    href={activeCert.certificateFile}
+                    download
+                    className="flex-1 py-3 text-center bg-[#0B7A3B] hover:bg-[#096631] text-white font-bold text-xs rounded-xl uppercase tracking-wider transition-colors shadow-sm flex items-center justify-center gap-2"
+                  >
+                    <Download className="w-4 h-4" />
+                    <span>Download Certificate (PDF)</span>
+                  </a>
+                  <a
+                    href={activeCert.certificateFile}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="py-3 px-4 text-center border border-emerald-300 text-[#0B7A3B] hover:bg-emerald-50 font-bold text-xs rounded-xl uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5" />
+                    <span>Open PDF</span>
+                  </a>
+                </>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => {
+                    window.print();
+                  }}
+                  className="flex-1 py-3 text-center bg-[#0B7A3B] hover:bg-[#096631] text-white font-bold text-xs rounded-xl uppercase tracking-wider transition-colors shadow-sm flex items-center justify-center gap-2"
+                >
+                  <Download className="w-4 h-4" />
+                  <span>Download / Save Certificate</span>
+                </button>
+              )}
               <Link
                 href="/contact#rfq-form"
                 onClick={() => setActiveCert(null)}
-                className="flex-1 py-3 text-center bg-[#0B7A3B] hover:bg-[#096631] text-white font-bold text-xs rounded-xl uppercase tracking-wider transition-colors shadow-sm"
+                className="py-3 px-4 text-center border border-neutral-300 text-neutral-700 hover:bg-neutral-50 font-bold text-xs rounded-xl uppercase tracking-wider transition-colors"
               >
-                Request Compliance Dossier
+                Request Dossier
               </Link>
               <button
                 type="button"
                 onClick={() => setActiveCert(null)}
-                className="px-5 py-3 border border-neutral-300 text-neutral-700 font-bold text-xs rounded-xl hover:bg-neutral-100 transition-colors"
+                className="px-4 py-3 border border-neutral-300 text-neutral-700 font-bold text-xs rounded-xl hover:bg-neutral-100 transition-colors"
               >
                 Close
               </button>

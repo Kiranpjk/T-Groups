@@ -48,11 +48,6 @@ export function WhyIndia() {
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="absolute inset-0 w-full h-full object-cover"
             />
-            <div className="absolute bottom-4 left-4 right-4 grid grid-cols-3 gap-2 rounded-[24px] bg-white/90 backdrop-blur-md p-5 text-center">
-              <div><strong className="block text-lg text-[#0B7A3B]">2nd</strong><span className="text-[8px] uppercase text-neutral-500">Largest agri producer</span></div>
-              <div><strong className="block text-lg text-[#0B7A3B]">15%</strong><span className="text-[8px] uppercase text-neutral-500">Global spice supply</span></div>
-              <div><strong className="block text-lg text-[#0B7A3B]">$50B+</strong><span className="text-[8px] uppercase text-neutral-500">Annual agri exports</span></div>
-            </div>
           </div>
 
           <div>

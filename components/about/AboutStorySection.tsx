@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { COMPANY_INFO } from '@/data/companyData';
+import { COMPANY_INFO, LEADERSHIP_TEAM, EMPLOYEE_DESIGNATIONS } from '@/data/companyData';
 import { QualitySection } from '../home/QualitySection';
 import { WhyChooseUs } from '../home/WhyChooseUs';
 import { 
@@ -17,7 +17,10 @@ import {
   MapPin,
   Sprout,
   Truck,
-  Users
+  Users,
+  GraduationCap,
+  Briefcase,
+  Globe
 } from 'lucide-react';
 
 export function AboutStorySection() {
@@ -65,7 +68,7 @@ export function AboutStorySection() {
                 <Users className="w-5 h-5 text-emerald-400" />
                 <div>
                   <div className="text-neutral-400 text-[10px] uppercase font-bold">Leadership</div>
-                  <div className="font-bold text-white">Tarun Boya (Founder &amp; MD)</div>
+                  <div className="font-bold text-white">Tarun B. (Founder &amp; MD) · Kiran B. (Co-Founder &amp; Director)</div>
                 </div>
               </div>
             </div>
@@ -171,6 +174,211 @@ export function AboutStorySection() {
               <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed mb-4">
                 We believe sustainable B2B trading is built on repeat buyer satisfaction. Every shipment is treated with meticulous care for contract specifications, weight accuracy, temperature control, and complete statutory documentation.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Leadership & Strategic Advisory */}
+      <section id="leadership" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24">
+        <div className="bg-white rounded-3xl p-8 sm:p-12 border border-neutral-200 shadow-sm space-y-10">
+          <div>
+            <div className="inline-flex items-center gap-2 mb-2">
+              <span className="w-4 h-[1.5px] bg-[#D4AF37]" />
+              <span className="text-[11px] font-bold tracking-[0.2em] text-[#0B7A3B] uppercase">
+                Leadership &amp; Strategic Advisory
+              </span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-neutral-900 tracking-tight">
+              Driven by Experience. Powered by Global Vision.
+            </h2>
+            <p className="mt-2 text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-2xl">
+              Our core leadership and advisory board combine decades of agricultural field sourcing, international trade compliance, European market strategy, and digital operations.
+            </p>
+          </div>
+
+          {/* Leadership Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Tarun B. */}
+            <div className="rounded-2xl border border-neutral-200 bg-[#FBFBFA] p-6 flex flex-col justify-between hover:border-[#0B7A3B] hover:shadow-md transition-all group">
+              <div className="space-y-4">
+                <div className="w-14 h-14 rounded-2xl bg-[#0B7A3B]/10 text-[#0B7A3B] flex items-center justify-center font-bold text-xl font-display">
+                  TB
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-wider block">
+                    India Operations &amp; Global Business Strategy
+                  </span>
+                  <h3 className="text-lg font-black text-neutral-900 group-hover:text-[#0B7A3B] transition-colors mt-0.5">
+                    Tarun B.
+                  </h3>
+                  <p className="text-xs font-semibold text-[#0B7A3B] mt-0.5">
+                    Founder &amp; Managing Director
+                  </p>
+                </div>
+                <p className="text-xs text-neutral-600 leading-relaxed">
+                  Oversees all domestic procurement networks across Andhra Pradesh, Telangana, Maharashtra, and Karnataka. Directs farm-to-port supply chain logistics, contract compliance, and international buyer negotiations.
+                </p>
+                <div className="pt-3 border-t border-neutral-200/80 space-y-2 text-[11px] text-neutral-600">
+                  <div className="flex items-start gap-2">
+                    <GraduationCap className="w-3.5 h-3.5 text-[#0B7A3B] shrink-0 mt-0.5" />
+                    <span><strong>Education:</strong> B.Tech (Operations &amp; Agricultural Commerce)</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <Briefcase className="w-3.5 h-3.5 text-[#0B7A3B] shrink-0 mt-0.5" />
+                    <span><strong>Current Mandate:</strong> Managing Director &amp; Head of Export Logistics</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Kiran B. */}
+            <div className="rounded-2xl border border-neutral-200 bg-[#FBFBFA] p-6 flex flex-col justify-between hover:border-[#0B7A3B] hover:shadow-md transition-all group">
+              <div className="space-y-4">
+                <div className="w-14 h-14 rounded-2xl bg-blue-900/10 text-blue-900 flex items-center justify-center font-bold text-xl font-display">
+                  KB
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-wider block">
+                    Germany &amp; EU Market Strategy
+                  </span>
+                  <h3 className="text-lg font-black text-neutral-900 group-hover:text-[#0B7A3B] transition-colors mt-0.5">
+                    Kiran B.
+                  </h3>
+                  <p className="text-xs font-semibold text-blue-900 mt-0.5">
+                    Co-Founder &amp; Director — Germany
+                  </p>
+                </div>
+                <p className="text-xs text-neutral-600 leading-relaxed">
+                  German Business Development and Digital Technology Specialist. Spearheads European buyer onboarding, bilateral trade channels in Germany and the EU, digital supply-chain traceability, and modern enterprise IT infrastructure.
+                </p>
+                <div className="pt-3 border-t border-neutral-200/80 space-y-2 text-[11px] text-neutral-600">
+                  <div className="flex items-start gap-2">
+                    <GraduationCap className="w-3.5 h-3.5 text-blue-900 shrink-0 mt-0.5" />
+                    <span><strong>Education:</strong> Advanced Technology &amp; International Business Systems</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <Briefcase className="w-3.5 h-3.5 text-blue-900 shrink-0 mt-0.5" />
+                    <span><strong>Current Mandate:</strong> Director of German Operations &amp; Digital Infrastructure</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Srikanth A. */}
+            <div className="rounded-2xl border border-neutral-200 bg-[#FBFBFA] p-6 flex flex-col justify-between hover:border-[#0B7A3B] hover:shadow-md transition-all group">
+              <div className="space-y-4">
+                <div className="w-14 h-14 rounded-2xl bg-amber-900/10 text-amber-900 flex items-center justify-center font-bold text-xl font-display">
+                  SA
+                </div>
+                <div>
+                  <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-wider block">
+                    UK &amp; European Market Strategy
+                  </span>
+                  <h3 className="text-lg font-black text-neutral-900 group-hover:text-[#0B7A3B] transition-colors mt-0.5">
+                    Srikanth A.
+                  </h3>
+                  <p className="text-xs font-semibold text-amber-900 mt-0.5">
+                    Strategic Advisor — International Markets
+                  </p>
+                </div>
+                <p className="text-xs text-neutral-600 leading-relaxed">
+                  Advises on UK &amp; European market entry strategies, strategic distributor alliances, cross-border regulatory compliance, and destination-market phytosanitary alignment.
+                </p>
+                <div className="pt-3 border-t border-neutral-200/80 space-y-2 text-[11px] text-neutral-600">
+                  <div className="flex items-start gap-2">
+                    <GraduationCap className="w-3.5 h-3.5 text-amber-900 shrink-0 mt-0.5" />
+                    <span><strong>Education:</strong> Global Trade Economics &amp; Strategic Management</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <Briefcase className="w-3.5 h-3.5 text-amber-900 shrink-0 mt-0.5" />
+                    <span><strong>Current Mandate:</strong> Strategic Advisor — International Market Expansion</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Team Roles & Employee Designations */}
+          <div className="pt-8 border-t border-neutral-200">
+            <div className="inline-flex items-center gap-2 mb-2">
+              <span className="w-4 h-[1.5px] bg-[#D4AF37]" />
+              <span className="text-[11px] font-bold tracking-[0.2em] text-[#0B7A3B] uppercase">
+                Functional Teams &amp; Designations
+              </span>
+            </div>
+            <h3 className="text-xl font-bold text-neutral-900 mb-2">
+              Operational Roles &amp; Professional Career Paths
+            </h3>
+            <p className="text-xs text-neutral-600 mb-6 leading-relaxed max-w-2xl">
+              Our operational ecosystem is supported by disciplined roles across procurement, international trade execution, and supply chain technology.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="p-4 rounded-xl border border-neutral-200 bg-white">
+                <div className="flex items-center gap-2 text-xs font-bold text-neutral-900 mb-1">
+                  <span className="w-2 h-2 rounded-full bg-[#0B7A3B]" />
+                  Management Trainee — International Business
+                </div>
+                <p className="text-[11px] text-neutral-500 leading-relaxed">
+                  Focuses on global buyer inquiries, international documentation, letter of credit scrutiny, and overseas customs procedures.
+                </p>
+                <span className="inline-block mt-2 text-[10px] font-semibold text-neutral-400">
+                  Qualification: MBA / Master&apos;s in International Trade
+                </span>
+              </div>
+
+              <div className="p-4 rounded-xl border border-neutral-200 bg-white">
+                <div className="flex items-center gap-2 text-xs font-bold text-neutral-900 mb-1">
+                  <span className="w-2 h-2 rounded-full bg-[#0B7A3B]" />
+                  Management Trainee — Export Operations
+                </div>
+                <p className="text-[11px] text-neutral-500 leading-relaxed">
+                  Coordinates container bookings, CFS stuffing, Reefer cold-chain monitoring, and port customs clearance.
+                </p>
+                <span className="inline-block mt-2 text-[10px] font-semibold text-neutral-400">
+                  Qualification: Degree in Logistics &amp; Supply Chain Management
+                </span>
+              </div>
+
+              <div className="p-4 rounded-xl border border-neutral-200 bg-white">
+                <div className="flex items-center gap-2 text-xs font-bold text-neutral-900 mb-1">
+                  <span className="w-2 h-2 rounded-full bg-[#0B7A3B]" />
+                  Business Development
+                </div>
+                <p className="text-[11px] text-neutral-500 leading-relaxed">
+                  Responsible for buyer onboarding in GCC, Europe, and Asian corridors, contract finalization, and customer success.
+                </p>
+                <span className="inline-block mt-2 text-[10px] font-semibold text-neutral-400">
+                  Qualification: BBA / International Marketing
+                </span>
+              </div>
+
+              <div className="p-4 rounded-xl border border-neutral-200 bg-white">
+                <div className="flex items-center gap-2 text-xs font-bold text-neutral-900 mb-1">
+                  <span className="w-2 h-2 rounded-full bg-[#0B7A3B]" />
+                  Procurement / Supply Chain
+                </div>
+                <p className="text-[11px] text-neutral-500 leading-relaxed">
+                  Manages APMC mandi relationships, farmer collection centers, batch quality sorting, and packhouse staging.
+                </p>
+                <span className="inline-block mt-2 text-[10px] font-semibold text-neutral-400">
+                  Qualification: B.Sc Agriculture / Agribusiness Management
+                </span>
+              </div>
+
+              <div className="p-4 rounded-xl border border-neutral-200 bg-white">
+                <div className="flex items-center gap-2 text-xs font-bold text-neutral-900 mb-1">
+                  <span className="w-2 h-2 rounded-full bg-[#0B7A3B]" />
+                  Digital Operations
+                </div>
+                <p className="text-[11px] text-neutral-500 leading-relaxed">
+                  Drives digital inventory tracking, sensor-based container logs, documentation portals, and web portal architecture.
+                </p>
+                <span className="inline-block mt-2 text-[10px] font-semibold text-neutral-400">
+                  Qualification: B.Tech / Computer Science / IT
+                </span>
+              </div>
             </div>
           </div>
         </div>

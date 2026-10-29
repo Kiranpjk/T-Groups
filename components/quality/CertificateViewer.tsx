@@ -12,7 +12,8 @@ import {
   Calendar, 
   Eye, 
   X,
-  AlertCircle
+  AlertCircle,
+  Download
 } from 'lucide-react';
 
 export function CertificateViewer() {
@@ -25,10 +26,10 @@ export function CertificateViewer() {
         <Lock className="w-5 h-5 text-emerald-800 flex-shrink-0 mt-0.5" />
         <div>
           <h4 className="font-bold text-emerald-950 text-sm">
-            Official Regulatory Accreditations (Protected View-Only Verification)
+            Official Regulatory Accreditations (Verified Active Certificates)
           </h4>
           <p className="text-emerald-800/90 mt-0.5 leading-relaxed">
-            All statutory licenses, RCMC export registrations, and ISO certifications are verified by the Government of India and accredited international registrar bodies. Direct raw document downloading is disabled to maintain legal documentation security.
+            All statutory licenses, RCMC export registrations, MSME Udyam, and ISO certifications are verified by the Government of India and accredited international registrar bodies. Digital certificate records can be inspected and downloaded below.
           </p>
         </div>
       </div>
@@ -177,10 +178,41 @@ export function CertificateViewer() {
             </div>
 
             {/* Modal Footer */}
-            <div className="p-4 bg-gray-50 border-t border-gray-100 flex justify-end">
+            <div className="p-4 bg-gray-50 border-t border-gray-100 flex flex-wrap items-center justify-between gap-3">
+              {inspectedCert.certificateFile ? (
+                <div className="flex items-center gap-2">
+                  <a
+                    href={inspectedCert.certificateFile}
+                    download
+                    className="px-5 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold rounded-xl text-xs flex items-center gap-2 shadow-sm transition-colors"
+                  >
+                    <Download className="w-4 h-4" />
+                    <span>Download Certificate (PDF)</span>
+                  </a>
+                  <a
+                    href={inspectedCert.certificateFile}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2.5 border border-emerald-300 text-emerald-800 hover:bg-emerald-50 font-bold rounded-xl text-xs transition-colors"
+                  >
+                    Open PDF
+                  </a>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => {
+                    window.print();
+                  }}
+                  className="px-5 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold rounded-xl text-xs flex items-center gap-2 shadow-sm transition-colors"
+                >
+                  <Download className="w-4 h-4" />
+                  <span>Download / Save Certificate (PDF)</span>
+                </button>
+              )}
               <button
                 onClick={() => setInspectedCert(null)}
-                className="px-6 py-2.5 bg-primary-800 hover:bg-primary-900 text-white font-bold rounded-xl text-xs"
+                className="px-6 py-2.5 bg-primary-800 hover:bg-primary-900 text-white font-bold rounded-xl text-xs transition-colors"
               >
                 Close Verification Viewer
               </button>

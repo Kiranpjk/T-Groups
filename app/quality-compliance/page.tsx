@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { Metadata } from 'next';
 import { QualitySection } from '@/components/home/QualitySection';
 import { COMPANY_INFO } from '@/data/companyData';
@@ -63,6 +64,42 @@ export default function QualityCompliancePage() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Descriptive Quality & Compliance Hero Visual */}
+        <div className="mt-12 relative overflow-hidden rounded-[28px] h-[340px] sm:h-[420px] shadow-lg border border-[#E0E3E7]">
+          <Image
+            src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1600&q=80"
+            alt="Quality Control and Laboratory Inspection for Export Produce"
+            fill
+            sizes="100vw"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/85 via-neutral-950/40 to-transparent" />
+          <div className="absolute bottom-6 left-6 right-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4 text-white">
+            <div className="max-w-xl">
+              <span className="text-xs font-bold text-[#D4AF37] uppercase tracking-wider block mb-1">
+                Batch Quality & Traceability Protocols
+              </span>
+              <h3 className="text-xl sm:text-2xl font-bold">
+                Farm-Gate to Destination Port Quality Assurance
+              </h3>
+              <p className="text-xs text-neutral-300 mt-1 leading-relaxed">
+                Every consignment undergoes multi-stage inspections: physical sorting, MRL chemical residue screening, moisture calibration, and sealed export packaging.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2 text-[11px] font-semibold">
+              <span className="px-3 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/20">
+                ✓ APEDA Certified
+              </span>
+              <span className="px-3 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/20">
+                ✓ FSSAI Standards
+              </span>
+              <span className="px-3 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/20">
+                ✓ Phytosanitary Cleared
+              </span>
+            </div>
           </div>
         </div>
       </section>

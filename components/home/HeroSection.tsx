@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, MessageSquare, Check } from 'lucide-react';
+import { ArrowRight, MessageSquare, Check, Users } from 'lucide-react';
 import { COMPANY_INFO } from '@/data/companyData';
 
 export function HeroSection() {
@@ -58,13 +58,11 @@ export function HeroSection() {
           </Link>
 
           <Link
-            href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent("Hello T Group Export Team, I would like to talk regarding agricultural commodity exports.")}`}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/about#leadership"
             className="inline-flex items-center gap-2.5 bg-black/40 hover:bg-black/60 backdrop-blur-md border border-white/20 hover:border-white/40 text-white font-semibold text-sm px-6 py-3.5 rounded-lg transition-all"
           >
-            <MessageSquare className="w-4 h-4 text-emerald-400" />
-            <span>Talk to Export Team</span>
+            <Users className="w-4 h-4 text-emerald-400" />
+            <span>Leadership</span>
           </Link>
         </div>
       </div>
