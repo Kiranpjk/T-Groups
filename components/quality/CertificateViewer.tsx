@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useModal } from '@/lib/useModal';
 import { CERTIFICATIONS_DATA, Certification } from '@/data/certificationsData';
 import { 
   ShieldCheck, 
@@ -18,6 +19,7 @@ import {
 
 export function CertificateViewer() {
   const [inspectedCert, setInspectedCert] = useState<Certification | null>(null);
+  const dialogRef = useModal<HTMLDivElement>(inspectedCert !== null, () => setInspectedCert(null));
 
   return (
     <div className="space-y-8">
@@ -102,7 +104,7 @@ export function CertificateViewer() {
       {/* Inspection Modal */}
       {inspectedCert && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fadeIn">
-          <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-emerald-200 overflow-hidden flex flex-col">
+          <div ref={dialogRef} role="dialog" aria-modal="true" aria-label="Certificate details" tabIndex={-1} className="outline-none relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-emerald-200 overflow-hidden flex flex-col">
             {/* Modal Header */}
             <div className="bg-gradient-to-r from-primary-950 via-primary-900 to-emerald-950 text-white p-6 flex items-center justify-between border-b border-gold-500/40">
               <div className="flex items-center gap-3">
@@ -173,7 +175,7 @@ export function CertificateViewer() {
                   <Lock className="w-3.5 h-3.5 text-gray-400" />
                   <span>Verified Digital Record for T Group Imports & Exports</span>
                 </div>
-                <span>Navi Mumbai, India</span>
+                <span>Guntur, India</span>
               </div>
             </div>
 

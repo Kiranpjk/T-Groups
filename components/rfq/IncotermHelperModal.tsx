@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useModal } from '@/lib/useModal';
 import { HelpCircle, X, Check, ArrowRight } from 'lucide-react';
 
 const INCOTERMS = [
@@ -38,6 +39,7 @@ const INCOTERMS = [
 
 export function IncotermHelperModal() {
   const [isOpen, setIsOpen] = useState(false);
+  const dialogRef = useModal<HTMLDivElement>(isOpen, () => setIsOpen(false));
 
   return (
     <>
@@ -52,7 +54,7 @@ export function IncotermHelperModal() {
 
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
-          <div className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl border border-emerald-100 overflow-hidden max-h-[85vh] flex flex-col">
+          <div ref={dialogRef} role="dialog" aria-modal="true" aria-label="Incoterm guide" tabIndex={-1} className="outline-none relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl border border-emerald-100 overflow-hidden max-h-[85vh] flex flex-col">
             <div className="bg-primary-900 text-white p-5 flex items-center justify-between border-b border-gold-500/30">
               <div className="flex items-center gap-2.5">
                 <HelpCircle className="w-5 h-5 text-gold-400" />

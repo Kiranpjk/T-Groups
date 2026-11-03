@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useModal } from '@/lib/useModal';
 import { motion } from 'framer-motion';
 import { CERTIFICATIONS_DATA, Certification } from '@/data/certificationsData';
 import { ShieldCheck, FileCheck, CheckCircle, X, ExternalLink, Download } from 'lucide-react';
@@ -8,6 +9,7 @@ import Link from 'next/link';
 
 export function QualitySection() {
   const [activeCert, setActiveCert] = useState<Certification | null>(null);
+  const dialogRef = useModal<HTMLDivElement>(activeCert !== null, () => setActiveCert(null));
 
   return (
     <section className="py-16 sm:py-20 bg-[#F8F8F6] border-b border-neutral-200/60">
@@ -78,7 +80,7 @@ export function QualitySection() {
       {/* Certificate Viewer Modal */}
       {activeCert && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
-          <div className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 border border-neutral-200 shadow-2xl relative">
+          <div ref={dialogRef} role="dialog" aria-modal="true" aria-label="Certificate details" tabIndex={-1} className="outline-none bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 border border-neutral-200 shadow-2xl relative">
             <button
               onClick={() => setActiveCert(null)}
               className="absolute top-5 right-5 p-2 rounded-full text-neutral-400 hover:text-neutral-900 hover:bg-neutral-100 transition-colors"

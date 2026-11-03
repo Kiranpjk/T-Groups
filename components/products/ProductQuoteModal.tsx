@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useModal } from '@/lib/useModal';
 import { Product } from '@/data/productsData';
 import { COMPANY_INFO } from '@/data/companyData';
 import confetti from 'canvas-confetti';
@@ -21,6 +22,7 @@ interface ProductQuoteModalProps {
 }
 
 export function ProductQuoteModal({ product, onClose }: ProductQuoteModalProps) {
+  const dialogRef = useModal<HTMLDivElement>(true, onClose);
   const [formData, setFormData] = useState({
     fullName: '',
     companyName: '',
@@ -82,7 +84,7 @@ export function ProductQuoteModal({ product, onClose }: ProductQuoteModalProps) 
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
-      <div className="relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-neutral-200 overflow-hidden max-h-[90vh] flex flex-col">
+      <div ref={dialogRef} role="dialog" aria-modal="true" aria-label="Request export quotation" tabIndex={-1} className="outline-none relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-neutral-200 overflow-hidden max-h-[90vh] flex flex-col">
         {/* Header */}
         <div className="bg-neutral-900 text-white p-5 sm:p-6 flex items-center justify-between border-b border-neutral-800">
           <div>

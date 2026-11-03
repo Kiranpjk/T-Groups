@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useModal } from '@/lib/useModal';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { COMPANY_INFO, LEADERSHIP_TEAM } from '@/data/companyData';
@@ -9,6 +10,7 @@ import Link from 'next/link';
 
 export function CompanyProfileSection() {
   const [showModal, setShowModal] = useState(false);
+  const dialogRef = useModal<HTMLDivElement>(showModal, () => setShowModal(false));
 
   return (
     <section className="py-16 sm:py-20 bg-[#F8F8F6] border-b border-neutral-200/70">
@@ -82,7 +84,7 @@ export function CompanyProfileSection() {
       {/* Company Profile Modal */}
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fadeIn">
-          <div className="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 border border-neutral-200 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+          <div ref={dialogRef} role="dialog" aria-modal="true" aria-label="Company profile" tabIndex={-1} className="outline-none bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 border border-neutral-200 shadow-2xl relative max-h-[90vh] overflow-y-auto">
             <button
               onClick={() => setShowModal(false)}
               className="absolute top-5 right-5 p-2 rounded-full text-neutral-400 hover:text-neutral-900 hover:bg-neutral-100 transition-colors"
