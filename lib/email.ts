@@ -1,21 +1,6 @@
 import nodemailer from "nodemailer";
 import { COMPANY_INFO } from "@/data/companyData";
-
-export interface QuoteRequestPayload {
-  fullName: string;
-  companyName: string;
-  email: string;
-  whatsappPhone: string;
-  country: string;
-  product: string;
-  quantityMT: string;
-  packingRequirement: string;
-  destinationPort: string;
-  preferredIncoterm: string;
-  preferredShipmentDate?: string;
-  modeOfFreight?: string;
-  message?: string;
-}
+import { escapeHtml, formatQuantity, QuoteRequestPayload } from "@/lib/quote";
 
 export async function sendQuoteNotification(data: QuoteRequestPayload) {
   const host = process.env.SMTP_HOST;
@@ -24,6 +9,12 @@ export async function sendQuoteNotification(data: QuoteRequestPayload) {
   const pass = process.env.SMTP_PASS;
   const toEmail = process.env.NOTIFICATION_EMAIL || COMPANY_INFO.primaryEmail;
   const fromEmail = process.env.SMTP_FROM || `"T Group Inquiries" <${user || "inquiries@tgroupexim.com"}>`;
+
+  const safe = Object.fromEntries(
+    Object.entries(data).map(([key, value]) => [key, escapeHtml(value)]),
+  ) as unknown as QuoteRequestPayload;
+  const quantity = formatQuantity(data.quantityMT);
+  const whatsappDigits = data.whatsappPhone.replace(/[^0-9]/g, '');
 
   const htmlContent = `
     <!DOCTYPE html>
@@ -63,64 +54,64 @@ export async function sendQuoteNotification(data: QuoteRequestPayload) {
             <table class="table-box">
               <tr>
                 <td class="label">Buyer Name</td>
-                <td class="value">${data.fullName}</td>
+                <td class="value">${safe.fullName}</td>
               </tr>
               <tr>
                 <td class="label">Company Name</td>
-                <td class="value">${data.companyName}</td>
+                <td class="value">${safe.companyName}</td>
               </tr>
               <tr>
                 <td class="label">Email Address</td>
-                <td class="value"><a href="mailto:${data.email}" style="color:#0F5132;">${data.email}</a></td>
+                <td class="value"><a href="mailto:${safe.email}" style="color:#0F5132;">${safe.email}</a></td>
               </tr>
               <tr>
                 <td class="label">WhatsApp / Phone</td>
-                <td class="value"><a href="https://wa.me/${data.whatsappPhone.replace(/[^0-9]/g, '')}" style="color:#0F5132;">${data.whatsappPhone}</a></td>
+                <td class="value">${whatsappDigits ? `<a href="https://wa.me/${whatsappDigits}" style="color:#0F5132;">${safe.whatsappPhone}</a>` : 'Not provided'}</td>
               </tr>
               <tr>
                 <td class="label">Destination Country</td>
-                <td class="value">${data.country}</td>
+                <td class="value">${safe.country}</td>
               </tr>
               <tr>
                 <td class="label">Product Requested</td>
-                <td class="value" style="color:#0A3E1B;">${data.product}</td>
+                <td class="value" style="color:#0A3E1B;">${safe.product}</td>
               </tr>
               <tr>
                 <td class="label">Required Quantity</td>
-                <td class="value">${data.quantityMT} MT</td>
+                <td class="value">${escapeHtml(quantity) || 'Not specified'}</td>
               </tr>
               <tr>
                 <td class="label">Packing Specification</td>
-                <td class="value">${data.packingRequirement || 'Standard Export Packing'}</td>
+                <td class="value">${safe.packingRequirement || 'Standard Export Packing'}</td>
               </tr>
               <tr>
                 <td class="label">Destination Seaport / Airport</td>
-                <td class="value">${data.destinationPort || 'Not specified'}</td>
+                <td class="value">${safe.destinationPort || 'Not specified'}</td>
               </tr>
               <tr>
                 <td class="label">Preferred Incoterm</td>
-                <td class="value" style="color:#C5A059;">${data.preferredIncoterm || 'FOB / CIF'}</td>
+                <td class="value" style="color:#C5A059;">${safe.preferredIncoterm || 'FOB / CIF'}</td>
               </tr>
               <tr>
                 <td class="label">Estimated Shipment Date</td>
-                <td class="value">${data.preferredShipmentDate || 'Immediate / Flexible'}</td>
+                <td class="value">${safe.preferredShipmentDate || 'Immediate / Flexible'}</td>
               </tr>
               <tr>
                 <td class="label">Freight Mode</td>
-                <td class="value">${data.modeOfFreight || 'Sea FCL / Reefer'}</td>
+                <td class="value">${safe.modeOfFreight || 'Sea FCL / Reefer'}</td>
               </tr>
             </table>
 
             ${data.message ? `
               <div class="message-box">
                 <strong style="color:#785616; display:block; margin-bottom:6px;">Buyer Notes & Specific Instructions:</strong>
-                ${data.message.replace(/\n/g, '<br/>')}
+                ${safe.message.replace(/\n/g, '<br/>')}
               </div>
             ` : ''}
           </div>
           <div class="footer">
             <p style="margin:0 0 6px;">T Group Imports & Exports Web Portal Automated Notification</p>
-            <p style="margin:0;">Navi Mumbai, Maharashtra, India • <a href="mailto:${toEmail}">${toEmail}</a></p>
+            <p style="margin:0;">${escapeHtml(COMPANY_INFO.location.fullAddress)} • <a href="mailto:${toEmail}">${toEmail}</a></p>
           </div>
         </div>
       </body>
@@ -140,16 +131,19 @@ export async function sendQuoteNotification(data: QuoteRequestPayload) {
       from: fromEmail,
       to: toEmail,
       replyTo: data.email,
-      subject: `🚨 [Export RFQ] ${data.product} - ${data.quantityMT} MT for ${data.companyName} (${data.country})`,
+      subject: `🚨 [Export RFQ] ${data.product}${quantity ? ` - ${quantity}` : ''} for ${data.companyName || data.fullName} (${data.country})`,
       html: htmlContent,
     });
 
     return { success: true, messageId: info.messageId, mode: 'smtp_sent' };
+  } else if (process.env.NODE_ENV === 'production') {
+    // Never report success to a buyer when the enquiry cannot reach anyone.
+    throw new Error('SMTP is not configured: set SMTP_HOST, SMTP_USER and SMTP_PASS');
   } else {
-    // In demo / test mode without configured env credentials, log gracefully
+    // In local development without credentials, log instead of sending
     console.log("📨 [DEMO EMAIL NOTIFICATION - SMTP not configured yet]");
     console.log(`Buyer: ${data.fullName} | Company: ${data.companyName} | Country: ${data.country}`);
-    console.log(`Product: ${data.product} | Qty: ${data.quantityMT} MT | Port: ${data.destinationPort}`);
+    console.log(`Product: ${data.product} | Qty: ${quantity} | Port: ${data.destinationPort}`);
     return { success: true, mode: 'demo_logged' };
   }
 }

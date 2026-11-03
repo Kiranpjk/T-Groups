@@ -132,44 +132,44 @@ export function QuoteForm({ defaultProduct, defaultCategory, defaultPackaging }:
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className={labelClass}>
+          <label htmlFor="rfq-fullName" className={labelClass}>
             Full Name <span className="text-[#0B7A3B]">*</span>
           </label>
-          <input type="text" name="fullName" required placeholder="Your full name" value={formData.fullName} onChange={handleChange} className={fieldClass} />
+          <input type="text" id="rfq-fullName" name="fullName" required placeholder="Your full name" value={formData.fullName} onChange={handleChange} className={fieldClass} />
         </div>
         <div>
-          <label className={labelClass}>
+          <label htmlFor="rfq-companyName" className={labelClass}>
             Company Name <span className="text-[#0B7A3B]">*</span>
           </label>
-          <input type="text" name="companyName" required placeholder="Your company" value={formData.companyName} onChange={handleChange} className={fieldClass} />
+          <input type="text" id="rfq-companyName" name="companyName" required placeholder="Your company" value={formData.companyName} onChange={handleChange} className={fieldClass} />
         </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className={labelClass}>
+          <label htmlFor="rfq-country" className={labelClass}>
             Country <span className="text-[#0B7A3B]">*</span>
           </label>
-          <input type="text" name="country" required placeholder="Your country" value={formData.country} onChange={handleChange} className={fieldClass} />
+          <input type="text" id="rfq-country" name="country" required placeholder="Your country" value={formData.country} onChange={handleChange} className={fieldClass} />
         </div>
         <div>
-          <label className={labelClass}>WhatsApp Number</label>
-          <input type="tel" name="whatsappNumber" placeholder="+123 567 8900" value={formData.whatsappNumber} onChange={handleChange} className={fieldClass} />
+          <label htmlFor="rfq-whatsappNumber" className={labelClass}>WhatsApp Number</label>
+          <input type="tel" id="rfq-whatsappNumber" name="whatsappNumber" placeholder="+123 567 8900" value={formData.whatsappNumber} onChange={handleChange} className={fieldClass} />
         </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className={labelClass}>
+          <label htmlFor="rfq-emailAddress" className={labelClass}>
             Email Address <span className="text-[#0B7A3B]">*</span>
           </label>
-          <input type="email" name="emailAddress" required placeholder="your@email.com" value={formData.emailAddress} onChange={handleChange} className={fieldClass} />
+          <input type="email" id="rfq-emailAddress" name="emailAddress" required placeholder="your@email.com" value={formData.emailAddress} onChange={handleChange} className={fieldClass} />
         </div>
         <div>
-          <label className={labelClass}>
+          <label htmlFor="rfq-product" className={labelClass}>
             Product <span className="text-[#0B7A3B]">*</span>
           </label>
-          <select name="product" required value={formData.product} onChange={handleChange} className={`${fieldClass} appearance-none`}>
+          <select id="rfq-product" name="product" required value={formData.product} onChange={handleChange} className={`${fieldClass} appearance-none`}>
             <option value="">Select product</option>
             {PRODUCTS_DATA.map((p) => (
               <option key={p.id} value={p.name}>
@@ -183,23 +183,23 @@ export function QuoteForm({ defaultProduct, defaultCategory, defaultPackaging }:
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className={labelClass}>Quantity (MT / Containers)</label>
-          <input type="text" name="quantity" placeholder="e.g. 1 x 40ft FCL, 20 MT" value={formData.quantity} onChange={handleChange} className={fieldClass} />
+          <label htmlFor="rfq-quantity" className={labelClass}>Quantity (MT / Containers)</label>
+          <input type="text" id="rfq-quantity" name="quantity" placeholder="e.g. 1 x 40ft FCL, 20 MT" value={formData.quantity} onChange={handleChange} className={fieldClass} />
         </div>
         <div>
-          <label className={labelClass}>Packaging Requirement</label>
-          <input type="text" name="packagingRequirement" placeholder="e.g. 10kg carton, custom label" value={formData.packagingRequirement} onChange={handleChange} className={fieldClass} />
+          <label htmlFor="rfq-packagingRequirement" className={labelClass}>Packaging Requirement</label>
+          <input type="text" id="rfq-packagingRequirement" name="packagingRequirement" placeholder="e.g. 10kg carton, custom label" value={formData.packagingRequirement} onChange={handleChange} className={fieldClass} />
         </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className={labelClass}>Destination Port</label>
-          <input type="text" name="destinationPort" placeholder="e.g. Jebel Ali, UAE" value={formData.destinationPort} onChange={handleChange} className={fieldClass} />
+          <label htmlFor="rfq-destinationPort" className={labelClass}>Destination Port</label>
+          <input type="text" id="rfq-destinationPort" name="destinationPort" placeholder="e.g. Jebel Ali, UAE" value={formData.destinationPort} onChange={handleChange} className={fieldClass} />
         </div>
         <div>
-          <label className={labelClass}>Preferred Incoterm</label>
-          <select name="preferredIncoterm" value={formData.preferredIncoterm} onChange={handleChange} className={`${fieldClass} appearance-none`}>
+          <label htmlFor="rfq-preferredIncoterm" className={labelClass}>Preferred Incoterm</label>
+          <select id="rfq-preferredIncoterm" name="preferredIncoterm" value={formData.preferredIncoterm} onChange={handleChange} className={`${fieldClass} appearance-none`}>
             <option value="">Select Incoterm</option>
             {incotermOptions.map((opt) => (
               <option key={opt} value={opt}>
@@ -211,14 +211,14 @@ export function QuoteForm({ defaultProduct, defaultCategory, defaultPackaging }:
       </div>
 
       <div>
-        <label className={labelClass}>Target Shipment Date</label>
-        <input type="text" name="targetShipmentDate" placeholder="e.g. September 2026, Q4 2026" value={formData.targetShipmentDate} onChange={handleChange} className={fieldClass} />
+        <label htmlFor="rfq-targetShipmentDate" className={labelClass}>Target Shipment Date</label>
+        <input type="text" id="rfq-targetShipmentDate" name="targetShipmentDate" placeholder="e.g. September 2026, Q4 2026" value={formData.targetShipmentDate} onChange={handleChange} className={fieldClass} />
       </div>
 
       <div>
-        <label className={labelClass}>Additional Requirements</label>
+        <label htmlFor="rfq-additionalRequirements" className={labelClass}>Additional Requirements</label>
         <textarea
-          name="additionalRequirements"
+          id="rfq-additionalRequirements" name="additionalRequirements"
           rows={4}
           placeholder="Quality specs, certifications required, other requirements..."
           value={formData.additionalRequirements}
