@@ -50,7 +50,7 @@ export function Navbar() {
     <header
       className={`sticky top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
         solid
-          ? 'bg-white/90 backdrop-blur-xl saturate-[1.2] border-b border-neutral-200/60 shadow-[0_1px_3px_rgba(0,0,0,0.06)]'
+          ? 'bg-white/95 border-b border-neutral-200/60 shadow-[0_1px_3px_rgba(0,0,0,0.06)]'
           : 'bg-transparent border-b border-transparent'
       }`}
     >
@@ -85,7 +85,7 @@ export function Navbar() {
           <div className="hidden lg:flex items-center space-x-4">
             <Link
               href="/about#leadership"
-              className={`text-[13px] font-semibold transition-all duration-300 flex items-center gap-1.5 px-4 py-2 rounded-full backdrop-blur-2xl border ${
+              className={`text-[13px] font-semibold transition-all duration-300 flex items-center gap-1.5 px-4 py-2 rounded-full border ${
                 solid
                   ? 'text-neutral-700 hover:text-emerald-700 bg-white/50 border-white/40 hover:bg-white/70 hover:shadow-sm'
                   : 'text-white hover:text-white bg-white/15 border-white/25 hover:bg-white/25'
@@ -128,7 +128,7 @@ export function Navbar() {
 
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white/70 backdrop-blur-2xl saturate-150 border-b border-white/30 px-4 pt-3 pb-6 space-y-3 shadow-lg">
+        <div className="lg:hidden bg-white border-b border-neutral-200 px-4 pt-3 pb-6 space-y-3 shadow-lg">
           <div className="space-y-1">
             {navLinks.map((link) => (
               <Link

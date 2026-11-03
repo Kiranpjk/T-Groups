@@ -25,7 +25,7 @@ export function FloatingActions() {
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="w-11 h-11 rounded-full bg-white/50 backdrop-blur-2xl saturate-150 border border-white/30 text-neutral-700 hover:text-neutral-950 shadow-[0_4px_16px_rgba(0,0,0,0.08)] flex items-center justify-center transition-all hover:scale-105"
+          className="w-11 h-11 rounded-full bg-white border border-neutral-200 text-neutral-700 hover:text-neutral-950 shadow-[0_4px_16px_rgba(0,0,0,0.08)] flex items-center justify-center transition-all hover:scale-105"
           aria-label="Scroll to top"
         >
           <ArrowUp className="w-4 h-4" />

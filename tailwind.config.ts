@@ -47,9 +47,9 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['"Playfair Display"', 'Georgia', 'serif'],
-        'display-alt': ['"Playfair Display"', 'Georgia', 'serif'],
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-playfair)', 'Georgia', 'serif'],
+        'display-alt': ['var(--font-playfair)', 'Georgia', 'serif'],
       },
       boxShadow: {
         'luxury': '0 10px 30px -10px rgba(10, 62, 27, 0.15)',

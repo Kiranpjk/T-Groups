@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Inter, Playfair_Display } from 'next/font/google';
 import Script from 'next/script';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
@@ -6,9 +7,16 @@ import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { FloatingActions } from '@/components/layout/FloatingActions';
 import { SmoothScrollProvider } from '@/components/ui/SmoothScrollProvider';
-import { PageLoader } from '@/components/ui/PageLoader';
 import { COMPANY_INFO } from '@/data/companyData';
 import { DEFAULT_OG_IMAGE, SITE_URL } from '@/lib/seo';
+
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  variable: '--font-playfair',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   metadataBase: SITE_URL,
@@ -62,13 +70,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body className="min-h-screen flex flex-col antialiased font-sans bg-brand-surface text-gray-900 selection:bg-gold-500 selection:text-primary-950">
         <noscript>
-          {/* Without JS, reveal animations and the loader never finish: show the content. */}
+          {/* Without JS, reveal animations never finish: show the content. */}
           <style
             dangerouslySetInnerHTML={{
-              __html: '[style*="opacity:0"]{opacity:1!important;transform:none!important}.page-loader{display:none!important}',
+              __html: '[style*="opacity:0"]{opacity:1!important;transform:none!important}',
             }}
           />
         </noscript>
@@ -79,7 +87,6 @@ export default function RootLayout({
           Skip to content
         </a>
         <SmoothScrollProvider>
-          <PageLoader />
           <Navbar />
           <main id="main-content" className="flex-1">
             {children}

@@ -226,7 +226,7 @@ export function InteractiveWorldMap({ onSelectCountry, compact = false }: Intera
                             fontSize: 7.5,
                             fill: '#F8FAF8',
                             fontWeight: 600,
-                            fontFamily: 'Inter, sans-serif',
+                            fontFamily: 'var(--font-inter), sans-serif',
                           }}
                         >
                           {country.name}

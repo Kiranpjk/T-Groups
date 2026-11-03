@@ -15,12 +15,12 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     const lenis = new Lenis({
-      duration: 1.4,
+      duration: 1,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 0.9,
+      anchors: true,
       touchMultiplier: 1.5,
       // Modals and other fixed overlays scroll natively.
       prevent: (node: HTMLElement) => node.closest('.fixed') !== null,
