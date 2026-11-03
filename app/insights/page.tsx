@@ -6,13 +6,14 @@ import { ArrowRight, Clock, BookOpen, ShieldCheck } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Export Insights & Procurement Guides | T Group Imports & Exports',
+  title: 'Export Insights & Procurement Guides',
+  alternates: { canonical: '/insights' },
   description: 'In-depth international trade guides for sourcing Indian red onions, G9 bananas, Basmati rice, Incoterms comparison, and GCC export compliance.'
 };
 
 export default function InsightsPage() {
   return (
-    <main className="min-h-screen bg-neutral-50/50 pb-20">
+    <div className="min-h-screen bg-neutral-50/50 pb-20">
       {/* Header */}
       <div className="bg-white border-b border-neutral-200 py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -97,6 +98,6 @@ export default function InsightsPage() {
           ))}
         </div>
       </div>
-    </main>
+    </div>
   );
 }

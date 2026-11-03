@@ -2,7 +2,6 @@ import React from 'react';
 import Image from 'next/image';
 import { Metadata } from 'next';
 import { QualitySection } from '@/components/home/QualitySection';
-import { COMPANY_INFO } from '@/data/companyData';
 
 const STANDARDS = [
   {
@@ -24,13 +23,14 @@ const STANDARDS = [
 ];
 
 export const metadata: Metadata = {
-  title: `Quality & Compliance Standards | ${COMPANY_INFO.name}`,
+  title: 'Quality & Compliance Standards',
+  alternates: { canonical: '/quality-compliance' },
   description: 'Statutory registrations, APEDA, FSSAI, IEC credentials, and 5-stage export quality assurance protocols.',
 };
 
 export default function QualityCompliancePage() {
   return (
-    <main className="min-h-screen bg-[#F8F8F6] pb-20 text-[#202020]">
+    <div className="min-h-screen bg-[#F8F8F6] pb-20 text-[#202020]">
       <section className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 pt-24 pb-20 lg:pt-28 lg:pb-24">
         <div className="grid lg:grid-cols-[1fr_1.05fr] gap-12 lg:gap-20 items-start">
           <div className="pt-3">
@@ -105,6 +105,6 @@ export default function QualityCompliancePage() {
       </section>
 
       <QualitySection />
-    </main>
+    </div>
   );
 }

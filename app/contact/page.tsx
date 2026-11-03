@@ -16,13 +16,14 @@ import {
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: `Contact Us & Request a Quote (RFQ) | ${COMPANY_INFO.name}`,
+  title: 'Contact Us & Request a Quote (RFQ)',
+  alternates: { canonical: '/contact' },
   description: 'Submit an international B2B RFQ for Indian Fresh Onions, G4 Chillies, G9 Bananas, Basmati Rice, and Spices. Direct export desk in Guntur, Andhra Pradesh.',
 };
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-neutral-50/50 pb-20">
+    <div className="min-h-screen bg-neutral-50/50 pb-20">
       {/* Header Banner */}
       <section className="relative pt-24 pb-20 bg-neutral-900 text-white overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -74,7 +75,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="space-y-4 text-xs text-neutral-700">
+              <div className="space-y-4 text-sm text-neutral-700">
                 <div className="flex items-start gap-3">
                   <MapPin className="w-4 h-4 text-[#0B7A3B] mt-0.5 flex-shrink-0" />
                   <div>
@@ -124,7 +125,7 @@ export default function ContactPage() {
                   href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent("Hello Tarun, I would like to request an export quote.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-3 rounded-xl text-xs uppercase tracking-wider transition-colors shadow-sm"
+                  className="w-full flex items-center justify-center gap-2 bg-[#0B7A3B] hover:bg-[#096631] text-white font-bold py-3 rounded-xl text-xs uppercase tracking-wider transition-colors shadow-sm"
                 >
                   <MessageSquare className="w-4 h-4" />
                   <span>WhatsApp Live Desk</span>
@@ -190,6 +191,6 @@ export default function ContactPage() {
 
         </div>
       </section>
-    </main>
+    </div>
   );
 }

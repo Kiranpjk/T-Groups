@@ -53,21 +53,13 @@ export function ProductQuoteModal({ product, onClose }: ProductQuoteModalProps) 
       const res = await fetch('/api/send-quote', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          fullName: formData.fullName,
-          companyName: formData.companyName,
-          emailAddress: formData.email,
-          whatsappNumber: formData.whatsappPhone,
-          country: formData.country,
-          quantity: `${formData.quantityMT} MT`,
-          packagingRequirement: formData.packingRequirement,
-          destinationPort: formData.destinationPort,
-          preferredIncoterm: formData.preferredIncoterm,
-          targetShipmentDate: formData.preferredShipmentDate,
-          product: product.name,
-          additionalRequirements: formData.message
-        }),
+        body: JSON.stringify({ ...formData, product: product.name }),
       });
+
+      if (!res.ok) {
+        const result = await res.json().catch(() => null);
+        throw new Error(result?.error);
+      }
 
       setSubmitted(true);
       confetti({
@@ -75,8 +67,9 @@ export function ProductQuoteModal({ product, onClose }: ProductQuoteModalProps) 
         spread: 60,
         origin: { y: 0.6 }
       });
-    } catch (err: any) {
-      setSubmitted(true);
+    } catch (err) {
+      console.error(err);
+      setError((err instanceof Error && err.message) || 'Could not submit your request. Please try again or message our WhatsApp export desk.');
     } finally {
       setLoading(false);
     }
@@ -169,12 +162,12 @@ export function ProductQuoteModal({ product, onClose }: ProductQuoteModalProps) 
               {/* Form inputs grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                 <div>
-                  <label className="block font-bold text-neutral-800 mb-1">
+                  <label htmlFor="quote-fullName" className="block font-bold text-neutral-800 mb-1">
                     Your Full Name <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
-                    name="fullName"
+                    id="quote-fullName" name="fullName"
                     required
                     value={formData.fullName}
                     onChange={handleChange}
@@ -184,12 +177,12 @@ export function ProductQuoteModal({ product, onClose }: ProductQuoteModalProps) 
                 </div>
 
                 <div>
-                  <label className="block font-bold text-neutral-800 mb-1">
+                  <label htmlFor="quote-companyName" className="block font-bold text-neutral-800 mb-1">
                     Company Name <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
-                    name="companyName"
+                    id="quote-companyName" name="companyName"
                     required
                     value={formData.companyName}
                     onChange={handleChange}
@@ -199,12 +192,12 @@ export function ProductQuoteModal({ product, onClose }: ProductQuoteModalProps) 
                 </div>
 
                 <div>
-                  <label className="block font-bold text-neutral-800 mb-1">
+                  <label htmlFor="quote-email" className="block font-bold text-neutral-800 mb-1">
                     Business Email <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="email"
-                    name="email"
+                    id="quote-email" name="email"
                     required
                     value={formData.email}
                     onChange={handleChange}
@@ -214,12 +207,12 @@ export function ProductQuoteModal({ product, onClose }: ProductQuoteModalProps) 
                 </div>
 
                 <div>
-                  <label className="block font-bold text-neutral-800 mb-1">
+                  <label htmlFor="quote-whatsappPhone" className="block font-bold text-neutral-800 mb-1">
                     WhatsApp Number <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="tel"
-                    name="whatsappPhone"
+                    id="quote-whatsappPhone" name="whatsappPhone"
                     required
                     value={formData.whatsappPhone}
                     onChange={handleChange}
@@ -229,12 +222,12 @@ export function ProductQuoteModal({ product, onClose }: ProductQuoteModalProps) 
                 </div>
 
                 <div>
-                  <label className="block font-bold text-neutral-800 mb-1">
+                  <label htmlFor="quote-country" className="block font-bold text-neutral-800 mb-1">
                     Destination Country <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
-                    name="country"
+                    id="quote-country" name="country"
                     required
                     value={formData.country}
                     onChange={handleChange}
@@ -244,12 +237,12 @@ export function ProductQuoteModal({ product, onClose }: ProductQuoteModalProps) 
                 </div>
 
                 <div>
-                  <label className="block font-bold text-neutral-800 mb-1">
+                  <label htmlFor="quote-destinationPort" className="block font-bold text-neutral-800 mb-1">
                     Destination Port <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
-                    name="destinationPort"
+                    id="quote-destinationPort" name="destinationPort"
                     required
                     value={formData.destinationPort}
                     onChange={handleChange}
@@ -259,12 +252,12 @@ export function ProductQuoteModal({ product, onClose }: ProductQuoteModalProps) 
                 </div>
 
                 <div>
-                  <label className="block font-bold text-neutral-800 mb-1">
+                  <label htmlFor="quote-quantityMT" className="block font-bold text-neutral-800 mb-1">
                     Required Quantity (MT / Containers) <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
-                    name="quantityMT"
+                    id="quote-quantityMT" name="quantityMT"
                     required
                     value={formData.quantityMT}
                     onChange={handleChange}
@@ -274,11 +267,11 @@ export function ProductQuoteModal({ product, onClose }: ProductQuoteModalProps) 
                 </div>
 
                 <div>
-                  <label className="block font-bold text-neutral-800 mb-1">
+                  <label htmlFor="quote-preferredIncoterm" className="block font-bold text-neutral-800 mb-1">
                     Preferred Incoterm
                   </label>
                   <select
-                    name="preferredIncoterm"
+                    id="quote-preferredIncoterm" name="preferredIncoterm"
                     value={formData.preferredIncoterm}
                     onChange={handleChange}
                     className="w-full px-3 py-2.5 border border-neutral-300 rounded-xl focus:ring-2 focus:ring-[#0B7A3B] focus:outline-none bg-white"
@@ -292,11 +285,11 @@ export function ProductQuoteModal({ product, onClose }: ProductQuoteModalProps) 
               </div>
 
               <div>
-                <label className="block font-bold text-neutral-800 mb-1 text-xs">
+                <label htmlFor="quote-message" className="block font-bold text-neutral-800 mb-1 text-xs">
                   Additional Requirements / Specifications
                 </label>
                 <textarea
-                  name="message"
+                  id="quote-message" name="message"
                   rows={2}
                   value={formData.message}
                   onChange={handleChange}

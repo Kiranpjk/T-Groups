@@ -1,4 +1,5 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import { HeroSection } from '@/components/home/HeroSection';
 import { TrustSection } from '@/components/home/TrustSection';
 import { ProductsOverview } from '@/components/home/ProductsOverview';
@@ -15,9 +16,13 @@ import { QuickRFQSection } from '@/components/home/QuickRFQSection';
 import { FaqAccordion } from '@/components/home/FaqAccordion';
 import { FinalCTA } from '@/components/home/FinalCTA';
 
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+};
+
 export default function HomePage() {
   return (
-    <main className="space-y-0">
+    <div className="space-y-0">
       {/* 1. Hero Section (Screenshot 1) */}
       <HeroSection />
 
@@ -62,6 +67,6 @@ export default function HomePage() {
 
       {/* Request a Quote — sits directly under the sourcing CTA */}
       <QuickRFQSection />
-    </main>
+    </div>
   );
 }

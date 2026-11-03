@@ -1,10 +1,10 @@
 import React, { Suspense } from 'react';
 import { Metadata } from 'next';
 import { ProductsClient } from './ProductsClient';
-import { COMPANY_INFO } from '@/data/companyData';
 
 export const metadata: Metadata = {
-  title: `Our Products & Export Specifications | ${COMPANY_INFO.name}`,
+  title: 'Our Products & Export Specifications',
+  alternates: { canonical: '/products' },
   description: 'Explore export grades, packaging options, state origins, and freight methods for Indian Red Onions, G4 Chillies, G9 Bananas, Basmati Rice, and Spices.',
 };
 

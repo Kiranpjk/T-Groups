@@ -179,11 +179,6 @@ export function Footer() {
         {/* Bottom Legal Copyright Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
           <p>© {new Date().getFullYear()} T Group Imports &amp; Exports. All rights reserved.</p>
-          <div className="flex items-center space-x-6">
-            <Link href="/privacy-policy" className="hover:text-neutral-300 transition-colors">Privacy Policy</Link>
-            <Link href="/terms-and-conditions" className="hover:text-neutral-300 transition-colors">Terms &amp; Conditions</Link>
-            <Link href="/cookie-policy" className="hover:text-neutral-300 transition-colors">Cookie Policy</Link>
-          </div>
         </div>
       </div>
     </footer>

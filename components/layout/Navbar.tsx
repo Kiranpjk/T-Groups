@@ -43,10 +43,13 @@ export function Navbar() {
     return pathname.startsWith(href);
   };
 
+  // Only the home hero is dark behind the header; everywhere else white text would vanish.
+  const solid = isScrolled || pathname !== '/';
+
   return (
     <header
       className={`sticky top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
-        isScrolled
+        solid
           ? 'bg-white/90 backdrop-blur-xl saturate-[1.2] border-b border-neutral-200/60 shadow-[0_1px_3px_rgba(0,0,0,0.06)]'
           : 'bg-transparent border-b border-transparent'
       }`}
@@ -54,7 +57,7 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Brand Logo */}
-          <BrandLogo isDarkBg={!isScrolled} />
+          <BrandLogo isDarkBg={!solid} />
 
           {/* Desktop Navigation Links */}
           <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
@@ -62,8 +65,9 @@ export function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
+                aria-current={isActive(link.href) ? 'page' : undefined}
                 className={`text-[13px] font-medium transition-colors duration-300 ${
-                  isScrolled
+                  solid
                     ? isActive(link.href)
                       ? 'text-neutral-900 font-semibold'
                       : 'text-neutral-600 hover:text-neutral-900'
@@ -82,7 +86,7 @@ export function Navbar() {
             <Link
               href="/about#leadership"
               className={`text-[13px] font-semibold transition-all duration-300 flex items-center gap-1.5 px-4 py-2 rounded-full backdrop-blur-2xl border ${
-                isScrolled
+                solid
                   ? 'text-neutral-700 hover:text-emerald-700 bg-white/50 border-white/40 hover:bg-white/70 hover:shadow-sm'
                   : 'text-white hover:text-white bg-white/15 border-white/25 hover:bg-white/25'
               }`}
@@ -102,14 +106,15 @@ export function Navbar() {
           <div className="flex lg:hidden items-center space-x-3">
             <Link
               href="/contact#rfq-form"
-              className="bg-[#0B7A3B] text-white text-[11px] font-bold px-3 py-1.5 rounded-md"
+              className="inline-flex items-center min-h-11 bg-[#0B7A3B] text-white text-[11px] font-bold px-3 rounded-md"
             >
               REQUEST QUOTE
             </Link>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`p-2 rounded-md focus:outline-none transition-colors ${
-                isScrolled
+              aria-expanded={mobileMenuOpen}
+              className={`p-3 rounded-md transition-colors ${
+                solid
                   ? 'text-neutral-700 hover:text-neutral-900 hover:bg-neutral-100'
                   : 'text-white hover:text-white hover:bg-white/10'
               }`}
@@ -129,6 +134,7 @@ export function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
+                aria-current={isActive(link.href) ? 'page' : undefined}
                 onClick={() => setMobileMenuOpen(false)}
                 className={`block px-3 py-2.5 rounded-md text-sm font-medium ${
                   isActive(link.href)

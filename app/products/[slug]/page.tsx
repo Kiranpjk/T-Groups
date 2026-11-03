@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   }
 
   return createPageMetadata({
-    title: `${product.name} Exporter India | Bulk B2B Supplier - T Group`,
+    title: `${product.name} Exporter India | Bulk B2B Supplier`,
     description: `Export-quality ${product.name} from India. Graded calibrations, container loadability, Phytosanitary certification, and FCL/air shipments worldwide.`,
     path: `/products/${product.slug}`,
     image: product.image,
@@ -61,7 +61,7 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
   }
 
   return (
-    <main className="min-h-screen bg-neutral-50/50 pb-20">
+    <div className="min-h-screen bg-neutral-50/50 pb-20">
       {/* Breadcrumb Header */}
       <div className="bg-white border-b border-neutral-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -306,6 +306,6 @@ export default function ProductDetailPage({ params }: ProductPageProps) {
 
         </div>
       </div>
-    </main>
+    </div>
   );
 }

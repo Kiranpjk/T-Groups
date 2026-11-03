@@ -1,24 +1,16 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { BrandLogo } from '@/components/ui/BrandLogo';
 
 export function PageLoader() {
-  const pathname = usePathname();
   const [isLoading, setIsLoading] = useState(true);
-  const hasMounted = useRef(false);
 
+  // First load only: holding every route change behind a splash makes the site feel slow.
   useEffect(() => {
-    if (hasMounted.current) {
-      setIsLoading(true);
-    }
-
-    hasMounted.current = true;
     const timeout = window.setTimeout(() => setIsLoading(false), 850);
-
     return () => window.clearTimeout(timeout);
-  }, [pathname]);
+  }, []);
 
   return (
     <div

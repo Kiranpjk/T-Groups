@@ -4,7 +4,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ExportMarketsPreview } from '@/components/home/ExportMarketsPreview';
 import { EXPORT_COUNTRIES, EXPORT_STATS } from '@/data/exportMarketsData';
-import { COMPANY_INFO } from '@/data/companyData';
 import { 
   Globe2, 
   ShieldCheck, 
@@ -17,7 +16,8 @@ import {
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: `Current & Target Export Markets | ${COMPANY_INFO.name}`,
+  title: 'Current & Target Export Markets',
+  alternates: { canonical: '/export-markets' },
   description: 'Global agricultural supply corridors from India to UAE, Saudi Arabia, Sri Lanka, Nepal, Bangladesh, Malaysia, Canada, and Guyana.',
 };
 
@@ -26,7 +26,7 @@ export default function ExportMarketsPage() {
   const target = EXPORT_COUNTRIES.filter(c => c.status === 'target');
 
   return (
-    <main className="min-h-screen bg-neutral-50/50 pb-20">
+    <div className="min-h-screen bg-neutral-50/50 pb-20">
       {/* Header Banner */}
       <section className="relative pt-24 pb-20 bg-neutral-900 text-white overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -133,6 +133,6 @@ export default function ExportMarketsPage() {
           ))}
         </div>
       </section>
-    </main>
+    </div>
   );
 }
