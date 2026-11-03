@@ -14,7 +14,7 @@ import { COMPANY_INFO } from '@/data/companyData';
 
 export function ProductsClient() {
   const searchParams = useSearchParams();
-  const initialCategory = searchParams.get('category') || 'All';
+  const initialCategory = searchParams.get('category') || 'All Products';
 
   const [selectedCategory, setSelectedCategory] = useState<string>(initialCategory);
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -23,7 +23,7 @@ export function ProductsClient() {
 
   const filteredProducts = useMemo(() => {
     return PRODUCTS_DATA.filter((product) => {
-      const matchesCategory = selectedCategory === 'All' || product.category === selectedCategory;
+      const matchesCategory = selectedCategory === 'All Products' || product.category === selectedCategory;
       const matchesSearch =
         product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         product.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -88,7 +88,7 @@ export function ProductsClient() {
             </p>
             <button
               onClick={() => {
-                setSelectedCategory('All');
+                setSelectedCategory('All Products');
                 setSearchQuery('');
               }}
               className="text-xs font-bold text-primary-800 underline"
