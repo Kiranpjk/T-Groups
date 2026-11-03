@@ -6,13 +6,14 @@ import { FinalCTA } from '@/components/home/FinalCTA';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Our Export Process & Workflow | T Group Imports & Exports',
+  title: 'Our Export Process & Workflow',
+  alternates: { canonical: '/our-process' },
   description: 'Learn how T Group executes agricultural commodity exports from initial buyer specifications and quality inspection to container port dispatch and delivery.'
 };
 
 export default function OurProcessPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white">
       {/* Header Banner */}
       <div className="bg-neutral-900 text-white py-16 sm:py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20 pointer-events-none" style={{
@@ -43,6 +44,6 @@ export default function OurProcessPage() {
 
       {/* CTA */}
       <FinalCTA />
-    </main>
+    </div>
   );
 }

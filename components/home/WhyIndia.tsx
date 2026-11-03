@@ -86,7 +86,7 @@ export function WhyIndia() {
                     className="bg-white rounded-[20px] px-4 py-3 border border-[#E0E3E7] hover:border-[#0B7A3B] transition-all flex items-start gap-3 group"
                   >
                     <span className="w-2 h-2 mt-1.5 rounded-full bg-[#D4AF37] shrink-0" />
-                    <div><h3 className="text-[11px] font-bold text-neutral-900 group-hover:text-[#0B7A3B] transition-colors">{item.title}</h3><p className="mt-1 text-[10px] text-[#737B8C] leading-relaxed">{item.desc}</p></div>
+                    <div><h3 className="text-sm font-bold text-neutral-900 group-hover:text-[#0B7A3B] transition-colors">{item.title}</h3><p className="mt-1 text-[10px] text-[#737B8C] leading-relaxed">{item.desc}</p></div>
                   </motion.div>
                 );
               })}

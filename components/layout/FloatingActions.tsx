@@ -25,7 +25,7 @@ export function FloatingActions() {
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="w-10 h-10 rounded-full bg-white/50 backdrop-blur-2xl saturate-150 border border-white/30 text-neutral-700 hover:text-neutral-950 shadow-[0_4px_16px_rgba(0,0,0,0.08)] flex items-center justify-center transition-all hover:scale-105"
+          className="w-11 h-11 rounded-full bg-white/50 backdrop-blur-2xl saturate-150 border border-white/30 text-neutral-700 hover:text-neutral-950 shadow-[0_4px_16px_rgba(0,0,0,0.08)] flex items-center justify-center transition-all hover:scale-105"
           aria-label="Scroll to top"
         >
           <ArrowUp className="w-4 h-4" />
@@ -37,10 +37,11 @@ export function FloatingActions() {
         href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent("Hello T Group Export Team, I would like to inquire about exporting agricultural commodities.")}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 bg-[#25D366]/85 hover:bg-[#25D366]/95 backdrop-blur-2xl saturate-150 text-white px-4 py-2.5 rounded-full shadow-[0_4px_24px_rgba(37,211,102,0.3)] hover:shadow-[0_8px_32px_rgba(37,211,102,0.4)] transition-all duration-300 hover:scale-105 active:scale-95 group border border-white/25"
+        className="inline-flex items-center gap-2 bg-[#0B7A3B] hover:bg-[#096631] text-white p-3.5 sm:px-4 sm:py-2.5 rounded-full shadow-[0_4px_24px_rgba(11,122,59,0.3)] hover:shadow-[0_8px_32px_rgba(11,122,59,0.4)] transition-all duration-300 hover:scale-105 active:scale-95 group border border-white/25"
+        aria-label="Chat with Export Team on WhatsApp"
         title="Chat with Export Team on WhatsApp"
       >
-        <span className="text-xs font-bold tracking-wide">
+        <span className="hidden sm:inline text-xs font-bold tracking-wide">
           Chat with Export Team
         </span>
         <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

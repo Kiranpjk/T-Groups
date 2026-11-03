@@ -5,13 +5,14 @@ import { FinalCTA } from '@/components/home/FinalCTA';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Packaging Standards & Export Logistics | T Group Imports & Exports',
+  title: 'Packaging Standards & Export Logistics',
+  alternates: { canonical: '/packaging-logistics' },
   description: 'Explore export-ready packaging options including corrugated cartons, mesh bags, BOPP woven sacks, and port freight handling across India.'
 };
 
 export default function PackagingLogisticsPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white">
       {/* Header */}
       <div className="bg-neutral-900 text-white py-16 sm:py-20 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
@@ -35,6 +36,6 @@ export default function PackagingLogisticsPage() {
 
       {/* Final CTA */}
       <FinalCTA />
-    </main>
+    </div>
   );
 }

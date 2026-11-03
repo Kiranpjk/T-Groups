@@ -80,6 +80,7 @@ export function ProductFilters({
             type="text"
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
+            aria-label="Search products"
             placeholder="Search by commodity name, grade, or state origin..."
             className="w-full pl-10 pr-4 py-2 text-xs bg-brand-surface border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:bg-white focus:outline-none"
           />
