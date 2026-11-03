@@ -79,8 +79,8 @@ export function WhyIndia() {
                 return (
                   <motion.div
                     key={item.title}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.2 }}
                     transition={{ duration: 0.4, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
                     className="bg-white rounded-[20px] px-4 py-3 border border-[#E0E3E7] hover:border-[#0B7A3B] transition-all flex items-start gap-3 group"
