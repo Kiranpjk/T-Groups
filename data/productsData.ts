@@ -433,7 +433,7 @@ export const PRODUCTS_DATA: Product[] = [
     freightMethod: 'Air Cargo (Primary) or 20ft Reefer Container',
     shelfLife: '12 - 15 Days under cold chain (8-10°C)',
     loadability: 'Air pallets or 8 MT in 40ft Reefer',
-    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80',
+    image: '/images/Drumstick.jpg',
     featured: false,
     specifications: [
       { key: 'Variety', value: 'PKM-1 / ODC High-Yield Moringa' },
@@ -463,7 +463,7 @@ export const PRODUCTS_DATA: Product[] = [
     freightMethod: 'Air Cargo or 40ft Reefer at 8-10°C',
     shelfLife: '10 - 14 Days at 8-10°C',
     loadability: '7 - 8 MT in 40ft Reefer Container',
-    image: 'https://images.unsplash.com/photo-1628771065518-0d82f1938462?auto=format&fit=crop&w=800&q=80',
+    image: '/images/Okra.jpg',
     featured: false,
     specifications: [
       { key: 'Length', value: '6 cm to 9 cm' },
@@ -522,7 +522,7 @@ export const PRODUCTS_DATA: Product[] = [
     freightMethod: 'Ocean Freight (20ft Dry FCL) or Vessel Break Bulk',
     shelfLife: '24 Months',
     loadability: '26 - 27 MT per 20ft Container',
-    image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=800&q=80',
+    image: '/images/IR64%20Rice.jpg',
     featured: false,
     specifications: [
       { key: 'Grain Length', value: '6.0 mm - 6.2 mm' },
@@ -552,7 +552,7 @@ export const PRODUCTS_DATA: Product[] = [
     freightMethod: 'Ocean Freight (40ft HC) or Air Cargo',
     shelfLife: '12 Months in airtight packing',
     loadability: '4 - 5 Metric Tons per 40ft HC Container',
-    image: 'https://images.unsplash.com/photo-1599940824399-b87987ceb72a?auto=format&fit=crop&w=800&q=80',
+    image: '/images/Makhana.jpg',
     featured: false,
     specifications: [
       { key: 'Size Calibration', value: '10mm to 13mm diameter' },

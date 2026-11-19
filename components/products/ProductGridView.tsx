@@ -29,7 +29,7 @@ export function ProductGridView({ products, onSelectProductForQuote }: ProductGr
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
             
             <span className="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-neutral-900 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md shadow-sm border border-neutral-200">
               {product.category}

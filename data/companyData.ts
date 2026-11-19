@@ -137,12 +137,6 @@ export const LEADERSHIP_TEAM: LeadershipMember[] = [
     title: "Co-Founder & Director",
     role: "German Business Development and Digital Technology Specialist",
     description: "Drives European market expansion, digital infrastructure, and strategic technology initiatives to scale the company's global trade operations."
-  },
-  {
-    name: "Srikanth A.",
-    title: "Strategic Advisor — International Markets",
-    role: "UK & European Market Strategy and Strategic Partnerships",
-    description: "Advises on international market entry strategy, strategic partnerships, and trade compliance for UK and European destination markets."
   }
 ];
 

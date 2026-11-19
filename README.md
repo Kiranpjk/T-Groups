@@ -55,3 +55,12 @@ npm run build
 - `components/` UI, grouped by page
 - `data/` products, markets, certificates, FAQs and company details
 - `lib/` quote validation, email and SEO helpers
+
+## Photo credits
+
+From Wikimedia Commons:
+
+- `Makhana.jpg`: "Foxnut Makhana - Nawada District - Bihar - 1" by FacetsOfNonStickPans, CC BY-SA 4.0
+- `Drumstick.jpg`: "Drumsticks or Moringa" by Mangosapiens, CC BY-SA 4.0
+- `Okra.jpg`: "Quiabo" by ArionStar, CC0
+- `IR64 Rice.jpg`: "A Bowl of Raw Parboiled Rice" by Uthman salma, CC0

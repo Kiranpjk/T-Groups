@@ -111,8 +111,8 @@ export function CompanyProfileSection() {
               </div>
 
               <div className="bg-neutral-50 p-4 rounded-xl border border-neutral-200">
-                <h4 className="font-bold text-neutral-900 text-sm mb-2.5">Key Leadership &amp; Advisory</h4>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <h4 className="font-bold text-neutral-900 text-sm mb-2.5">Key Leadership</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {LEADERSHIP_TEAM.map((leader) => (
                     <div key={leader.name} className="bg-white p-3 rounded-lg border border-neutral-200">
                       <span className="font-bold text-neutral-900 text-xs block">{leader.name}</span>

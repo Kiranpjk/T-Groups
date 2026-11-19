@@ -209,7 +209,7 @@ export function AboutStorySection() {
         </motion.div>
       </section>
 
-      {/* Leadership & Strategic Advisory */}
+      {/* Leadership */}
       <section id="leadership" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24">
         <div className="bg-white rounded-3xl p-8 sm:p-12 border border-neutral-200 shadow-sm space-y-10">
           <motion.div
@@ -221,19 +221,19 @@ export function AboutStorySection() {
             <div className="inline-flex items-center gap-2 mb-2">
               <span className="w-4 h-[1.5px] bg-[#D4AF37]" />
               <span className="text-[11px] font-bold tracking-[0.2em] text-[#0B7A3B] uppercase">
-                Leadership &amp; Strategic Advisory
+                Leadership
               </span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-neutral-900 tracking-tight">
               Driven by Experience. Powered by Global Vision.
             </h2>
             <p className="mt-2 text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-2xl">
-              Our core leadership and advisory board combine decades of agricultural field sourcing, international trade compliance, European market strategy, and digital operations.
+              Our leadership team combines decades of agricultural field sourcing, international trade compliance, European market strategy, and digital operations.
             </p>
           </motion.div>
 
           {/* Leadership Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Tarun B. */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
@@ -312,44 +312,6 @@ export function AboutStorySection() {
               </div>
             </motion.div>
 
-            {/* Srikanth A. */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 0.5, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-              className="rounded-2xl border border-neutral-200 bg-[#FBFBFA] p-6 flex flex-col justify-between hover:border-[#0B7A3B] hover:shadow-md transition-all group"
-            >
-              <div className="space-y-4">
-                <div className="w-14 h-14 rounded-2xl bg-amber-900/10 text-amber-900 flex items-center justify-center font-bold text-xl font-display">
-                  SA
-                </div>
-                <div>
-                  <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-wider block">
-                    UK &amp; European Market Strategy
-                  </span>
-                  <h3 className="text-lg font-black text-neutral-900 group-hover:text-[#0B7A3B] transition-colors mt-0.5">
-                    Srikanth A.
-                  </h3>
-                  <p className="text-xs font-semibold text-amber-900 mt-0.5">
-                    Strategic Advisor — International Markets
-                  </p>
-                </div>
-                <p className="text-xs text-neutral-600 leading-relaxed">
-                  Advises on UK &amp; European market entry strategies, strategic distributor alliances, cross-border regulatory compliance, and destination-market phytosanitary alignment.
-                </p>
-                <div className="pt-3 border-t border-neutral-200/80 space-y-2 text-[11px] text-neutral-600">
-                  <div className="flex items-start gap-2">
-                    <GraduationCap className="w-3.5 h-3.5 text-amber-900 shrink-0 mt-0.5" />
-                    <span><strong>Education:</strong> Global Trade Economics &amp; Strategic Management</span>
-                  </div>
-                  <div className="flex items-start gap-2">
-                    <Briefcase className="w-3.5 h-3.5 text-amber-900 shrink-0 mt-0.5" />
-                    <span><strong>Current Mandate:</strong> Strategic Advisor — International Market Expansion</span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
           </div>
 
           {/* Team Roles & Employee Designations */}
