@@ -20,6 +20,14 @@ jobs:
         with:
           node-version: 22
           cache: npm
+      - name: Check public/ file sizes (max 600 KB)
+        run: |
+          big=$(find public -type f -size +600k)
+          if [ -n "$big" ]; then
+            echo "::error::Files in public/ larger than 600 KB (compress them first):"
+            find public -type f -size +600k -exec ls -l {} +
+            exit 1
+          fi
       - run: npm ci
       - run: npm run lint
       - run: npm run typecheck
