@@ -9,9 +9,9 @@ import type { Metadata } from 'next';
 import { createPageMetadata } from '@/lib/seo';
 
 interface InsightDetailPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -21,12 +21,13 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: InsightDetailPageProps): Promise<Metadata> {
-  const article = getInsightBySlug(params.slug);
+  const { slug } = await params;
+  const article = getInsightBySlug(slug);
   if (!article) {
     return createPageMetadata({
       title: 'Article Not Found',
       description: 'The requested export insight could not be found.',
-      path: `/insights/${params.slug}`,
+      path: `/insights/${slug}`,
     });
   }
 
@@ -38,8 +39,9 @@ export async function generateMetadata({ params }: InsightDetailPageProps): Prom
   });
 }
 
-export default function InsightDetailPage({ params }: InsightDetailPageProps) {
-  const article = getInsightBySlug(params.slug);
+export default async function InsightDetailPage({ params }: InsightDetailPageProps) {
+  const { slug } = await params;
+  const article = getInsightBySlug(slug);
 
   if (!article) {
     notFound();

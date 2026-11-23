@@ -24,9 +24,9 @@ import type { Metadata } from 'next';
 import { createPageMetadata } from '@/lib/seo';
 
 interface ProductPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -36,12 +36,13 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
-  const product = getProductBySlug(params.slug);
+  const { slug } = await params;
+  const product = getProductBySlug(slug);
   if (!product) {
     return createPageMetadata({
       title: 'Product Not Found',
       description: 'The requested agricultural export product could not be found.',
-      path: `/products/${params.slug}`,
+      path: `/products/${slug}`,
     });
   }
 
@@ -53,8 +54,9 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   });
 }
 
-export default function ProductDetailPage({ params }: ProductPageProps) {
-  const product = getProductBySlug(params.slug);
+export default async function ProductDetailPage({ params }: ProductPageProps) {
+  const { slug } = await params;
+  const product = getProductBySlug(slug);
 
   if (!product) {
     notFound();

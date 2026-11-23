@@ -17,7 +17,7 @@ Company website for T Group Imports & Exports, an India-based exporter of agricu
 
 ## Stack
 
-Next.js 14 (App Router), TypeScript, Tailwind CSS, Framer Motion, GSAP, Nodemailer. Deployed on Vercel.
+Next.js 15 (App Router), TypeScript, Tailwind CSS, Framer Motion, GSAP, Nodemailer. Deployed on Vercel.
 
 ## Run it locally
 
@@ -61,6 +61,10 @@ Images served from other hosts (Unsplash, flag CDN) are not checked.
   lint, typecheck, unit tests, `next build`, then starts the production server and runs the link checker.
 - **Deployment** is done by Vercel's Git integration; the workflow does not deploy anything.
 - **Dependabot** opens weekly PRs for npm packages (minor and patch; Next/React updates grouped) and GitHub Actions.
+
+## Security
+
+Dependency audit (Nov 2026): `npm audit` went from 16 advisories (1 critical, 8 high, 7 moderate) to 0. Next.js 14 has no patched release for the current advisories, so the site moved from 14.2.35 to 15.5.29 (plus `eslint-config-next` 15). The only code change was awaiting `params` in the two `[slug]` pages, as Next 15 requires. An `overrides` entry moves Next's bundled `postcss` to a patched version; the rest came from `npm audit fix`.
 
 ## Project layout
 
