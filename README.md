@@ -1,5 +1,7 @@
 # T Group Imports & Exports
 
+[![CI](https://github.com/Kiranpjk/t-groups/actions/workflows/ci.yml/badge.svg)](https://github.com/Kiranpjk/t-groups/actions/workflows/ci.yml)
+
 Company website for T Group Imports & Exports, an India-based exporter of agricultural and food products. Buyers can browse the product catalog, see export markets and certificates, and send a request for quotation.
 
 **Live site:** https://t-groups.vercel.app
@@ -42,12 +44,23 @@ In Vercel, add them under **Settings > Environment Variables**.
 ## Checks
 
 ```bash
-npm run lint
-npm test
+npm run lint         # ESLint (next/core-web-vitals)
+npm run typecheck    # tsc --noEmit
+npm test             # node:test, covers the quote form validation in lib/quote.ts
 npm run build
+npm run start &      # then, in another terminal:
+npm run check-links  # crawls http://localhost:3000 and fails on any broken internal page, link or image
 ```
 
-`npm test` covers the quote form validation in `lib/quote.ts`.
+`check-links` starts at `/`, `/sitemap.xml` and `/robots.txt` and follows every internal `href`/`src`.
+Images served from other hosts (Unsplash, flag CDN) are not checked.
+
+## CI/CD
+
+- **CI** (`.github/workflows/ci.yml`) runs on every push to `main` and on pull requests:
+  lint, typecheck, unit tests, `next build`, then starts the production server and runs the link checker.
+- **Deployment** is done by Vercel's Git integration; the workflow does not deploy anything.
+- **Dependabot** opens weekly PRs for npm packages (minor and patch; Next/React updates grouped) and GitHub Actions.
 
 ## Project layout
 
@@ -55,6 +68,7 @@ npm run build
 - `components/` UI, grouped by page
 - `data/` products, markets, certificates, FAQs and company details
 - `lib/` quote validation, email and SEO helpers
+- `scripts/check-links.mjs` internal link checker used in CI
 
 ## Photo credits
 
